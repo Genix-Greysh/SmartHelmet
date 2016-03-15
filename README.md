@@ -1,5 +1,4 @@
 # JavaProjects
-[toc]
 
 ##1 Description 
 Here are some projects of mine during colleage.
