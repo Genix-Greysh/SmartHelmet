@@ -46,3 +46,4 @@
 .\ht32\obj\main.o: ..\..\utilities\common/ebi_lcd.h
 .\ht32\obj\main.o: ..\..\Driver\USART\usart.h
 .\ht32\obj\main.o: ..\..\Driver\SPI\spi.h
+.\ht32\obj\main.o: ..\..\Driver\SD\sd.h

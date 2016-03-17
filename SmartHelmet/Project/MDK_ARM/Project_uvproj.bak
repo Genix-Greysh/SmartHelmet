@@ -168,7 +168,7 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4106</DriverSelection>
+            <DriverSelection>4104</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\holtek-elink32.dll</Flash2>
@@ -362,7 +362,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HT32_DRIVER, USE_HT32F1656_DVB</Define>
               <Undefine></Undefine>
-              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART</IncludePath>
+              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -418,6 +418,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Driver</GroupName>
+          <Files>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Driver\USART\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Driver\SPI\spi.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Config</GroupName>
           <Files>
             <File>
@@ -439,16 +454,6 @@
               <FileName>ht32f1655_56_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\User\ht32f1655_56_conf.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Driver</GroupName>
-          <Files>
-            <File>
-              <FileName>usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\Driver\USART\usart.c</FilePath>
             </File>
           </Files>
         </Group>

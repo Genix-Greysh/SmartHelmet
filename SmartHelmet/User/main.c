@@ -4,6 +4,7 @@
 
 #include "usart.h"
 #include "spi.h"
+#include "sd.h"
 
 /** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
   * @{
@@ -19,28 +20,95 @@
 
 
 /* Global functions ----------------------------------------------------------------------------------------*/
+
+
+
+
+/*********************************************************************************************************//**
+* @brief  Configures GPTM0 for time estimate.
+* @retval None
+***********************************************************************************************************/
+void GPTM_Configuration(void)
+{
+	GPTM_TimeBaseInitTypeDef TimeBaseInit;
+	 
+	TimeBaseInit.CounterMode = GPTM_CNT_MODE_UP;
+	TimeBaseInit.CounterReload = SystemCoreClock / (1000 * 2);
+	TimeBaseInit.Prescaler = 1;
+	TimeBaseInit.PSCReloadTime = GPTM_PSC_RLD_IMMEDIATE;
+	GPTM_TimeBaseInit(HT_GPTM0, &TimeBaseInit);
+	GPTM_Cmd(HT_GPTM0, ENABLE);
+}
+
+
+/**
+ * @brief	延时指定的ms时间
+ */
+void delay_ms(u32 ms)
+{
+	GPTM_SetCounter(HT_GPTM0, 0);
+
+	while (ms--)
+	{
+		GPTM_ClearFlag(HT_GPTM0, GPTM_FLAG_UEV);
+		while (!GPTM_GetFlagStatus(HT_GPTM0, GPTM_FLAG_UEV));
+	}
+}
+
+
+//读取SD卡的指定扇区的内容，并通过串口1输出
+//sec：扇区物理地址编号
+void SD_Read_Sectorx(u32 sec)
+{
+	u8 buf[512] = {0};
+	u16 i;
+	if(SD_ReadDisk(buf,sec,1) == 1)	//读取0扇区的内容
+	{	
+		printf("SECTOR 0 DATA:\r\n");
+		for(i=0;i<512;i++)
+			printf("%x ",buf[i]);//打印sec扇区数据    	   
+		printf("\r\nDATA ENDED\r\n");
+	}
+}
+
+
 int main(void)
 {
-	int input;
-	int senddat = 0;
+	int i;
 	int receivedat;
 	
+	CKCU_PeripClockConfig_TypeDef CKCUClock = {{0}};
+	CKCUClock.Bit.GPTM0      = 1;
+	CKCU_PeripClockConfig(CKCUClock, ENABLE);
+
+	GPTM_Configuration();               /* GPTM configuration                                                 */
+
 	/* Initialize devices */
-	InitUSART0();
-	InitSPI0();
+	InitUSART0(115200);
 	
+	/* 初始化与SD有关的引脚 */
+	SD_SPI_Init();
+	
+	/* test SPI */
+	for(i = 0; i < 10; ++i)
+	{
+		receivedat = SPI0_ReadWriteByte(i);
+		printf("Sent %d\r\n", i);
+		printf("Receive %d\r\n", receivedat);
+	}
+	
+	while(SD_Init())	//检测不到SD卡
+	{
+		printf("SD Card Error!\r\n");					
+		delay_ms(500);
+	}
+	
+	SD_Read_Sectorx(0);
 	
 	/* main loop */                                                
 	while (1)
 	{
-		SPI0_SENDDATA(senddat);
-		printf("Sent %d\r\n", senddat);
-
-		SPI0_GETDATA(receivedat);
-		printf("Receive %d\r\n", receivedat);
 		
-		if(255 == senddat++)
-			senddat = 0;
 	}	
 
 }

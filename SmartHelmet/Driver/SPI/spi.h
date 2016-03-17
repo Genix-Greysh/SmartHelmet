@@ -78,6 +78,28 @@
  */
 #define SPI0_GETDATA(buf) SPI_GETDATA(HT_SPI0, buf)
 	
+	
+/** @defgroup SPI_BaudRate_Prescaler 
+  * @{
+  */
+
+#define SPI_BaudRatePrescaler_2         ((uint16_t)0x0000)
+#define SPI_BaudRatePrescaler_4         ((uint16_t)0x0008)
+#define SPI_BaudRatePrescaler_8         ((uint16_t)0x0010)
+#define SPI_BaudRatePrescaler_16        ((uint16_t)0x0018)
+#define SPI_BaudRatePrescaler_32        ((uint16_t)0x0020)
+#define SPI_BaudRatePrescaler_64        ((uint16_t)0x0028)
+#define SPI_BaudRatePrescaler_128       ((uint16_t)0x0030)
+#define SPI_BaudRatePrescaler_256       ((uint16_t)0x0038)
+#define IS_SPI_BAUDRATE_PRESCALER(PRESCALER) (((PRESCALER) == SPI_BaudRatePrescaler_2) || \
+                                              ((PRESCALER) == SPI_BaudRatePrescaler_4) || \
+                                              ((PRESCALER) == SPI_BaudRatePrescaler_8) || \
+                                              ((PRESCALER) == SPI_BaudRatePrescaler_16) || \
+                                              ((PRESCALER) == SPI_BaudRatePrescaler_32) || \
+                                              ((PRESCALER) == SPI_BaudRatePrescaler_64) || \
+                                              ((PRESCALER) == SPI_BaudRatePrescaler_128) || \
+                                              ((PRESCALER) == SPI_BaudRatePrescaler_256))
+
 /**************************************************************
 *        Struct Define Section
 **************************************************************/
@@ -92,7 +114,28 @@
  * @param  
  * @retval None
  */
-void InitSPI0(void);
+void SPI0_Init(void);
+
+
+/**
+ * @brief  通过SPI0发送、读取一个字节
+ * @param  txData 要发送的字节
+ * @retval 读取的字节
+ */
+u8 SPI0_ReadWriteByte(u8 txData);
+
+
+/**
+ * @brief  设置SPI0的通信速率
+ * @param  SpeedSet 分频值，可取如下：
+				SPI_BaudRatePrescaler_2   2   	(SPI 36M@sys 72M)
+				SPI_BaudRatePrescaler_8   8  	(SPI 9M@sys 72M)
+				SPI_BaudRatePrescaler_16  16 	(SPI 4.5M@sys 72M)
+				SPI_BaudRatePrescaler_256 256 	(SPI 281.25K@sys 72M)
+ * @retval None
+ */
+void SPI0_SetSpeed(u8 speedSet);
+
 
 /**************************************************************
 *        End-Multi-Include-Prevent Section

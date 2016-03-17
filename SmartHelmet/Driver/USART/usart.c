@@ -5,7 +5,7 @@
  * @param  
  * @retval None
  */
-void InitUSART0(void)
+void InitUSART0(u32 baudRate)
 {
 	CKCU_PeripClockConfig_TypeDef CKCUClock = {{0}};
 	USART_InitTypeDef USART_InitStructure;
@@ -20,12 +20,12 @@ void InitUSART0(void)
 
 	/* USART0 configuration ----------------------------------*/
 	/* USART0 configured as follow:
-		- BaudRate = 115200 baud
+		- BaudRate = 'baudRate' baud
 		- Word Length = 8 Bits
 		- One Stop Bit
 		- None parity bit
 	*/
-	USART_InitStructure.USART_BaudRate = 115200;
+	USART_InitStructure.USART_BaudRate = baudRate;
 	USART_InitStructure.USART_WordLength = USART_WORDLENGTH_8B;
 	USART_InitStructure.USART_StopBits = USART_STOPBITS_1;
 	USART_InitStructure.USART_Parity = USART_PARITY_NO;
