@@ -2,12 +2,12 @@
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\library\HT32F1655_56_Driver\inc\ht32f1655_56_wdt.h
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\library\CMSIS\Include\core_cm3.h
-.\ht32\obj\ht32f1655_56_wdt.o: D:\Program Files\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\ht32\obj\ht32f1655_56_wdt.o: E:\Program Files\KeilMDK\ARM\ARMCC\bin\..\include\stdint.h
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\library\CMSIS\Include\core_cmInstr.h
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\library\CMSIS\Include\core_cmFunc.h
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\system_ht32f1655_56.h
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\library\HT32F1655_56_Driver\inc\ht32f1655_56_lib.h
-.\ht32\obj\ht32f1655_56_wdt.o: D:\Program Files\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\ht32\obj\ht32f1655_56_wdt.o: E:\Program Files\KeilMDK\ARM\ARMCC\bin\..\include\stdio.h
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\User\ht32f1655_56_conf.h
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\library\HT32F1655_56_Driver\inc\ht32f1655_56_usart.h
 .\ht32\obj\ht32f1655_56_wdt.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h

@@ -126,7 +126,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>holtek-elink32</Key>
-          <Name>setcontext --link-name="e-Link32" --link-clk=1000000 --debug-port=0 --reset=2 --ifrun=1 --erase=1 --cache-code=0 --ifverify=0 --con-opt=0 --trace-mode=1 --driver="D:\Program Files\Keil\ARM\Flash\HT32F.FLM" --driver="D:\Program Files\Keil\ARM\Flash\HT32F_OPT.FLM"</Name>
+          <Name>setcontext --link-name="e-Link32" --link-clk=1000000 --debug-port=0 --reset=2 --ifrun=1 --erase=1 --cache-code=0 --ifverify=0 --con-opt=0 --trace-mode=1</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -183,8 +183,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>22</TopLine>
-      <CurrentLine>38</CurrentLine>
+      <TopLine>94</TopLine>
+      <CurrentLine>113</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\User\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -221,10 +221,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>14</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <CurrentLine>32</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\Driver\USART\usart.c</PathWithFileName>
       <FilenameWithoutPath>usart.c</FilenameWithoutPath>
@@ -349,10 +349,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>10</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <TopLine>47</TopLine>
+      <CurrentLine>48</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\system_ht32f165x.c</PathWithFileName>
       <FilenameWithoutPath>system_ht32f165x.c</FilenameWithoutPath>
