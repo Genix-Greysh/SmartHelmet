@@ -84,13 +84,13 @@
   */
 
 #define SPI_BaudRatePrescaler_2         ((uint16_t)0x0000)
-#define SPI_BaudRatePrescaler_4         ((uint16_t)0x0008)
-#define SPI_BaudRatePrescaler_8         ((uint16_t)0x0010)
+#define SPI_BaudRatePrescaler_4         ((uint16_t)0x0001)
+#define SPI_BaudRatePrescaler_8         ((uint16_t)0x0003)
 #define SPI_BaudRatePrescaler_16        ((uint16_t)0x0018)
 #define SPI_BaudRatePrescaler_32        ((uint16_t)0x0020)
 #define SPI_BaudRatePrescaler_64        ((uint16_t)0x0028)
 #define SPI_BaudRatePrescaler_128       ((uint16_t)0x0030)
-#define SPI_BaudRatePrescaler_256       ((uint16_t)0x0038)
+#define SPI_BaudRatePrescaler_256       ((uint16_t)0x007f)
 #define IS_SPI_BAUDRATE_PRESCALER(PRESCALER) (((PRESCALER) == SPI_BaudRatePrescaler_2) || \
                                               ((PRESCALER) == SPI_BaudRatePrescaler_4) || \
                                               ((PRESCALER) == SPI_BaudRatePrescaler_8) || \

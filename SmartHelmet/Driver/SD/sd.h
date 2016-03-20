@@ -159,6 +159,19 @@ u8 SD_ReadDisk(u8 *buf, u32 sector, u8 cnt);
  */
 u8 SD_WriteDisk(u8 *buf, u32 sector, u8 cnt);
 
+
+/**
+ *  @name SD_RecvData
+ *	@description 从sd卡读取一定长度的内容，保存到缓冲区buf中
+ *	@param 	buf 数据缓存区
+			len 要读取的数据长度
+ *	@return 1 读取成功
+			0 读取失败	
+ *  @notice
+ */
+u8 SD_RecvData(u8 *buf,u16 len);
+
+
 /**************************************************************
 *        End-Multi-Include-Prevent Section
 **************************************************************/

@@ -3,6 +3,7 @@
 u8 SD_Type = 0;	/* 存放SD卡的类型 */
 
 
+
 /**
  * @brief  将SPI设置为低速模式
  * @param  
@@ -21,7 +22,7 @@ static void SD_SPI_SetLowSpeed(void)
  */
 static void SD_SPI_SetHighSpeed(void)
 {
- 	SPI0_SetSpeed(SPI_BaudRatePrescaler_2);	//设置到高速模式	
+ 	SPI0_SetSpeed(SPI_BaudRatePrescaler_8);	//设置到高速模式	
 }
 
 
@@ -163,7 +164,9 @@ u8 SD_GetResponse(u8 response)
  *  @notice
  */
 u8 SD_RecvData(u8 *buf,u16 len)
-{			  	  
+{	
+	u8 tmp;
+	
 	//等待SD卡发回数据起始令牌
 	if(SD_GetResponse(SD_BEGIN_END_FLAG) != SD_RESPONSE_NO_ERROR)
 		return 0;
@@ -171,8 +174,13 @@ u8 SD_RecvData(u8 *buf,u16 len)
 	//开始接收数据
     while(len--)
     {
-        *buf = SD_SPI_ReadWriteByte(SD_DUMMY_BYTE);
-        buf++;
+        tmp = SD_SPI_ReadWriteByte(SD_DUMMY_BYTE);
+      
+		/* 由于合泰的板只支持256B大小的数组，故只能读取256B字节的数据到buf */
+//		if(256 < len)
+			*buf++ = tmp;
+//		else
+//			return 1;
     }
 	
     //下面是2个伪CRC（dummy CRC）
@@ -235,7 +243,7 @@ u8 SD_Init(void)
 	SD_SPI_SetLowSpeed();
 	
 	/* 上电延时至少74个时钟周期 */
-	for(i = 0; i < 10; ++i)	
+	for(i = 0; i < 10; ++i)
 		SD_SPI_ReadWriteByte(SD_DUMMY_BYTE);
 	retry = 20;
 	while((r1 = SD_SendCmd(CMD0, 0, 0x95)) != 0x01 && retry-- > 0)	//进入IDLE状态，等待正确返回
@@ -340,6 +348,7 @@ u8 SD_ReadDisk(u8 *buf, u32 sector, u8 cnt)
 		SD_SendCmd(CMD12, 0, 0X01);	//发送停止命令
 	}   
 	SD_DisSelect();//取消片选
+	
 	return r1;//
 }
 
@@ -387,4 +396,5 @@ u8 SD_WriteDisk(u8 *buf, u32 sector, u8 cnt)
 	SD_DisSelect();//取消片选
 	return r1;//
 }	
+
 
