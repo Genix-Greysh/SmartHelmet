@@ -4,21 +4,37 @@ ARM Linker, 5.03 [Build 76] [MDK-ARM Standard]
 
 Section Cross References
 
+    main.o(i.PDMA_Configuration) refers to ht32f1655_56_ckcu.o(i.CKCU_PeripClockConfig) for CKCU_PeripClockConfig
+    main.o(i.PDMA_Configuration) refers to ht32f1655_56_usart.o(i.USART_RxPDMACmd) for USART_RxPDMACmd
+    main.o(i.PDMA_Configuration) refers to ht32f1655_56_pdma.o(i.PDMA_Config) for PDMA_Config
+    main.o(i.PDMA_Configuration) refers to ht32f1655_56_pdma.o(i.PDMA_IntConig) for PDMA_IntConig
+    main.o(i.PDMA_Configuration) refers to ht32f1655_56_pdma.o(i.PDMA_EnaCmd) for PDMA_EnaCmd
+    main.o(i.PDMA_Configuration) refers to ht32f1655_56_pdma.o(i.PDMA_SwTrigCmd) for PDMA_SwTrigCmd
+    main.o(i.PDMA_Configuration) refers to main.o(.bss) for .bss
+    main.o(i.TestForSD) refers to printf5.o(i.__0printf$5) for __2printf
+    main.o(i.TestForSD) refers to sd.o(i.SD_Init) for SD_Init
+    main.o(i.TestForSD) refers to rand.o(.text) for rand
+    main.o(i.TestForSD) refers to sd.o(i.SD_WriteDisk) for SD_WriteDisk
+    main.o(i.TestForSD) refers to main.o(i.ViewSector) for ViewSector
+    main.o(i.TestForSD) refers to main.o(.bss) for .bss
     main.o(i.ViewSector) refers to sd.o(i.SD_ReadDisk) for SD_ReadDisk
     main.o(i.ViewSector) refers to printf5.o(i.__0printf$5) for __2printf
     main.o(i.ViewSector) refers to main.o(.bss) for .bss
-    main.o(i.main) refers to usart.o(i.InitUSART0) for InitUSART0
     main.o(i.main) refers to sd.o(i.SD_SPI_Init) for SD_SPI_Init
-    main.o(i.main) refers to printf5.o(i.__0printf$5) for __2printf
-    main.o(i.main) refers to sd.o(i.SD_Init) for SD_Init
-    main.o(i.main) refers to main.o(i.ViewSector) for ViewSector
-    main.o(i.main) refers to sd.o(i.SD_WriteDisk) for SD_WriteDisk
+    main.o(i.main) refers to usart.o(i.Init_USART) for Init_USART
+    main.o(i.main) refers to main.o(i.PDMA_Configuration) for PDMA_Configuration
+    main.o(i.main) refers to main.o(i.TestForSD) for TestForSD
+    main.o(i.main) refers to ht32f1655_56_pdma.o(i.PDMA_GetFlagStatus) for PDMA_GetFlagStatus
+    main.o(i.main) refers to ht32f1655_56_pdma.o(i.PDMA_ClearFlag) for PDMA_ClearFlag
+    main.o(i.main) refers to main.o(i.Data_Check) for Data_Check
+    main.o(i.main) refers to ht32f1655_56_usart.o(i.USART_SendData) for USART_SendData
     main.o(i.main) refers to main.o(.bss) for .bss
-    usart.o(i.InitUSART0) refers to ht32f1655_56_ckcu.o(i.CKCU_PeripClockConfig) for CKCU_PeripClockConfig
-    usart.o(i.InitUSART0) refers to ht32f1655_56_gpio.o(i.AFIO_GPxConfig) for AFIO_GPxConfig
-    usart.o(i.InitUSART0) refers to ht32f1655_56_usart.o(i.USART_Init) for USART_Init
-    usart.o(i.InitUSART0) refers to ht32f1655_56_usart.o(i.USART_TxCmd) for USART_TxCmd
-    usart.o(i.InitUSART0) refers to ht32f1655_56_usart.o(i.USART_RxCmd) for USART_RxCmd
+    main.o(i.main) refers to main.o(.data) for .data
+    usart.o(i.Init_USART) refers to ht32f1655_56_ckcu.o(i.CKCU_PeripClockConfig) for CKCU_PeripClockConfig
+    usart.o(i.Init_USART) refers to ht32f1655_56_gpio.o(i.AFIO_GPxConfig) for AFIO_GPxConfig
+    usart.o(i.Init_USART) refers to ht32f1655_56_usart.o(i.USART_Init) for USART_Init
+    usart.o(i.Init_USART) refers to ht32f1655_56_usart.o(i.USART_TxCmd) for USART_TxCmd
+    usart.o(i.Init_USART) refers to ht32f1655_56_usart.o(i.USART_RxCmd) for USART_RxCmd
     spi.o(i.SPI0_Init) refers to ht32f1655_56_ckcu.o(i.CKCU_PeripClockConfig) for CKCU_PeripClockConfig
     spi.o(i.SPI0_Init) refers to ht32f1655_56_gpio.o(i.GPIO_PullResistorConfig) for GPIO_PullResistorConfig
     spi.o(i.SPI0_Init) refers to ht32f1655_56_gpio.o(i.AFIO_GPxConfig) for AFIO_GPxConfig
@@ -362,6 +378,7 @@ Section Cross References
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    rand.o(.text) refers to rand.o(.data) for .data
     printfb.o(i.__0fprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
     printfb.o(i.__0fprintf$bare) refers to ht32_retarget.o(i.fputc) for fputc
     printfb.o(i.__0printf$bare) refers to printfb.o(i._printf_core) for _printf_core
@@ -1013,12 +1030,6 @@ Removing Unused input sections from the image.
     Removing ht32f1655_56_pdma.o(.rev16_text), (4 bytes).
     Removing ht32f1655_56_pdma.o(.revsh_text), (4 bytes).
     Removing ht32f1655_56_pdma.o(.rrx_text), (6 bytes).
-    Removing ht32f1655_56_pdma.o(i.PDMA_ClearFlag), (44 bytes).
-    Removing ht32f1655_56_pdma.o(i.PDMA_Config), (48 bytes).
-    Removing ht32f1655_56_pdma.o(i.PDMA_EnaCmd), (40 bytes).
-    Removing ht32f1655_56_pdma.o(i.PDMA_GetFlagStatus), (48 bytes).
-    Removing ht32f1655_56_pdma.o(i.PDMA_IntConig), (48 bytes).
-    Removing ht32f1655_56_pdma.o(i.PDMA_SwTrigCmd), (40 bytes).
     Removing ht32f1655_56_pdma.o(i.PDMA_TranSizeConfig), (24 bytes).
     Removing ht32f1655_56_pwrcu.o(.rev16_text), (4 bytes).
     Removing ht32f1655_56_pwrcu.o(.revsh_text), (4 bytes).
@@ -1135,7 +1146,6 @@ Removing Unused input sections from the image.
     Removing ht32f1655_56_usart.o(i.USART_RS485NMMCmd), (20 bytes).
     Removing ht32f1655_56_usart.o(i.USART_RS485TxEnablePolarityConfig), (20 bytes).
     Removing ht32f1655_56_usart.o(i.USART_ReceiveData), (6 bytes).
-    Removing ht32f1655_56_usart.o(i.USART_RxPDMACmd), (20 bytes).
     Removing ht32f1655_56_usart.o(i.USART_SetAddressMatchValue), (14 bytes).
     Removing ht32f1655_56_usart.o(i.USART_SetGuardTime), (14 bytes).
     Removing ht32f1655_56_usart.o(i.USART_SetIrDAPrescaler), (14 bytes).
@@ -1292,7 +1302,7 @@ Removing Unused input sections from the image.
     Removing cdrcmple.o(.text), (40 bytes).
     Removing depilogue.o(.text), (190 bytes).
 
-668 unused section(s) (total 22336 bytes) removed from the image.
+661 unused section(s) (total 22048 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1305,36 +1315,37 @@ Image Symbol Table
     RESET                                    0x00000000   Section      376  startup_ht32f165x.o(RESET)
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
-    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
+    ../clib/microlib/stdlib/rand.c           0x00000000   Number         0  rand.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  useno.o ABSOLUTE
+    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
@@ -1428,69 +1439,83 @@ Image Symbol Table
     .ARM.Collect$$$$0000000F                 0x00000188   Section        0  entry11a.o(.ARM.Collect$$$$0000000F)
     .ARM.Collect$$$$00002712                 0x00000188   Section        4  entry2.o(.ARM.Collect$$$$00002712)
     __lit__00000000                          0x00000188   Data           4  entry2.o(.ARM.Collect$$$$00002712)
-    .text                                    0x0000018c   Section        0  uldiv.o(.text)
-    .text                                    0x000001f0   Section       36  init.o(.text)
-    .text                                    0x00000214   Section        0  llshl.o(.text)
-    .text                                    0x00000232   Section        0  llushr.o(.text)
-    i.AFIO_GPxConfig                         0x00000254   Section        0  ht32f1655_56_gpio.o(i.AFIO_GPxConfig)
-    i.BusFault_Handler                       0x000002b8   Section        0  ht32f165x_it.o(i.BusFault_Handler)
-    i.CKCU_GetClocksFrequency                0x000002bc   Section        0  ht32f1655_56_ckcu.o(i.CKCU_GetClocksFrequency)
-    i.CKCU_GetPLLFrequency                   0x00000310   Section        0  ht32f1655_56_ckcu.o(i.CKCU_GetPLLFrequency)
-    i.CKCU_GetUSARTClockFreq                 0x00000350   Section        0  ht32f1655_56_ckcu.o(i.CKCU_GetUSARTClockFreq)
-    i.CKCU_PeripClockConfig                  0x00000360   Section        0  ht32f1655_56_ckcu.o(i.CKCU_PeripClockConfig)
-    i.DebugMon_Handler                       0x00000384   Section        0  ht32f165x_it.o(i.DebugMon_Handler)
-    i.GPIO_PullResistorConfig                0x00000386   Section        0  ht32f1655_56_gpio.o(i.GPIO_PullResistorConfig)
-    i.HardFault_Handler                      0x000003ae   Section        0  ht32f165x_it.o(i.HardFault_Handler)
-    i.InitUSART0                             0x000003b0   Section        0  usart.o(i.InitUSART0)
-    i.MemManage_Handler                      0x000003fe   Section        0  ht32f165x_it.o(i.MemManage_Handler)
-    i.NMI_Handler                            0x00000400   Section        0  ht32f165x_it.o(i.NMI_Handler)
-    i.PendSV_Handler                         0x00000402   Section        0  ht32f165x_it.o(i.PendSV_Handler)
-    i.SD_DisSelect                           0x00000404   Section        0  sd.o(i.SD_DisSelect)
-    i.SD_GetResponse                         0x0000041c   Section        0  sd.o(i.SD_GetResponse)
-    i.SD_Init                                0x00000444   Section        0  sd.o(i.SD_Init)
-    i.SD_ReadDisk                            0x0000059c   Section        0  sd.o(i.SD_ReadDisk)
-    i.SD_RecvData                            0x00000608   Section        0  sd.o(i.SD_RecvData)
-    i.SD_SPI_Init                            0x0000063e   Section        0  sd.o(i.SD_SPI_Init)
-    i.SD_Select                              0x00000642   Section        0  sd.o(i.SD_Select)
-    i.SD_SendBlock                           0x00000660   Section        0  sd.o(i.SD_SendBlock)
-    i.SD_SendCmd                             0x000006ae   Section        0  sd.o(i.SD_SendCmd)
-    i.SD_WaitReady                           0x00000712   Section        0  sd.o(i.SD_WaitReady)
-    SD_WaitReady                             0x00000713   Thumb Code    34  sd.o(i.SD_WaitReady)
-    i.SD_WriteDisk                           0x00000734   Section        0  sd.o(i.SD_WriteDisk)
-    i.SERIAL_PutChar                         0x000007b4   Section        0  ht32_serial.o(i.SERIAL_PutChar)
-    i.SPI0_Init                              0x000007d4   Section        0  spi.o(i.SPI0_Init)
-    i.SPI0_ReadWriteByte                     0x00000848   Section        0  spi.o(i.SPI0_ReadWriteByte)
-    i.SPI0_SetSpeed                          0x00000898   Section        0  spi.o(i.SPI0_SetSpeed)
-    i.SPI_Cmd                                0x000008b8   Section        0  ht32f1655_56_spi.o(i.SPI_Cmd)
-    i.SPI_GetFlagStatus                      0x000008cc   Section        0  ht32f1655_56_spi.o(i.SPI_GetFlagStatus)
-    i.SPI_Init                               0x000008da   Section        0  ht32f1655_56_spi.o(i.SPI_Init)
-    i.SPI_ReceiveData                        0x00000924   Section        0  ht32f1655_56_spi.o(i.SPI_ReceiveData)
-    i.SPI_SELOutputCmd                       0x0000092a   Section        0  ht32f1655_56_spi.o(i.SPI_SELOutputCmd)
-    i.SPI_SendData                           0x0000093e   Section        0  ht32f1655_56_spi.o(i.SPI_SendData)
-    i.SPI_SoftwareSELCmd                     0x00000942   Section        0  ht32f1655_56_spi.o(i.SPI_SoftwareSELCmd)
-    i.SVC_Handler                            0x00000956   Section        0  ht32f165x_it.o(i.SVC_Handler)
-    i.SysTick_Handler                        0x00000958   Section        0  ht32f165x_it.o(i.SysTick_Handler)
-    i.SystemInit                             0x0000095c   Section        0  system_ht32f165x.o(i.SystemInit)
-    i.USART_GetLineStatus                    0x000009b8   Section        0  ht32f1655_56_usart.o(i.USART_GetLineStatus)
-    i.USART_Init                             0x000009c2   Section        0  ht32f1655_56_usart.o(i.USART_Init)
-    i.USART_RxCmd                            0x000009f6   Section        0  ht32f1655_56_usart.o(i.USART_RxCmd)
-    i.USART_SendData                         0x00000a0a   Section        0  ht32f1655_56_usart.o(i.USART_SendData)
-    i.USART_TxCmd                            0x00000a0e   Section        0  ht32f1655_56_usart.o(i.USART_TxCmd)
-    i.UsageFault_Handler                     0x00000a22   Section        0  ht32f165x_it.o(i.UsageFault_Handler)
-    i.ViewSector                             0x00000a24   Section        0  main.o(i.ViewSector)
-    i.__0printf$5                            0x00000ab8   Section        0  printf5.o(i.__0printf$5)
-    i.__scatterload_copy                     0x00000ad8   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00000ae6   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00000ae8   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._printf_core                           0x00000af8   Section        0  printf5.o(i._printf_core)
-    _printf_core                             0x00000af9   Thumb Code   658  printf5.o(i._printf_core)
-    i.fputc                                  0x00000db8   Section        0  ht32_retarget.o(i.fputc)
-    i.main                                   0x00000dbc   Section        0  main.o(i.main)
-    .data                                    0x20000000   Section        1  sd.o(.data)
+    .text                                    0x0000018c   Section        0  rand.o(.text)
+    .text                                    0x000001b0   Section        0  uldiv.o(.text)
+    .text                                    0x00000214   Section       36  init.o(.text)
+    .text                                    0x00000238   Section        0  llshl.o(.text)
+    .text                                    0x00000256   Section        0  llushr.o(.text)
+    i.AFIO_GPxConfig                         0x00000278   Section        0  ht32f1655_56_gpio.o(i.AFIO_GPxConfig)
+    i.BusFault_Handler                       0x000002dc   Section        0  ht32f165x_it.o(i.BusFault_Handler)
+    i.CKCU_GetClocksFrequency                0x000002e0   Section        0  ht32f1655_56_ckcu.o(i.CKCU_GetClocksFrequency)
+    i.CKCU_GetPLLFrequency                   0x00000334   Section        0  ht32f1655_56_ckcu.o(i.CKCU_GetPLLFrequency)
+    i.CKCU_GetUSARTClockFreq                 0x00000374   Section        0  ht32f1655_56_ckcu.o(i.CKCU_GetUSARTClockFreq)
+    i.CKCU_PeripClockConfig                  0x00000384   Section        0  ht32f1655_56_ckcu.o(i.CKCU_PeripClockConfig)
+    i.Data_Check                             0x000003a8   Section        0  main.o(i.Data_Check)
+    i.DebugMon_Handler                       0x000003bc   Section        0  ht32f165x_it.o(i.DebugMon_Handler)
+    i.GPIO_PullResistorConfig                0x000003be   Section        0  ht32f1655_56_gpio.o(i.GPIO_PullResistorConfig)
+    i.HardFault_Handler                      0x000003e6   Section        0  ht32f165x_it.o(i.HardFault_Handler)
+    i.Init_USART                             0x000003e8   Section        0  usart.o(i.Init_USART)
+    i.MemManage_Handler                      0x00000484   Section        0  ht32f165x_it.o(i.MemManage_Handler)
+    i.NMI_Handler                            0x00000486   Section        0  ht32f165x_it.o(i.NMI_Handler)
+    i.PDMA_ClearFlag                         0x00000488   Section        0  ht32f1655_56_pdma.o(i.PDMA_ClearFlag)
+    i.PDMA_Config                            0x000004b4   Section        0  ht32f1655_56_pdma.o(i.PDMA_Config)
+    i.PDMA_Configuration                     0x000004e4   Section        0  main.o(i.PDMA_Configuration)
+    i.PDMA_EnaCmd                            0x00000544   Section        0  ht32f1655_56_pdma.o(i.PDMA_EnaCmd)
+    i.PDMA_GetFlagStatus                     0x0000056c   Section        0  ht32f1655_56_pdma.o(i.PDMA_GetFlagStatus)
+    i.PDMA_IntConig                          0x0000059c   Section        0  ht32f1655_56_pdma.o(i.PDMA_IntConig)
+    i.PDMA_SwTrigCmd                         0x000005cc   Section        0  ht32f1655_56_pdma.o(i.PDMA_SwTrigCmd)
+    i.PendSV_Handler                         0x000005f4   Section        0  ht32f165x_it.o(i.PendSV_Handler)
+    i.SD_DisSelect                           0x000005f6   Section        0  sd.o(i.SD_DisSelect)
+    i.SD_GetResponse                         0x0000060e   Section        0  sd.o(i.SD_GetResponse)
+    i.SD_Init                                0x00000638   Section        0  sd.o(i.SD_Init)
+    i.SD_ReadDisk                            0x00000790   Section        0  sd.o(i.SD_ReadDisk)
+    i.SD_RecvData                            0x000007fc   Section        0  sd.o(i.SD_RecvData)
+    i.SD_SPI_Init                            0x00000832   Section        0  sd.o(i.SD_SPI_Init)
+    i.SD_Select                              0x00000836   Section        0  sd.o(i.SD_Select)
+    i.SD_SendBlock                           0x00000854   Section        0  sd.o(i.SD_SendBlock)
+    i.SD_SendCmd                             0x000008a2   Section        0  sd.o(i.SD_SendCmd)
+    i.SD_WaitReady                           0x00000906   Section        0  sd.o(i.SD_WaitReady)
+    SD_WaitReady                             0x00000907   Thumb Code    34  sd.o(i.SD_WaitReady)
+    i.SD_WriteDisk                           0x00000928   Section        0  sd.o(i.SD_WriteDisk)
+    i.SERIAL_PutChar                         0x000009a8   Section        0  ht32_serial.o(i.SERIAL_PutChar)
+    i.SPI0_Init                              0x000009c8   Section        0  spi.o(i.SPI0_Init)
+    i.SPI0_ReadWriteByte                     0x00000a3c   Section        0  spi.o(i.SPI0_ReadWriteByte)
+    i.SPI0_SetSpeed                          0x00000a8c   Section        0  spi.o(i.SPI0_SetSpeed)
+    i.SPI_Cmd                                0x00000aac   Section        0  ht32f1655_56_spi.o(i.SPI_Cmd)
+    i.SPI_GetFlagStatus                      0x00000ac0   Section        0  ht32f1655_56_spi.o(i.SPI_GetFlagStatus)
+    i.SPI_Init                               0x00000ace   Section        0  ht32f1655_56_spi.o(i.SPI_Init)
+    i.SPI_ReceiveData                        0x00000b18   Section        0  ht32f1655_56_spi.o(i.SPI_ReceiveData)
+    i.SPI_SELOutputCmd                       0x00000b1e   Section        0  ht32f1655_56_spi.o(i.SPI_SELOutputCmd)
+    i.SPI_SendData                           0x00000b32   Section        0  ht32f1655_56_spi.o(i.SPI_SendData)
+    i.SPI_SoftwareSELCmd                     0x00000b36   Section        0  ht32f1655_56_spi.o(i.SPI_SoftwareSELCmd)
+    i.SVC_Handler                            0x00000b4a   Section        0  ht32f165x_it.o(i.SVC_Handler)
+    i.SysTick_Handler                        0x00000b4c   Section        0  ht32f165x_it.o(i.SysTick_Handler)
+    i.SystemInit                             0x00000b50   Section        0  system_ht32f165x.o(i.SystemInit)
+    i.TestForSD                              0x00000bac   Section        0  main.o(i.TestForSD)
+    i.USART_GetLineStatus                    0x00000c70   Section        0  ht32f1655_56_usart.o(i.USART_GetLineStatus)
+    i.USART_Init                             0x00000c7a   Section        0  ht32f1655_56_usart.o(i.USART_Init)
+    i.USART_RxCmd                            0x00000cae   Section        0  ht32f1655_56_usart.o(i.USART_RxCmd)
+    i.USART_RxPDMACmd                        0x00000cc2   Section        0  ht32f1655_56_usart.o(i.USART_RxPDMACmd)
+    i.USART_SendData                         0x00000cd6   Section        0  ht32f1655_56_usart.o(i.USART_SendData)
+    i.USART_TxCmd                            0x00000cda   Section        0  ht32f1655_56_usart.o(i.USART_TxCmd)
+    i.UsageFault_Handler                     0x00000cee   Section        0  ht32f165x_it.o(i.UsageFault_Handler)
+    i.ViewSector                             0x00000cf0   Section        0  main.o(i.ViewSector)
+    i.__0printf$5                            0x00000d84   Section        0  printf5.o(i.__0printf$5)
+    i.__scatterload_copy                     0x00000da4   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x00000db2   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00000db4   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._printf_core                           0x00000dc4   Section        0  printf5.o(i._printf_core)
+    _printf_core                             0x00000dc5   Thumb Code   658  printf5.o(i._printf_core)
+    i.fputc                                  0x00001084   Section        0  ht32_retarget.o(i.fputc)
+    i.main                                   0x00001088   Section        0  main.o(i.main)
+    .data                                    0x20000000   Section        1  main.o(.data)
+    .data                                    0x20000001   Section        1  sd.o(.data)
     .data                                    0x20000004   Section        4  ht32_retarget.o(.data)
-    .bss                                     0x20000008   Section      512  main.o(.bss)
-    .bss                                     0x20000208   Section       44  spi.o(.bss)
-    STACK                                    0x20000238   Section      512  startup_ht32f165x.o(STACK)
+    .data                                    0x20000008   Section        4  rand.o(.data)
+    _rand_state                              0x20000008   Data           4  rand.o(.data)
+    .bss                                     0x2000000c   Section      545  main.o(.bss)
+    .bss                                     0x20000230   Section       44  spi.o(.bss)
+    STACK                                    0x20000260   Section      512  startup_ht32f165x.o(STACK)
 
     Global Symbols
 
@@ -1621,72 +1646,86 @@ Image Symbol Table
     _main_init                               0x00000181   Thumb Code     0  entry9a.o(.ARM.Collect$$$$0000000B)
     __rt_final_cpp                           0x00000189   Thumb Code     0  entry10a.o(.ARM.Collect$$$$0000000D)
     __rt_final_exit                          0x00000189   Thumb Code     0  entry11a.o(.ARM.Collect$$$$0000000F)
-    __aeabi_uldivmod                         0x0000018d   Thumb Code    98  uldiv.o(.text)
-    __scatterload                            0x000001f1   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x000001f1   Thumb Code     0  init.o(.text)
-    __aeabi_llsl                             0x00000215   Thumb Code    30  llshl.o(.text)
-    _ll_shift_l                              0x00000215   Thumb Code     0  llshl.o(.text)
-    __aeabi_llsr                             0x00000233   Thumb Code    32  llushr.o(.text)
-    _ll_ushift_r                             0x00000233   Thumb Code     0  llushr.o(.text)
-    AFIO_GPxConfig                           0x00000255   Thumb Code    94  ht32f1655_56_gpio.o(i.AFIO_GPxConfig)
-    BusFault_Handler                         0x000002b9   Thumb Code     2  ht32f165x_it.o(i.BusFault_Handler)
-    CKCU_GetClocksFrequency                  0x000002bd   Thumb Code    76  ht32f1655_56_ckcu.o(i.CKCU_GetClocksFrequency)
-    CKCU_GetPLLFrequency                     0x00000311   Thumb Code    52  ht32f1655_56_ckcu.o(i.CKCU_GetPLLFrequency)
-    CKCU_GetUSARTClockFreq                   0x00000351   Thumb Code    16  ht32f1655_56_ckcu.o(i.CKCU_GetUSARTClockFreq)
-    CKCU_PeripClockConfig                    0x00000361   Thumb Code    32  ht32f1655_56_ckcu.o(i.CKCU_PeripClockConfig)
-    DebugMon_Handler                         0x00000385   Thumb Code     2  ht32f165x_it.o(i.DebugMon_Handler)
-    GPIO_PullResistorConfig                  0x00000387   Thumb Code    40  ht32f1655_56_gpio.o(i.GPIO_PullResistorConfig)
-    HardFault_Handler                        0x000003af   Thumb Code     2  ht32f165x_it.o(i.HardFault_Handler)
-    InitUSART0                               0x000003b1   Thumb Code    78  usart.o(i.InitUSART0)
-    MemManage_Handler                        0x000003ff   Thumb Code     2  ht32f165x_it.o(i.MemManage_Handler)
-    NMI_Handler                              0x00000401   Thumb Code     2  ht32f165x_it.o(i.NMI_Handler)
-    PendSV_Handler                           0x00000403   Thumb Code     2  ht32f165x_it.o(i.PendSV_Handler)
-    SD_DisSelect                             0x00000405   Thumb Code    24  sd.o(i.SD_DisSelect)
-    SD_GetResponse                           0x0000041d   Thumb Code    40  sd.o(i.SD_GetResponse)
-    SD_Init                                  0x00000445   Thumb Code   340  sd.o(i.SD_Init)
-    SD_ReadDisk                              0x0000059d   Thumb Code   104  sd.o(i.SD_ReadDisk)
-    SD_RecvData                              0x00000609   Thumb Code    54  sd.o(i.SD_RecvData)
-    SD_SPI_Init                              0x0000063f   Thumb Code     4  sd.o(i.SD_SPI_Init)
-    SD_Select                                0x00000643   Thumb Code    30  sd.o(i.SD_Select)
-    SD_SendBlock                             0x00000661   Thumb Code    78  sd.o(i.SD_SendBlock)
-    SD_SendCmd                               0x000006af   Thumb Code   100  sd.o(i.SD_SendCmd)
-    SD_WriteDisk                             0x00000735   Thumb Code   124  sd.o(i.SD_WriteDisk)
-    SERIAL_PutChar                           0x000007b5   Thumb Code    32  ht32_serial.o(i.SERIAL_PutChar)
-    SPI0_Init                                0x000007d5   Thumb Code   106  spi.o(i.SPI0_Init)
-    SPI0_ReadWriteByte                       0x00000849   Thumb Code    78  spi.o(i.SPI0_ReadWriteByte)
-    SPI0_SetSpeed                            0x00000899   Thumb Code    28  spi.o(i.SPI0_SetSpeed)
-    SPI_Cmd                                  0x000008b9   Thumb Code    20  ht32f1655_56_spi.o(i.SPI_Cmd)
-    SPI_GetFlagStatus                        0x000008cd   Thumb Code    14  ht32f1655_56_spi.o(i.SPI_GetFlagStatus)
-    SPI_Init                                 0x000008db   Thumb Code    74  ht32f1655_56_spi.o(i.SPI_Init)
-    SPI_ReceiveData                          0x00000925   Thumb Code     6  ht32f1655_56_spi.o(i.SPI_ReceiveData)
-    SPI_SELOutputCmd                         0x0000092b   Thumb Code    20  ht32f1655_56_spi.o(i.SPI_SELOutputCmd)
-    SPI_SendData                             0x0000093f   Thumb Code     4  ht32f1655_56_spi.o(i.SPI_SendData)
-    SPI_SoftwareSELCmd                       0x00000943   Thumb Code    20  ht32f1655_56_spi.o(i.SPI_SoftwareSELCmd)
-    SVC_Handler                              0x00000957   Thumb Code     2  ht32f165x_it.o(i.SVC_Handler)
-    SysTick_Handler                          0x00000959   Thumb Code     2  ht32f165x_it.o(i.SysTick_Handler)
-    SystemInit                               0x0000095d   Thumb Code    78  system_ht32f165x.o(i.SystemInit)
-    USART_GetLineStatus                      0x000009b9   Thumb Code    10  ht32f1655_56_usart.o(i.USART_GetLineStatus)
-    USART_Init                               0x000009c3   Thumb Code    52  ht32f1655_56_usart.o(i.USART_Init)
-    USART_RxCmd                              0x000009f7   Thumb Code    20  ht32f1655_56_usart.o(i.USART_RxCmd)
-    USART_SendData                           0x00000a0b   Thumb Code     4  ht32f1655_56_usart.o(i.USART_SendData)
-    USART_TxCmd                              0x00000a0f   Thumb Code    20  ht32f1655_56_usart.o(i.USART_TxCmd)
-    UsageFault_Handler                       0x00000a23   Thumb Code     2  ht32f165x_it.o(i.UsageFault_Handler)
-    ViewSector                               0x00000a25   Thumb Code    70  main.o(i.ViewSector)
-    __0printf$5                              0x00000ab9   Thumb Code    22  printf5.o(i.__0printf$5)
-    __1printf$5                              0x00000ab9   Thumb Code     0  printf5.o(i.__0printf$5)
-    __2printf                                0x00000ab9   Thumb Code     0  printf5.o(i.__0printf$5)
-    __scatterload_copy                       0x00000ad9   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00000ae7   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00000ae9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    fputc                                    0x00000db9   Thumb Code     4  ht32_retarget.o(i.fputc)
-    main                                     0x00000dbd   Thumb Code   114  main.o(i.main)
-    Region$$Table$$Base                      0x00000e84   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000ea4   Number         0  anon$$obj.o(Region$$Table)
-    SD_Type                                  0x20000000   Data           1  sd.o(.data)
+    rand                                     0x0000018d   Thumb Code    20  rand.o(.text)
+    srand                                    0x000001a1   Thumb Code     6  rand.o(.text)
+    __aeabi_uldivmod                         0x000001b1   Thumb Code    98  uldiv.o(.text)
+    __scatterload                            0x00000215   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x00000215   Thumb Code     0  init.o(.text)
+    __aeabi_llsl                             0x00000239   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x00000239   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x00000257   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x00000257   Thumb Code     0  llushr.o(.text)
+    AFIO_GPxConfig                           0x00000279   Thumb Code    94  ht32f1655_56_gpio.o(i.AFIO_GPxConfig)
+    BusFault_Handler                         0x000002dd   Thumb Code     2  ht32f165x_it.o(i.BusFault_Handler)
+    CKCU_GetClocksFrequency                  0x000002e1   Thumb Code    76  ht32f1655_56_ckcu.o(i.CKCU_GetClocksFrequency)
+    CKCU_GetPLLFrequency                     0x00000335   Thumb Code    52  ht32f1655_56_ckcu.o(i.CKCU_GetPLLFrequency)
+    CKCU_GetUSARTClockFreq                   0x00000375   Thumb Code    16  ht32f1655_56_ckcu.o(i.CKCU_GetUSARTClockFreq)
+    CKCU_PeripClockConfig                    0x00000385   Thumb Code    32  ht32f1655_56_ckcu.o(i.CKCU_PeripClockConfig)
+    Data_Check                               0x000003a9   Thumb Code    20  main.o(i.Data_Check)
+    DebugMon_Handler                         0x000003bd   Thumb Code     2  ht32f165x_it.o(i.DebugMon_Handler)
+    GPIO_PullResistorConfig                  0x000003bf   Thumb Code    40  ht32f1655_56_gpio.o(i.GPIO_PullResistorConfig)
+    HardFault_Handler                        0x000003e7   Thumb Code     2  ht32f165x_it.o(i.HardFault_Handler)
+    Init_USART                               0x000003e9   Thumb Code   150  usart.o(i.Init_USART)
+    MemManage_Handler                        0x00000485   Thumb Code     2  ht32f165x_it.o(i.MemManage_Handler)
+    NMI_Handler                              0x00000487   Thumb Code     2  ht32f165x_it.o(i.NMI_Handler)
+    PDMA_ClearFlag                           0x00000489   Thumb Code    34  ht32f1655_56_pdma.o(i.PDMA_ClearFlag)
+    PDMA_Config                              0x000004b5   Thumb Code    42  ht32f1655_56_pdma.o(i.PDMA_Config)
+    PDMA_Configuration                       0x000004e5   Thumb Code    92  main.o(i.PDMA_Configuration)
+    PDMA_EnaCmd                              0x00000545   Thumb Code    34  ht32f1655_56_pdma.o(i.PDMA_EnaCmd)
+    PDMA_GetFlagStatus                       0x0000056d   Thumb Code    38  ht32f1655_56_pdma.o(i.PDMA_GetFlagStatus)
+    PDMA_IntConig                            0x0000059d   Thumb Code    40  ht32f1655_56_pdma.o(i.PDMA_IntConig)
+    PDMA_SwTrigCmd                           0x000005cd   Thumb Code    34  ht32f1655_56_pdma.o(i.PDMA_SwTrigCmd)
+    PendSV_Handler                           0x000005f5   Thumb Code     2  ht32f165x_it.o(i.PendSV_Handler)
+    SD_DisSelect                             0x000005f7   Thumb Code    24  sd.o(i.SD_DisSelect)
+    SD_GetResponse                           0x0000060f   Thumb Code    40  sd.o(i.SD_GetResponse)
+    SD_Init                                  0x00000639   Thumb Code   340  sd.o(i.SD_Init)
+    SD_ReadDisk                              0x00000791   Thumb Code   104  sd.o(i.SD_ReadDisk)
+    SD_RecvData                              0x000007fd   Thumb Code    54  sd.o(i.SD_RecvData)
+    SD_SPI_Init                              0x00000833   Thumb Code     4  sd.o(i.SD_SPI_Init)
+    SD_Select                                0x00000837   Thumb Code    30  sd.o(i.SD_Select)
+    SD_SendBlock                             0x00000855   Thumb Code    78  sd.o(i.SD_SendBlock)
+    SD_SendCmd                               0x000008a3   Thumb Code   100  sd.o(i.SD_SendCmd)
+    SD_WriteDisk                             0x00000929   Thumb Code   124  sd.o(i.SD_WriteDisk)
+    SERIAL_PutChar                           0x000009a9   Thumb Code    32  ht32_serial.o(i.SERIAL_PutChar)
+    SPI0_Init                                0x000009c9   Thumb Code   108  spi.o(i.SPI0_Init)
+    SPI0_ReadWriteByte                       0x00000a3d   Thumb Code    78  spi.o(i.SPI0_ReadWriteByte)
+    SPI0_SetSpeed                            0x00000a8d   Thumb Code    28  spi.o(i.SPI0_SetSpeed)
+    SPI_Cmd                                  0x00000aad   Thumb Code    20  ht32f1655_56_spi.o(i.SPI_Cmd)
+    SPI_GetFlagStatus                        0x00000ac1   Thumb Code    14  ht32f1655_56_spi.o(i.SPI_GetFlagStatus)
+    SPI_Init                                 0x00000acf   Thumb Code    74  ht32f1655_56_spi.o(i.SPI_Init)
+    SPI_ReceiveData                          0x00000b19   Thumb Code     6  ht32f1655_56_spi.o(i.SPI_ReceiveData)
+    SPI_SELOutputCmd                         0x00000b1f   Thumb Code    20  ht32f1655_56_spi.o(i.SPI_SELOutputCmd)
+    SPI_SendData                             0x00000b33   Thumb Code     4  ht32f1655_56_spi.o(i.SPI_SendData)
+    SPI_SoftwareSELCmd                       0x00000b37   Thumb Code    20  ht32f1655_56_spi.o(i.SPI_SoftwareSELCmd)
+    SVC_Handler                              0x00000b4b   Thumb Code     2  ht32f165x_it.o(i.SVC_Handler)
+    SysTick_Handler                          0x00000b4d   Thumb Code     2  ht32f165x_it.o(i.SysTick_Handler)
+    SystemInit                               0x00000b51   Thumb Code    78  system_ht32f165x.o(i.SystemInit)
+    TestForSD                                0x00000bad   Thumb Code    98  main.o(i.TestForSD)
+    USART_GetLineStatus                      0x00000c71   Thumb Code    10  ht32f1655_56_usart.o(i.USART_GetLineStatus)
+    USART_Init                               0x00000c7b   Thumb Code    52  ht32f1655_56_usart.o(i.USART_Init)
+    USART_RxCmd                              0x00000caf   Thumb Code    20  ht32f1655_56_usart.o(i.USART_RxCmd)
+    USART_RxPDMACmd                          0x00000cc3   Thumb Code    20  ht32f1655_56_usart.o(i.USART_RxPDMACmd)
+    USART_SendData                           0x00000cd7   Thumb Code     4  ht32f1655_56_usart.o(i.USART_SendData)
+    USART_TxCmd                              0x00000cdb   Thumb Code    20  ht32f1655_56_usart.o(i.USART_TxCmd)
+    UsageFault_Handler                       0x00000cef   Thumb Code     2  ht32f165x_it.o(i.UsageFault_Handler)
+    ViewSector                               0x00000cf1   Thumb Code    70  main.o(i.ViewSector)
+    __0printf$5                              0x00000d85   Thumb Code    22  printf5.o(i.__0printf$5)
+    __1printf$5                              0x00000d85   Thumb Code     0  printf5.o(i.__0printf$5)
+    __2printf                                0x00000d85   Thumb Code     0  printf5.o(i.__0printf$5)
+    __scatterload_copy                       0x00000da5   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x00000db3   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00000db5   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    fputc                                    0x00001085   Thumb Code     4  ht32_retarget.o(i.fputc)
+    main                                     0x00001089   Thumb Code   110  main.o(i.main)
+    Region$$Table$$Base                      0x00001104   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001124   Number         0  anon$$obj.o(Region$$Table)
+    standard                                 0x20000000   Data           1  main.o(.data)
+    SD_Type                                  0x20000001   Data           1  sd.o(.data)
     __stdout                                 0x20000004   Data           4  ht32_retarget.o(.data)
-    buf                                      0x20000008   Data         512  main.o(.bss)
-    SPI_InitStructure                        0x20000208   Data          44  spi.o(.bss)
-    __initial_sp                             0x20000438   Data           0  startup_ht32f165x.o(STACK)
+    buf                                      0x2000000c   Data         512  main.o(.bss)
+    MPU_Data                                 0x2000020c   Data          33  main.o(.bss)
+    SPI_InitStructure                        0x20000230   Data          44  spi.o(.bss)
+    __initial_sp                             0x20000460   Data           0  startup_ht32f165x.o(STACK)
 
 
 
@@ -1696,104 +1735,119 @@ Memory Map of the image
 
   Image Entry point : 0x00000155
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000eac, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00001130, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Base: 0x00000000, Size: 0x00000ea4, Max: 0xffffffff, ABSOLUTE)
-
-    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x00000000   0x00000178   Code   RO          433  * RESET               startup_ht32f165x.o
-    0x00000178   0x00000000   Code   RO         4393  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x00000178   0x00000004   Code   RO         4657    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x0000017c   0x00000004   Code   RO         4660    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x00000180   0x00000000   Code   RO         4662    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x00000180   0x00000000   Code   RO         4664    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x00000180   0x00000008   Code   RO         4665    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x00000188   0x00000000   Code   RO         4667    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x00000188   0x00000000   Code   RO         4669    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x00000188   0x00000004   Code   RO         4658    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x0000018c   0x00000062   Code   RO         4673    .text               mc_w.l(uldiv.o)
-    0x000001ee   0x00000002   PAD
-    0x000001f0   0x00000024   Code   RO         4686    .text               mc_w.l(init.o)
-    0x00000214   0x0000001e   Code   RO         4688    .text               mc_w.l(llshl.o)
-    0x00000232   0x00000020   Code   RO         4690    .text               mc_w.l(llushr.o)
-    0x00000252   0x00000002   PAD
-    0x00000254   0x00000064   Code   RO         1419    i.AFIO_GPxConfig    ht32f1655_56_gpio.o
-    0x000002b8   0x00000002   Code   RO          179    i.BusFault_Handler  ht32f165x_it.o
-    0x000002ba   0x00000002   PAD
-    0x000002bc   0x00000054   Code   RO          814    i.CKCU_GetClocksFrequency  ht32f1655_56_ckcu.o
-    0x00000310   0x00000040   Code   RO          816    i.CKCU_GetPLLFrequency  ht32f1655_56_ckcu.o
-    0x00000350   0x00000010   Code   RO          818    i.CKCU_GetUSARTClockFreq  ht32f1655_56_ckcu.o
-    0x00000360   0x00000024   Code   RO          829    i.CKCU_PeripClockConfig  ht32f1655_56_ckcu.o
-    0x00000384   0x00000002   Code   RO          180    i.DebugMon_Handler  ht32f165x_it.o
-    0x00000386   0x00000028   Code   RO         1429    i.GPIO_PullResistorConfig  ht32f1655_56_gpio.o
-    0x000003ae   0x00000002   Code   RO          181    i.HardFault_Handler  ht32f165x_it.o
-    0x000003b0   0x0000004e   Code   RO          251    i.InitUSART0        usart.o
-    0x000003fe   0x00000002   Code   RO          182    i.MemManage_Handler  ht32f165x_it.o
-    0x00000400   0x00000002   Code   RO          183    i.NMI_Handler       ht32f165x_it.o
-    0x00000402   0x00000002   Code   RO          184    i.PendSV_Handler    ht32f165x_it.o
-    0x00000404   0x00000018   Code   RO          314    i.SD_DisSelect      sd.o
-    0x0000041c   0x00000028   Code   RO          315    i.SD_GetResponse    sd.o
-    0x00000444   0x00000158   Code   RO          316    i.SD_Init           sd.o
-    0x0000059c   0x0000006c   Code   RO          317    i.SD_ReadDisk       sd.o
-    0x00000608   0x00000036   Code   RO          318    i.SD_RecvData       sd.o
-    0x0000063e   0x00000004   Code   RO          319    i.SD_SPI_Init       sd.o
-    0x00000642   0x0000001e   Code   RO          320    i.SD_Select         sd.o
-    0x00000660   0x0000004e   Code   RO          321    i.SD_SendBlock      sd.o
-    0x000006ae   0x00000064   Code   RO          322    i.SD_SendCmd        sd.o
-    0x00000712   0x00000022   Code   RO          323    i.SD_WaitReady      sd.o
-    0x00000734   0x00000080   Code   RO          324    i.SD_WriteDisk      sd.o
-    0x000007b4   0x00000020   Code   RO         3974    i.SERIAL_PutChar    ht32_serial.o
-    0x000007d4   0x00000074   Code   RO          275    i.SPI0_Init         spi.o
-    0x00000848   0x0000004e   Code   RO          276    i.SPI0_ReadWriteByte  spi.o
-    0x00000896   0x00000002   PAD
-    0x00000898   0x00000020   Code   RO          277    i.SPI0_SetSpeed     spi.o
-    0x000008b8   0x00000014   Code   RO         3170    i.SPI_Cmd           ht32f1655_56_spi.o
-    0x000008cc   0x0000000e   Code   RO         3178    i.SPI_GetFlagStatus  ht32f1655_56_spi.o
-    0x000008da   0x0000004a   Code   RO         3179    i.SPI_Init          ht32f1655_56_spi.o
-    0x00000924   0x00000006   Code   RO         3182    i.SPI_ReceiveData   ht32f1655_56_spi.o
-    0x0000092a   0x00000014   Code   RO         3185    i.SPI_SELOutputCmd  ht32f1655_56_spi.o
-    0x0000093e   0x00000004   Code   RO         3186    i.SPI_SendData      ht32f1655_56_spi.o
-    0x00000942   0x00000014   Code   RO         3189    i.SPI_SoftwareSELCmd  ht32f1655_56_spi.o
-    0x00000956   0x00000002   Code   RO          185    i.SVC_Handler       ht32f165x_it.o
-    0x00000958   0x00000002   Code   RO          186    i.SysTick_Handler   ht32f165x_it.o
-    0x0000095a   0x00000002   PAD
-    0x0000095c   0x0000005c   Code   RO          399    i.SystemInit        system_ht32f165x.o
-    0x000009b8   0x0000000a   Code   RO         3325    i.USART_GetLineStatus  ht32f1655_56_usart.o
-    0x000009c2   0x00000034   Code   RO         3328    i.USART_Init        ht32f1655_56_usart.o
-    0x000009f6   0x00000014   Code   RO         3340    i.USART_RxCmd       ht32f1655_56_usart.o
-    0x00000a0a   0x00000004   Code   RO         3342    i.USART_SendData    ht32f1655_56_usart.o
-    0x00000a0e   0x00000014   Code   RO         3354    i.USART_TxCmd       ht32f1655_56_usart.o
-    0x00000a22   0x00000002   Code   RO          187    i.UsageFault_Handler  ht32f165x_it.o
-    0x00000a24   0x00000094   Code   RO            4    i.ViewSector        main.o
-    0x00000ab8   0x00000020   Code   RO         4529    i.__0printf$5       mc_w.l(printf5.o)
-    0x00000ad8   0x0000000e   Code   RO         4698    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x00000ae6   0x00000002   Code   RO         4699    i.__scatterload_null  mc_w.l(handlers.o)
-    0x00000ae8   0x0000000e   Code   RO         4700    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x00000af6   0x00000002   PAD
-    0x00000af8   0x000002c0   Code   RO         4536    i._printf_core      mc_w.l(printf5.o)
-    0x00000db8   0x00000004   Code   RO         3913    i.fputc             ht32_retarget.o
-    0x00000dbc   0x000000c8   Code   RO            5    i.main              main.o
-    0x00000e84   0x00000020   Data   RO         4696    Region$$Table       anon$$obj.o
-
-
-    Execution Region ER_RW (Base: 0x20000000, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x00001124, Max: 0xffffffff, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000001   Data   RW          325    .data               sd.o
-    0x20000001   0x00000003   PAD
-    0x20000004   0x00000004   Data   RW         3914    .data               ht32_retarget.o
+    0x00000000   0x00000178   Code   RO          452  * RESET               startup_ht32f165x.o
+    0x00000178   0x00000000   Code   RO         4412  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x00000178   0x00000004   Code   RO         4679    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x0000017c   0x00000004   Code   RO         4682    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x00000180   0x00000000   Code   RO         4684    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x00000180   0x00000000   Code   RO         4686    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x00000180   0x00000008   Code   RO         4687    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x00000188   0x00000000   Code   RO         4689    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x00000188   0x00000000   Code   RO         4691    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x00000188   0x00000004   Code   RO         4680    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x0000018c   0x00000024   Code   RO         4415    .text               mc_w.l(rand.o)
+    0x000001b0   0x00000062   Code   RO         4695    .text               mc_w.l(uldiv.o)
+    0x00000212   0x00000002   PAD
+    0x00000214   0x00000024   Code   RO         4708    .text               mc_w.l(init.o)
+    0x00000238   0x0000001e   Code   RO         4710    .text               mc_w.l(llshl.o)
+    0x00000256   0x00000020   Code   RO         4712    .text               mc_w.l(llushr.o)
+    0x00000276   0x00000002   PAD
+    0x00000278   0x00000064   Code   RO         1438    i.AFIO_GPxConfig    ht32f1655_56_gpio.o
+    0x000002dc   0x00000002   Code   RO          198    i.BusFault_Handler  ht32f165x_it.o
+    0x000002de   0x00000002   PAD
+    0x000002e0   0x00000054   Code   RO          833    i.CKCU_GetClocksFrequency  ht32f1655_56_ckcu.o
+    0x00000334   0x00000040   Code   RO          835    i.CKCU_GetPLLFrequency  ht32f1655_56_ckcu.o
+    0x00000374   0x00000010   Code   RO          837    i.CKCU_GetUSARTClockFreq  ht32f1655_56_ckcu.o
+    0x00000384   0x00000024   Code   RO          848    i.CKCU_PeripClockConfig  ht32f1655_56_ckcu.o
+    0x000003a8   0x00000014   Code   RO            4    i.Data_Check        main.o
+    0x000003bc   0x00000002   Code   RO          199    i.DebugMon_Handler  ht32f165x_it.o
+    0x000003be   0x00000028   Code   RO         1448    i.GPIO_PullResistorConfig  ht32f1655_56_gpio.o
+    0x000003e6   0x00000002   Code   RO          200    i.HardFault_Handler  ht32f165x_it.o
+    0x000003e8   0x0000009c   Code   RO          270    i.Init_USART        usart.o
+    0x00000484   0x00000002   Code   RO          201    i.MemManage_Handler  ht32f165x_it.o
+    0x00000486   0x00000002   Code   RO          202    i.NMI_Handler       ht32f165x_it.o
+    0x00000488   0x0000002c   Code   RO         2678    i.PDMA_ClearFlag    ht32f1655_56_pdma.o
+    0x000004b4   0x00000030   Code   RO         2679    i.PDMA_Config       ht32f1655_56_pdma.o
+    0x000004e4   0x00000060   Code   RO            5    i.PDMA_Configuration  main.o
+    0x00000544   0x00000028   Code   RO         2680    i.PDMA_EnaCmd       ht32f1655_56_pdma.o
+    0x0000056c   0x00000030   Code   RO         2681    i.PDMA_GetFlagStatus  ht32f1655_56_pdma.o
+    0x0000059c   0x00000030   Code   RO         2682    i.PDMA_IntConig     ht32f1655_56_pdma.o
+    0x000005cc   0x00000028   Code   RO         2683    i.PDMA_SwTrigCmd    ht32f1655_56_pdma.o
+    0x000005f4   0x00000002   Code   RO          203    i.PendSV_Handler    ht32f165x_it.o
+    0x000005f6   0x00000018   Code   RO          333    i.SD_DisSelect      sd.o
+    0x0000060e   0x00000028   Code   RO          334    i.SD_GetResponse    sd.o
+    0x00000636   0x00000002   PAD
+    0x00000638   0x00000158   Code   RO          335    i.SD_Init           sd.o
+    0x00000790   0x0000006c   Code   RO          336    i.SD_ReadDisk       sd.o
+    0x000007fc   0x00000036   Code   RO          337    i.SD_RecvData       sd.o
+    0x00000832   0x00000004   Code   RO          338    i.SD_SPI_Init       sd.o
+    0x00000836   0x0000001e   Code   RO          339    i.SD_Select         sd.o
+    0x00000854   0x0000004e   Code   RO          340    i.SD_SendBlock      sd.o
+    0x000008a2   0x00000064   Code   RO          341    i.SD_SendCmd        sd.o
+    0x00000906   0x00000022   Code   RO          342    i.SD_WaitReady      sd.o
+    0x00000928   0x00000080   Code   RO          343    i.SD_WriteDisk      sd.o
+    0x000009a8   0x00000020   Code   RO         3993    i.SERIAL_PutChar    ht32_serial.o
+    0x000009c8   0x00000074   Code   RO          294    i.SPI0_Init         spi.o
+    0x00000a3c   0x0000004e   Code   RO          295    i.SPI0_ReadWriteByte  spi.o
+    0x00000a8a   0x00000002   PAD
+    0x00000a8c   0x00000020   Code   RO          296    i.SPI0_SetSpeed     spi.o
+    0x00000aac   0x00000014   Code   RO         3189    i.SPI_Cmd           ht32f1655_56_spi.o
+    0x00000ac0   0x0000000e   Code   RO         3197    i.SPI_GetFlagStatus  ht32f1655_56_spi.o
+    0x00000ace   0x0000004a   Code   RO         3198    i.SPI_Init          ht32f1655_56_spi.o
+    0x00000b18   0x00000006   Code   RO         3201    i.SPI_ReceiveData   ht32f1655_56_spi.o
+    0x00000b1e   0x00000014   Code   RO         3204    i.SPI_SELOutputCmd  ht32f1655_56_spi.o
+    0x00000b32   0x00000004   Code   RO         3205    i.SPI_SendData      ht32f1655_56_spi.o
+    0x00000b36   0x00000014   Code   RO         3208    i.SPI_SoftwareSELCmd  ht32f1655_56_spi.o
+    0x00000b4a   0x00000002   Code   RO          204    i.SVC_Handler       ht32f165x_it.o
+    0x00000b4c   0x00000002   Code   RO          205    i.SysTick_Handler   ht32f165x_it.o
+    0x00000b4e   0x00000002   PAD
+    0x00000b50   0x0000005c   Code   RO          418    i.SystemInit        system_ht32f165x.o
+    0x00000bac   0x000000c4   Code   RO            6    i.TestForSD         main.o
+    0x00000c70   0x0000000a   Code   RO         3344    i.USART_GetLineStatus  ht32f1655_56_usart.o
+    0x00000c7a   0x00000034   Code   RO         3347    i.USART_Init        ht32f1655_56_usart.o
+    0x00000cae   0x00000014   Code   RO         3359    i.USART_RxCmd       ht32f1655_56_usart.o
+    0x00000cc2   0x00000014   Code   RO         3360    i.USART_RxPDMACmd   ht32f1655_56_usart.o
+    0x00000cd6   0x00000004   Code   RO         3361    i.USART_SendData    ht32f1655_56_usart.o
+    0x00000cda   0x00000014   Code   RO         3373    i.USART_TxCmd       ht32f1655_56_usart.o
+    0x00000cee   0x00000002   Code   RO          206    i.UsageFault_Handler  ht32f165x_it.o
+    0x00000cf0   0x00000094   Code   RO            7    i.ViewSector        main.o
+    0x00000d84   0x00000020   Code   RO         4551    i.__0printf$5       mc_w.l(printf5.o)
+    0x00000da4   0x0000000e   Code   RO         4720    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x00000db2   0x00000002   Code   RO         4721    i.__scatterload_null  mc_w.l(handlers.o)
+    0x00000db4   0x0000000e   Code   RO         4722    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x00000dc2   0x00000002   PAD
+    0x00000dc4   0x000002c0   Code   RO         4558    i._printf_core      mc_w.l(printf5.o)
+    0x00001084   0x00000004   Code   RO         3932    i.fputc             ht32_retarget.o
+    0x00001088   0x0000007c   Code   RO            8    i.main              main.o
+    0x00001104   0x00000020   Data   RO         4718    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_ZI (Base: 0x20000008, Size: 0x00000430, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Base: 0x20000000, Size: 0x0000000c, Max: 0xffffffff, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000008   0x00000200   Zero   RW            6    .bss                main.o
-    0x20000208   0x0000002c   Zero   RW          278    .bss                spi.o
-    0x20000234   0x00000004   PAD
-    0x20000238   0x00000200   Zero   RW          431    STACK               startup_ht32f165x.o
+    0x20000000   0x00000001   Data   RW           10    .data               main.o
+    0x20000001   0x00000001   Data   RW          344    .data               sd.o
+    0x20000002   0x00000002   PAD
+    0x20000004   0x00000004   Data   RW         3933    .data               ht32_retarget.o
+    0x20000008   0x00000004   Data   RW         4416    .data               mc_w.l(rand.o)
+
+
+    Execution Region ER_ZI (Base: 0x2000000c, Size: 0x00000454, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x2000000c   0x00000221   Zero   RW            9    .bss                main.o
+    0x2000022d   0x00000003   PAD
+    0x20000230   0x0000002c   Zero   RW          297    .bss                spi.o
+    0x2000025c   0x00000004   PAD
+    0x20000260   0x00000200   Zero   RW          450    STACK               startup_ht32f165x.o
 
 
 ==============================================================================
@@ -1807,20 +1861,21 @@ Image component sizes
         32          0          0          0          0        501   ht32_serial.o
        200         24          0          0          0       4480   ht32f1655_56_ckcu.o
        140          6          0          0          0       1723   ht32f1655_56_gpio.o
+       268         46          0          0          0       3615   ht32f1655_56_pdma.o
        158          0          0          0          0       4202   ht32f1655_56_spi.o
-       106          0          0          0          0       4128   ht32f1655_56_usart.o
+       126          0          0          0          0       4626   ht32f1655_56_usart.o
         18          0          0          0          0       3370   ht32f165x_it.o
-       348        164          0          0        512      40402   main.o
+       584        194          0          1        545      45150   main.o
        944         12          0          1          0       6397   sd.o
-       226         14          0          0         44       1641   spi.o
+       226         12          0          0         44       1641   spi.o
        376        348          0          0        512        708   startup_ht32f165x.o
         92         14          0          0          0        421   system_ht32f165x.o
-        78          0          0          0          0        525   usart.o
+       156          6          0          0          0        929   usart.o
 
     ----------------------------------------------------------------------
-      2728        582         32          8       1072      70796   Object Totals
+      3332        662         32          8       1108      80061   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         6          0          0          3          4          0   (incl. Padding)
+         8          0          0          2          7          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1839,20 +1894,21 @@ Image component sizes
         30          0          0          0          0         68   llshl.o
         32          0          0          0          0         68   llushr.o
        736         56          0          0          0        184   printf5.o
+        36         10          0          4          0        136   rand.o
         98          0          0          0          0         92   uldiv.o
 
     ----------------------------------------------------------------------
-       988         72          0          0          0        480   Library Totals
+      1024         82          0          4          0        616   Library Totals
          6          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
-       982         72          0          0          0        480   mc_w.l
+      1018         82          0          4          0        616   mc_w.l
 
     ----------------------------------------------------------------------
-       988         72          0          0          0        480   Library Totals
+      1024         82          0          4          0        616   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1861,15 +1917,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3716        654         32          8       1072      68832   Grand Totals
-      3716        654         32          8       1072      68832   ELF Image Totals
-      3716        654         32          8          0          0   ROM Totals
+      4356        744         32         12       1108      77609   Grand Totals
+      4356        744         32         12       1108      77609   ELF Image Totals
+      4356        744         32         12          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 3748 (   3.66kB)
-    Total RW  Size (RW Data + ZI Data)              1080 (   1.05kB)
-    Total ROM Size (Code + RO Data + RW Data)       3756 (   3.67kB)
+    Total RO  Size (Code + RO Data)                 4388 (   4.29kB)
+    Total RW  Size (RW Data + ZI Data)              1120 (   1.09kB)
+    Total ROM Size (Code + RO Data + RW Data)       4400 (   4.30kB)
 
 ==============================================================================
 

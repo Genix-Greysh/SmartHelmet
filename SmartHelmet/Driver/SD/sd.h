@@ -12,9 +12,9 @@
 *        Abstract Description   :	offer API of SD card
 *
 *--------------------------------Revision History--------------------------------------
-*       No      version     Data        Revised By      Item        Description
+*      	No      version     Data        	Revised By      Item        Description
 *       1       v1.0        2016/3/16       Gaunthan                    Create this file
-*
+*		2		v2.0		2016/3/20		Gaunthan		fix			成功移植到HT开发板
 ***************************************************************************************/
 /**************************************************************
 *        Multi-Include-Prevent Section

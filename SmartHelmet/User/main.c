@@ -21,10 +21,58 @@
 
 /* Global functions ----------------------------------------------------------------------------------------*/
 
+
 #define SECTOR_SIZE 512
 
 u8 buf[SECTOR_SIZE];
 
+u8 MPU_Data [33] ;
+
+char standard = 28;
+
+/*********************************************************************************************************//**
+* @brief  Configures GPTM0 for time estimate.
+* @retval None
+***********************************************************************************************************/
+void PDMA_Configuration(void)
+{
+	PDMACH_InitTypeDef PDMACH_InitStructure;	
+	CKCU_PeripClockConfig_TypeDef CKCUClock = {{0}};
+	//Config Clock
+	CKCUClock.Bit.PDMA       = 1;
+	CKCU_PeripClockConfig(CKCUClock, ENABLE);
+
+	
+	//Config USART
+	USART_RxPDMACmd(HT_USART0, ENABLE);
+
+	//PDMA
+
+	PDMACH_InitStructure.PDMACH_SrcAddr   = (u32) HT_USART0_BASE;
+	PDMACH_InitStructure.PDMACH_DstAddr   = (u32) &MPU_Data;
+
+	PDMACH_InitStructure.PDMACH_AdrMod    = SRC_ADR_FIX | DST_ADR_LIN_INC|AUTO_RELOAD;
+	PDMACH_InitStructure.PDMACH_Priority  = H_PRIO;
+	PDMACH_InitStructure.PDMACH_BlkCnt    = 33;
+	PDMACH_InitStructure.PDMACH_BlkLen    = 1;
+	PDMACH_InitStructure.PDMACH_DataSize  = WIDTH_8BIT;
+
+
+	PDMA_Config(PDMA_CH2, &PDMACH_InitStructure);  
+	PDMA_IntConig(PDMA_CH2, (PDMA_INT_GE | PDMA_INT_TC), ENABLE);
+	PDMA_EnaCmd(PDMA_CH2, ENABLE);
+	PDMA_SwTrigCmd(PDMA_CH2, ENABLE);
+	
+	
+}
+
+int Data_Check(u8 data, u8 standard)
+{
+	if(data >standard && data <=(0xff-standard))
+		return 0;
+	else 
+		return 1;
+}
 
 /**
  * @brief 	查看某个扇区的内容
@@ -48,16 +96,9 @@ void ViewSector(u8 sector)
 	
 }
 
-
-int main(void)
+void TestForSD(void)
 {
 	int i, j;
-
-	/* Initialize devices */
-	InitUSART0(115200);
-	
-	/* 初始化与SD有关的引脚 */
-	SD_SPI_Init();
 	
 	/* 初始化SD卡 */
 	while(SD_Init())	//检测不到SD卡
@@ -67,26 +108,49 @@ int main(void)
 			for(j = 110; j > 0; --j);
 	}
 	printf("Init SD Card OK!\r\n");
-
-	ViewSector(0);
-	
-	printf("Randomly generate :\r\n");
+	printf("Randomly generate numbers to write SD Card:\r\n");
 	for(i = 0; i < SECTOR_SIZE; ++i)
 	{
-		buf[i] = 1;
+		buf[i] = rand();
 		printf("%x ", buf[i]);
 	}
 	
 	SD_WriteDisk(buf, 0, 1);
 	
 	ViewSector(0);
+}
+
+/**
+ * @brief 主函数
+ */
+int main(void)
+
+{
+	SD_SPI_Init();
 	
-	/* main loop */                                                
+	/* Initialize devices */
+	Init_USART( HT_USART0,115200);		
+	PDMA_Configuration();
+
+	TestForSD();
+	
+	/* main loop */           	
 	while (1)
 	{
-		printf("In while(1)");
-		while(1);
-	}	
+		int i = 0;
+		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
+		{
+			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
+			for(i = 0 ; i <3 ; i++)
+			{			
+				if(MPU_Data[i*11+1] == 0x51 && (Data_Check(MPU_Data[i*11+3],standard) == 0 || 
+						Data_Check(MPU_Data[i*11+5],standard) == 0 || Data_Check(MPU_Data[i*11+7],standard) == 0))
+				{					
+					USART_SendData(HT_USART1,0x55);
+				}
+			}
+		}
+	}
 }
 
 #if (HT32_LIB_DEBUG == 1)

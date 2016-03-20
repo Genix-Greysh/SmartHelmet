@@ -16,16 +16,16 @@ void SPI0_Init(void)
 	CKCU_PeripClockConfig_TypeDef CKCUClock = {{0}};
 
 	/* Enable PA & SPI0 & AFIO */
-	CKCUClock.Bit.PA         = 1;
+	CKCUClock.Bit.PD         = 1;
 	CKCUClock.Bit.SPI0       = 1;
 	CKCUClock.Bit.AFIO       = 1;
 	CKCU_PeripClockConfig(CKCUClock, ENABLE);
 
 	/* SPI0_SEL idle state is HIGH */
-	GPIO_PullResistorConfig(HT_GPIOA, GPIO_PIN_8, GPIO_PR_UP);
+	GPIO_PullResistorConfig(HT_GPIOD, GPIO_PIN_9, GPIO_PR_UP);
 
 	/* Configure related IO to SPI0 */
-	AFIO_GPAConfig(AFIO_PIN_4 | AFIO_PIN_5 | AFIO_PIN_6 | AFIO_PIN_7, AFIO_MODE_5);
+	AFIO_GPDConfig(AFIO_PIN_9 | AFIO_PIN_10 | AFIO_PIN_11 | AFIO_PIN_12, AFIO_MODE_5);
 
 	/* SPI0 configuration */
 	SPI_InitStructure.SPI_Mode = SPI_MASTER;

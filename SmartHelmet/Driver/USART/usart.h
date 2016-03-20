@@ -52,7 +52,7 @@
  * @param  
  * @retval None
  */
-void InitUSART0(u32 baudRate);
+void Init_USART(HT_USART_TypeDef * usart , u32 baudRate);
 
 /**************************************************************
 *        End-Multi-Include-Prevent Section
