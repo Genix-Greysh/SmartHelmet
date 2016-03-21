@@ -362,7 +362,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HT32_DRIVER, USE_HT32F1656_DVB</Define>
               <Undefine></Undefine>
-              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI;..\..\Driver\SD</IncludePath>
+              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI;..\..\Driver\SD;..\..\ff11a\src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -434,6 +434,21 @@
               <FileName>sd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Driver\SD\sd.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FatFs-11a</GroupName>
+          <Files>
+            <File>
+              <FileName>diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ff11a\src\diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ff11a\src\ff.c</FilePath>
             </File>
           </Files>
         </Group>

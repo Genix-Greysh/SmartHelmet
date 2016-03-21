@@ -5,6 +5,7 @@
 #include "usart.h"
 #include "spi.h"
 #include "sd.h"
+#include "ff.h"
 
 /** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
   * @{
@@ -24,7 +25,9 @@
 
 #define SECTOR_SIZE 512
 
-u8 buf[SECTOR_SIZE];
+u8 buf[SECTOR_SIZE];	/* SD数据缓冲区 */
+
+FATFS myfat[2];
 
 u8 MPU_Data [33] ;
 
@@ -113,49 +116,74 @@ void TestForSD(void)
 			for(j = 110; j > 0; --j);
 	}
 	printf("Init SD Card OK!\r\n");
-	printf("Randomly generate numbers to write SD Card:\r\n");
-	for(i = 0; i < SECTOR_SIZE; ++i)
-	{
-		buf[i] = 1;
-		printf("%x ", buf[i]);
-	}
-	
-	if(SD_WriteDisk(buf, 0, 1))
-		printf("\r\nWrite Sector %d succeeded\r\n", 0);
-	else
-		printf("Wrtie failed.\r\n");
+//	printf("Randomly generate numbers to write SD Card:\r\n");
+//	for(i = 0; i < SECTOR_SIZE; ++i)
+//	{
+//		buf[i] = 1;
+//		printf("%x ", buf[i]);
+//	}
+//	
+//	if(SD_WriteDisk(buf, 0, 1))
+//		printf("\r\nWrite Sector %d succeeded\r\n", 0);
+//	else
+//		printf("Wrtie failed.\r\n");
 	ViewSector(0);
 }
+
 
 /**
  * @brief 主函数
  */
 int main(void)
 {
+	/* 变量定义区 */
+
+    //File object
+    FIL fil;
+    
+	
 	/* Initialize devices */
 	Init_USART( HT_USART0,115200);		
-	PDMA_Configuration();
+//	PDMA_Configuration();
 	SD_SPI_Init();
-	
+	SD_Init();
 	
 	TestForSD();
+	
+//	if(f_mount(myfat, "", 0) == FR_OK)
+//	{
+//		printf("Mount succeeded\r\n");
+//		if (f_open(&fil, "file.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE) == FR_OK)
+//		{
+//			
+//			printf("Open file succeeded.\r\n");
+////			if (f_puts("First string in my file\n", &fil) > 0)
+////				printf("Puts file succeeded.\r\n");
+////			else
+////				printf("Puts file failed.\r\n");
+//		}
+//		else
+//			printf("Open file failed.\r\n");
+//	}
+//	else
+		printf("Mount failed\r\n");
 	
 	/* main loop */           	
 	while (1)
 	{
-		int i = 0;
-		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
-		{
-			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
-			for(i = 0 ; i <3 ; i++)
-			{			
-				if(MPU_Data[i*11+1] == 0x51 && (Data_Check(MPU_Data[i*11+3],standard) == 0 || 
-						Data_Check(MPU_Data[i*11+5],standard) == 0 || Data_Check(MPU_Data[i*11+7],standard) == 0))
-				{					
-					USART_SendData(HT_USART1,0x55);
-				}
-			}
-		}
+//		int i = 0;
+//		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
+//		{
+//			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
+//			for(i = 0 ; i <3 ; i++)
+//			{			
+//				if(MPU_Data[i*11+1] == 0x51 && (Data_Check(MPU_Data[i*11+3],standard) == 0 || 
+//						Data_Check(MPU_Data[i*11+5],standard) == 0 || Data_Check(MPU_Data[i*11+7],standard) == 0))
+//				{					
+//					USART_SendData(HT_USART1,0x55);
+//				}
+//			}
+//		}
 	}
 }
 
