@@ -27,8 +27,6 @@
 
 u8 buf[SECTOR_SIZE];	/* SD数据缓冲区 */
 
-FATFS myfat[2];
-
 u8 MPU_Data [33] ;
 
 char standard = 28;
@@ -99,91 +97,88 @@ void ViewSector(u8 sector)
 	
 }
 
+
 /**
- * @brief 	用于测试SD卡
+ * @brief 	带超时退出的SD卡初始化函数
  * @param 	
  * @return 	None
  */
-void TestForSD(void)
+void TryInitSD(void)
 {
 	int i, j;
+	int retry = 5;
 	
 	/* 初始化SD卡 */
-	while(SD_Init())	//检测不到SD卡
+	while(retry-- > 0 && SD_Init())	//检测不到SD卡
 	{
-		printf("SD Card Error!\r\n");
+		printf("SD Card Error!Please check!\r\n");
 		for(i = 0xffff; i > 0; --i)
 			for(j = 110; j > 0; --j);
 	}
-	printf("Init SD Card OK!\r\n");
-//	printf("Randomly generate numbers to write SD Card:\r\n");
-//	for(i = 0; i < SECTOR_SIZE; ++i)
-//	{
-//		buf[i] = 1;
-//		printf("%x ", buf[i]);
-//	}
-//	
-//	if(SD_WriteDisk(buf, 0, 1))
-//		printf("\r\nWrite Sector %d succeeded\r\n", 0);
-//	else
-//		printf("Wrtie failed.\r\n");
-	ViewSector(0);
+	if(retry)
+		printf("Init SD Card successfully!\r\n");
+	else
+		printf("Trying to init SD Card failed.\r\n");
 }
 
+
+/**
+ * @brief	用于文件系统。由于HT板堆栈空间较小，因此需要将myfat声明为全局的
+ */
+FATFS myfat;
+
+/* 默认的目录 */
+const char *root = "";
 
 /**
  * @brief 主函数
  */
 int main(void)
 {
-	/* 变量定义区 */
-
     //File object
     FIL fil;
-    
-	
+ 
 	/* Initialize devices */
 	Init_USART( HT_USART0,115200);		
-//	PDMA_Configuration();
+	PDMA_Configuration();
 	SD_SPI_Init();
-	SD_Init();
+	TryInitSD();
 	
-	TestForSD();
-	
-//	if(f_mount(myfat, "", 0) == FR_OK)
-//	{
-//		printf("Mount succeeded\r\n");
-//		if (f_open(&fil, "file.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE) == FR_OK)
-//		{
-//			
-//			printf("Open file succeeded.\r\n");
-////			if (f_puts("First string in my file\n", &fil) > 0)
-////				printf("Puts file succeeded.\r\n");
-////			else
-////				printf("Puts file failed.\r\n");
-//		}
-//		else
-//			printf("Open file failed.\r\n");
-//	}
-//	else
+	/* 挂载SD卡 */
+	if(f_mount(&myfat, root, 0) == FR_OK)
+	{
+		printf("Mount SD successfully\r\n");
+		if (f_open(&fil, "file.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE) == FR_OK)
+		{
+			printf("Open file successfully.\r\n");
+			if (f_printf(&fil, "Hello,World!\n") > 0)
+				printf("Puts file successfully.\r\n");
+			else
+				printf("Puts file failed.\r\n");
+		}
+		else
+			printf("Open file failed.\r\n");
+		f_close(&fil);
+	}
+	else
 		printf("Mount failed\r\n");
 	
 	/* main loop */           	
 	while (1)
 	{
-//		int i = 0;
-//		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
-//		{
-//			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
-//			for(i = 0 ; i <3 ; i++)
-//			{			
-//				if(MPU_Data[i*11+1] == 0x51 && (Data_Check(MPU_Data[i*11+3],standard) == 0 || 
-//						Data_Check(MPU_Data[i*11+5],standard) == 0 || Data_Check(MPU_Data[i*11+7],standard) == 0))
-//				{					
-//					USART_SendData(HT_USART1,0x55);
-//				}
-//			}
-//		}
+		int i = 0;
+		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
+		{
+			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
+			for(i = 0 ; i <3 ; i++)
+			{			
+				if(MPU_Data[i*11+1] == 0x51 && (Data_Check(MPU_Data[i*11+3],standard) == 0 || 
+						Data_Check(MPU_Data[i*11+5],standard) == 0 || Data_Check(MPU_Data[i*11+7],standard) == 0))
+				{					
+					USART_SendData(HT_USART1,0x55);
+				}
+			}
+		}
 	}
 }
 
