@@ -157,7 +157,7 @@ u8 SD_ReadDisk(u8 *buf, u32 sector, u8 cnt);
  *	@return 操作结果，1 成功；其他，失败
  *  @notice
  */
-u8 SD_WriteDisk(u8 *buf, u32 sector, u8 cnt);
+u8 SD_WriteDisk(const u8 *buf, u32 sector, u8 cnt);
 
 
 /**

@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\HT32\Obj\HT32.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\HT32\Obj\HT32.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Sun Mar 20 21:30:29 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Mon Mar 21 10:15:40 2016
 <BR><P>
-<H3>Maximum Stack Usage =        120 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        128 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; TestForSD &rArr; ViewSector &rArr; SD_ReadDisk &rArr; SD_SendCmd &rArr; SD_Select &rArr; SD_WaitReady &rArr; SPI0_ReadWriteByte
 <P>
@@ -281,7 +281,7 @@ Global Symbols
 <P><STRONG><a name="[45]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_ht32f165x.o(RESET)
 </UL>
-<P><STRONG><a name="[80]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[7f]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[49]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -291,27 +291,21 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[81]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[80]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[82]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[81]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[83]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[82]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[84]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[83]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[85]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
-
-<P><STRONG><a name="[79]"></a>rand</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rand.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TestForSD
-</UL>
-
-<P><STRONG><a name="[86]"></a>srand</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, rand.o(.text), UNUSED)
+<P><STRONG><a name="[84]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[4b]"></a>__aeabi_uldivmod</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, uldiv.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[4a]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
@@ -320,19 +314,19 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[87]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[85]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[4d]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[88]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[86]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[4c]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[89]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[87]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[54]"></a>AFIO_GPxConfig</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, ht32f1655_56_gpio.o(i.AFIO_GPxConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = AFIO_GPxConfig
@@ -376,7 +370,7 @@ Global Symbols
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PDMA_Configuration
 </UL>
 
-<P><STRONG><a name="[7f]"></a>Data_Check</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(i.Data_Check))
+<P><STRONG><a name="[7e]"></a>Data_Check</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(i.Data_Check))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -416,7 +410,7 @@ Global Symbols
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, ht32f165x_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_ht32f165x.o(RESET)
 </UL>
-<P><STRONG><a name="[7e]"></a>PDMA_ClearFlag</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, ht32f1655_56_pdma.o(i.PDMA_ClearFlag))
+<P><STRONG><a name="[7d]"></a>PDMA_ClearFlag</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, ht32f1655_56_pdma.o(i.PDMA_ClearFlag))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -441,7 +435,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PDMA_Configuration
 </UL>
 
-<P><STRONG><a name="[7d]"></a>PDMA_GetFlagStatus</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, ht32f1655_56_pdma.o(i.PDMA_GetFlagStatus))
+<P><STRONG><a name="[7c]"></a>PDMA_GetFlagStatus</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, ht32f1655_56_pdma.o(i.PDMA_GetFlagStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -495,7 +489,7 @@ Global Symbols
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_RecvData
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_DisSelect
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ViewSector
+<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ViewSector
 </UL>
 
 <P><STRONG><a name="[66]"></a>SD_RecvData</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, sd.o(i.SD_RecvData))
@@ -645,14 +639,13 @@ Global Symbols
 <P><STRONG><a name="[44]"></a>SystemInit</STRONG> (Thumb, 78 bytes, Stack size 0 bytes, system_ht32f165x.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_ht32f165x.o(RESET)
 </UL>
-<P><STRONG><a name="[77]"></a>TestForSD</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, main.o(i.TestForSD))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = TestForSD &rArr; ViewSector &rArr; SD_ReadDisk &rArr; SD_SendCmd &rArr; SD_Select &rArr; SD_WaitReady &rArr; SPI0_ReadWriteByte
+<P><STRONG><a name="[77]"></a>TestForSD</STRONG> (Thumb, 114 bytes, Stack size 24 bytes, main.o(i.TestForSD))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = TestForSD &rArr; ViewSector &rArr; SD_ReadDisk &rArr; SD_SendCmd &rArr; SD_Select &rArr; SD_WaitReady &rArr; SPI0_ReadWriteByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WriteDisk
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ViewSector
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ViewSector
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -693,7 +686,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_ht32f165x.o(RESET)
 </UL>
-<P><STRONG><a name="[7a]"></a>ViewSector</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, main.o(i.ViewSector))
+<P><STRONG><a name="[79]"></a>ViewSector</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, main.o(i.ViewSector))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ViewSector &rArr; SD_ReadDisk &rArr; SD_SendCmd &rArr; SD_Select &rArr; SD_WaitReady &rArr; SPI0_ReadWriteByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadDisk
@@ -702,24 +695,24 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TestForSD
 </UL>
 
-<P><STRONG><a name="[7b]"></a>__0printf$5</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[7a]"></a>__0printf$5</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[8a]"></a>__1printf$5</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
+<P><STRONG><a name="[88]"></a>__1printf$5</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
 
 <P><STRONG><a name="[78]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ViewSector
+<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ViewSector
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TestForSD
 </UL>
 
-<P><STRONG><a name="[8b]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[89]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[8c]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[8a]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[8d]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[8b]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[47]"></a>fputc</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ht32_retarget.o(i.fputc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = fputc &rArr; SERIAL_PutChar
@@ -729,16 +722,16 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> printf5.o(i.__0printf$5)
 </UL>
 <P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; TestForSD &rArr; ViewSector &rArr; SD_ReadDisk &rArr; SD_SendCmd &rArr; SD_Select &rArr; SD_WaitReady &rArr; SPI0_ReadWriteByte
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = main &rArr; TestForSD &rArr; ViewSector &rArr; SD_ReadDisk &rArr; SD_SendCmd &rArr; SD_Select &rArr; SD_WaitReady &rArr; SPI0_ReadWriteByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SPI_Init
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PDMA_GetFlagStatus
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PDMA_ClearFlag
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PDMA_GetFlagStatus
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PDMA_ClearFlag
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_USART
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TestForSD
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PDMA_Configuration
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Check
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Check
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL><P>
@@ -754,10 +747,10 @@ Local Symbols
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Select
 </UL>
 
-<P><STRONG><a name="[7c]"></a>_printf_core</STRONG> (Thumb, 658 bytes, Stack size 104 bytes, printf5.o(i._printf_core), UNUSED)
+<P><STRONG><a name="[7b]"></a>_printf_core</STRONG> (Thumb, 658 bytes, Stack size 104 bytes, printf5.o(i._printf_core), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$5
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$5
 </UL>
 <P>
 <H3>

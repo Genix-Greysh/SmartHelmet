@@ -96,6 +96,11 @@ void ViewSector(u8 sector)
 	
 }
 
+/**
+ * @brief 	用于测试SD卡
+ * @param 	
+ * @return 	None
+ */
 void TestForSD(void)
 {
 	int i, j;
@@ -111,12 +116,14 @@ void TestForSD(void)
 	printf("Randomly generate numbers to write SD Card:\r\n");
 	for(i = 0; i < SECTOR_SIZE; ++i)
 	{
-		buf[i] = rand();
+		buf[i] = 1;
 		printf("%x ", buf[i]);
 	}
 	
-	SD_WriteDisk(buf, 0, 1);
-	
+	if(SD_WriteDisk(buf, 0, 1))
+		printf("\r\nWrite Sector %d succeeded\r\n", 0);
+	else
+		printf("Wrtie failed.\r\n");
 	ViewSector(0);
 }
 
@@ -124,14 +131,13 @@ void TestForSD(void)
  * @brief 主函数
  */
 int main(void)
-
 {
-	SD_SPI_Init();
-	
 	/* Initialize devices */
 	Init_USART( HT_USART0,115200);		
 	PDMA_Configuration();
-
+	SD_SPI_Init();
+	
+	
 	TestForSD();
 	
 	/* main loop */           	

@@ -1,0 +1,6 @@
+-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src
+-I "D:\Program Files\Keil\ARM\RV31\INC"
+-I "D:\Program Files\Keil\ARM\CMSIS\Include"
+-I "D:\Program Files\Keil\ARM\Inc\Holtek\HT32F1655_56"
+-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB
+-o .\ht32\obj\cc936.o --omf_browse .\ht32\obj\cc936.crf --depend .\ht32\obj\cc936.d "..\..\ff11a\src\option\cc936.c"

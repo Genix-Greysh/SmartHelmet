@@ -201,7 +201,7 @@ u8 SD_RecvData(u8 *buf,u16 len)
 			0 发送失败	
  *  @notice
  */
-u8 SD_SendBlock(u8 *buf, u8 cmd)
+u8 SD_SendBlock(const u8 *buf, u8 cmd)
 {	
 	u16 cnt;
 	u8 r1;
@@ -362,7 +362,7 @@ u8 SD_ReadDisk(u8 *buf, u32 sector, u8 cnt)
  *	@return 操作结果，1 成功；其他，失败
  *  @notice
  */
-u8 SD_WriteDisk(u8 *buf, u32 sector, u8 cnt)
+u8 SD_WriteDisk(const u8 *buf, u32 sector, u8 cnt)
 {
 	u8 r1;
 	if(SD_Type != SD_TYPE_V2HC)
