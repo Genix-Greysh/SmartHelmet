@@ -1,8 +1,8 @@
 #include "sd.h"
 
-u8 SD_Type = 0;	/* 存放SD卡的类型 */
+u8 SD_Type = 0;			/* 存放SD卡的类型 */
 
-
+u8 buf[SECTOR_SIZE];	/* SD数据缓冲区 */
 
 /**
  * @brief  将SPI设置为低速模式
@@ -397,4 +397,56 @@ u8 SD_WriteDisk(const u8 *buf, u32 sector, u8 cnt)
 	return r1;//
 }	
 
+
+
+
+/**
+ * @brief 	带超时退出的SD卡初始化函数
+ * @param 	
+ * @return 	1 初始化成功
+			0 初始化失败
+ */
+u8 TryInitSD(void)
+{
+	int retry = 5;
+	
+	/* 初始化SD卡 */
+	while(--retry > 0 && SD_Init())	//检测不到SD卡
+	{
+		SD_DEBUG("SD Card Error!Please check!\r\n");
+		delay_ms(500);
+	}
+	if(retry)
+	{
+		SD_DEBUG("Init SD Card successfully!\r\n");
+		return 1;
+	}
+	else
+	{
+		SD_DEBUG("failed to init SD Card .\r\n");
+		return 0;
+	}
+}
+
+
+
+/**
+ * @brief 	查看某个扇区的内容
+ * @param 	sector 扇区号
+ * @return 	None
+ */
+void ViewSector(u8 sector)
+{
+	int i;
+
+	if(!SD_ReadDisk(buf, sector, 1))
+		SD_DEBUG("\r\nRead SD failed.\r\n");
+	else
+	{
+		SD_DEBUG("\r\nView sector %d: \r\n", sector);
+		for(i = 0; i < SECTOR_SIZE; ++i)
+			SD_DEBUG("%x ", buf[i]);
+		SD_DEBUG("\r\nSector %d END...\r\n", sector);
+	}	
+}
 

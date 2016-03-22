@@ -6,6 +6,8 @@
 #include "spi.h"
 #include "sd.h"
 #include "ff.h"
+#include "delay.h"
+#include "sdfs_app.h"
 
 /** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
   * @{
@@ -22,11 +24,6 @@
 
 /* Global functions ----------------------------------------------------------------------------------------*/
 
-
-#define SECTOR_SIZE 512
-
-u8 buf[SECTOR_SIZE];	/* SD数据缓冲区 */
-
 u8 MPU_Data [33] ;
 
 char standard = 28;
@@ -39,11 +36,11 @@ void PDMA_Configuration(void)
 {
 	PDMACH_InitTypeDef PDMACH_InitStructure;	
 	CKCU_PeripClockConfig_TypeDef CKCUClock = {{0}};
+	
 	//Config Clock
 	CKCUClock.Bit.PDMA       = 1;
 	CKCU_PeripClockConfig(CKCUClock, ENABLE);
 
-	
 	//Config USART
 	USART_RxPDMACmd(HT_USART0, ENABLE);
 
@@ -58,13 +55,10 @@ void PDMA_Configuration(void)
 	PDMACH_InitStructure.PDMACH_BlkLen    = 1;
 	PDMACH_InitStructure.PDMACH_DataSize  = WIDTH_8BIT;
 
-
 	PDMA_Config(PDMA_CH2, &PDMACH_InitStructure);  
 	PDMA_IntConig(PDMA_CH2, (PDMA_INT_GE | PDMA_INT_TC), ENABLE);
 	PDMA_EnaCmd(PDMA_CH2, ENABLE);
 	PDMA_SwTrigCmd(PDMA_CH2, ENABLE);
-	
-	
 }
 
 int Data_Check(u8 data, u8 standard)
@@ -75,93 +69,25 @@ int Data_Check(u8 data, u8 standard)
 		return 1;
 }
 
-/**
- * @brief 	查看某个扇区的内容
- * @param 	sector 扇区号
- * @return 	None
- */
-void ViewSector(u8 sector)
-{
-	int i;
-
-	if(!SD_ReadDisk(buf, sector, 1))
-		printf("\r\nRead SD failed.\r\n");
-	else
-	{
-		printf("\r\nView sector %d: \r\n", sector);
-		for(i = 0; i < SECTOR_SIZE; ++i)
-			printf("%x ", buf[i]);
-	
-		printf("\r\nSector %d END...\r\n", sector);
-	}	
-	
-}
 
 
-/**
- * @brief 	带超时退出的SD卡初始化函数
- * @param 	
- * @return 	None
- */
-void TryInitSD(void)
-{
-	int i, j;
-	int retry = 5;
-	
-	/* 初始化SD卡 */
-	while(retry-- > 0 && SD_Init())	//检测不到SD卡
-	{
-		printf("SD Card Error!Please check!\r\n");
-		for(i = 0xffff; i > 0; --i)
-			for(j = 110; j > 0; --j);
-	}
-	if(retry)
-		printf("Init SD Card successfully!\r\n");
-	else
-		printf("Trying to init SD Card failed.\r\n");
-}
 
 
-/**
- * @brief	用于文件系统。由于HT板堆栈空间较小，因此需要将myfat声明为全局的
- */
-FATFS myfat;
 
-/* 默认的目录 */
-const char *root = "";
 
 /**
  * @brief 主函数
  */
 int main(void)
 {
-    //File object
-    FIL fil;
- 
 	/* Initialize devices */
-	Init_USART( HT_USART0,115200);		
+	SYSTICK_Config();
+	Init_USART(HT_USART0,115200);		
 	PDMA_Configuration();
 	SD_SPI_Init();
 	TryInitSD();
 	
-	/* 挂载SD卡 */
-	if(f_mount(&myfat, root, 0) == FR_OK)
-	{
-		printf("Mount SD successfully\r\n");
-		if (f_open(&fil, "file.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE) == FR_OK)
-		{
-			printf("Open file successfully.\r\n");
-			if (f_printf(&fil, "Hello,World!\n") > 0)
-				printf("Puts file successfully.\r\n");
-			else
-				printf("Puts file failed.\r\n");
-		}
-		else
-			printf("Open file failed.\r\n");
-		f_close(&fil);
-	}
-	else
-		printf("Mount failed\r\n");
+	sdfs_app_test();
 	
 	/* main loop */           	
 	while (1)
@@ -181,6 +107,8 @@ int main(void)
 		}
 	}
 }
+
+
 
 #if (HT32_LIB_DEBUG == 1)
 /*********************************************************************************************************//**

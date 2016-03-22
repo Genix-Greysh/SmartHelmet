@@ -26,6 +26,10 @@
 *        Debug switch Section
 **************************************************************/
 
+/**
+  * @brief 	调试开关
+  */
+#define SD_DEBUG_ON 1
 
 /**************************************************************
 *        Include File Section
@@ -33,10 +37,18 @@
 #include "ht32.h"
 #include "ht32_board.h"
 #include "spi.h"
+#include "delay.h"
 
 /**************************************************************
 *        Macro Define Section
 **************************************************************/
+
+/**
+  * @brief 	默认扇区大小512
+  */
+#define SECTOR_SIZE 512
+
+
 
 /**
   * @brief 	SD卡类型定义  
@@ -110,6 +122,15 @@
 #define SD_SPI_ReadWriteByte(dat) SPI0_ReadWriteByte(dat)
 
 
+/**
+  * @brief	调试信息输出宏定义
+  */
+#if SD_DEBUG_ON
+	#define SD_DEBUG(fmt,args...) printf (fmt ,##args)
+#else
+	#define SD_DEBUG(fmt,args...)
+#endif
+   
 /**************************************************************
 *        Struct Define Section
 **************************************************************/
@@ -170,6 +191,23 @@ u8 SD_WriteDisk(const u8 *buf, u32 sector, u8 cnt);
  *  @notice
  */
 u8 SD_RecvData(u8 *buf,u16 len);
+
+
+/**
+ * @brief 	带超时退出的SD卡初始化函数
+ * @param 	
+ * @return 	1 初始化成功
+			0 初始化失败
+ */
+u8 TryInitSD(void);
+
+
+/**
+ * @brief 	查看某个扇区的内容
+ * @param 	sector 扇区号
+ * @return 	None
+ */
+void ViewSector(u8 sector);
 
 
 /**************************************************************

@@ -47,6 +47,8 @@
 .\ht32\obj\main.o: ..\..\Driver\USART\usart.h
 .\ht32\obj\main.o: ..\..\Driver\SPI\spi.h
 .\ht32\obj\main.o: ..\..\Driver\SD\sd.h
+.\ht32\obj\main.o: ..\..\Driver\DELAY\delay.h
 .\ht32\obj\main.o: ..\..\ff11a\src\ff.h
 .\ht32\obj\main.o: ..\..\ff11a\src\integer.h
 .\ht32\obj\main.o: ..\..\ff11a\src\ffconf.h
+.\ht32\obj\main.o: ..\..\User\sdfs_app\sdfs_app.h

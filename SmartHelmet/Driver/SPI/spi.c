@@ -18,7 +18,6 @@ void SPI0_Init(void)
 	/* Enable PA & SPI0 & AFIO */
 	CKCUClock.Bit.PD         = 1;
 	CKCUClock.Bit.SPI0       = 1;
-	CKCUClock.Bit.AFIO       = 1;
 	CKCU_PeripClockConfig(CKCUClock, ENABLE);
 
 	/* SPI0_SEL idle state is HIGH */

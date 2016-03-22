@@ -36,53 +36,10 @@
 /**************************************************************
 *        Macro Define Section
 **************************************************************/
-
-/**
- * @brief  通过SPIx发送数据
- * @param  SPIx，SPI设备
- * @param  data，要发送的数据
- * @retval None
- */
-#define SPI_SENDDATA(SPIx, data)								\
-	do															\
-	{															\
-		while (!SPI_GetFlagStatus(SPIx, SPI_FLAG_TXBE));		\
-		SPI_SendData(SPIx, (u32)(data)); 						\
-	}while(0);
-
-/**
- * @brief  通过SPIx获取数据
- * @param  SPIx，SPI设备
- * @param  buf，存储获取到的数据
- * @retval None
- */
-#define SPI_GETDATA(SPIx, buf)									\
-	do															\
-	{															\
-		while (!SPI_GetFlagStatus(SPIx, SPI_FLAG_RXBNE));		\
-		buf = SPI_ReceiveData(SPIx);							\
-	}while(0)
-	
-/**
- * @brief  通过SPI0发送数据
- * @param  data，要发送的数据
- * @retval None
- */
-#define SPI0_SENDDATA(data) SPI_SENDDATA(HT_SPI0, data)
-
-	
-/**
- * @brief  通过SPI0获取数据
- * @param  buf，存储获取到的数据
- * @retval None
- */
-#define SPI0_GETDATA(buf) SPI_GETDATA(HT_SPI0, buf)
-	
-	
+		
 /** @defgroup SPI_BaudRate_Prescaler 
   * @{
   */
-
 #define SPI_BaudRatePrescaler_2         ((uint16_t)0x0000)
 #define SPI_BaudRatePrescaler_4         ((uint16_t)0x0001)
 #define SPI_BaudRatePrescaler_8         ((uint16_t)0x0003)

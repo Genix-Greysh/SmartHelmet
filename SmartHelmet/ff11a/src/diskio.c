@@ -8,10 +8,10 @@
 /*-----------------------------------------------------------------------*/
 
 #include "diskio.h"		/* FatFs lower layer API */
-#include "sd.h"		/* Example: Header file of existing MMC/SDC contorl module */
+#include "sd.h"			/* Header file of existing MMC/SDC contorl module */
 
 /* Definitions of physical drive number for each drive */
-#define MMC		0	/* Example: Map MMC/SD card to physical drive 1 */
+#define MMC		0
 
 /*-----------------------------------------------------------------------*/
 /* Get Drive Status                                                      */

@@ -116,6 +116,8 @@ void PendSV_Handler(void)
  ************************************************************************************************************/
 void SysTick_Handler(void)
 {
+	extern void TimingDelay(void);
+	TimingDelay();
 }
 
 

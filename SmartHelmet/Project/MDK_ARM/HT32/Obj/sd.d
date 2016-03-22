@@ -46,3 +46,4 @@
 .\ht32\obj\sd.o: ..\..\utilities\common/spi_flash.h
 .\ht32\obj\sd.o: ..\..\utilities\common/ebi_lcd.h
 .\ht32\obj\sd.o: ..\..\Driver\SPI\spi.h
+.\ht32\obj\sd.o: ..\..\Driver\DELAY\delay.h

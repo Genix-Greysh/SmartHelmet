@@ -1,5 +1,5 @@
 #include "usart.h"
-#include "ht32.h"
+
 /**
  * @brief  ³õÊ¼»¯´®¿Ú0	
  * @param  
@@ -45,20 +45,8 @@ void Init_USART(HT_USART_TypeDef * usart , u32 baudRate)
 	USART_InitStructure.USART_Parity = USART_PARITY_NO;
 	USART_InitStructure.USART_Mode = USART_MODE_NORMAL;
 
-	if(usart == HT_USART0)
-	{
-		USART_Init(HT_USART0, &USART_InitStructure);
-		USART_TxCmd(HT_USART0, ENABLE);
-		USART_RxCmd(HT_USART0, ENABLE);
-	}
-	else if (usart == HT_USART1)
-	{
-		USART_Init(HT_USART1, &USART_InitStructure);
-		USART_TxCmd(HT_USART1, ENABLE);
-		USART_RxCmd(HT_USART1, ENABLE);
-	
-	}
-	else 
-		;
+	USART_Init(usart, &USART_InitStructure);
+	USART_TxCmd(usart, ENABLE);
+	USART_RxCmd(usart, ENABLE);
 
 }
