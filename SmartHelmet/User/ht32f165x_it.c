@@ -121,6 +121,34 @@ void SysTick_Handler(void)
 }
 
 
+/*********************************************************************************************************//**
+ * @brief   This function handles RTC interrupt.
+ * @retval  None
+ * @details In RTC interrupt service routine:
+ *  - Reset RTC init time when Time is 23:59:59.
+ *    - Set RTC Compare register as 86400.
+ *    - Reset PWRCU_BAKREG_1 to 0.
+ *  - Toggle LED1 each 1s.
+ *  - Set gwTimeDisplay to 1 to enable time update.
+ *
+ ************************************************************************************************************/
+void RTC_IRQHandler(void)
+{
+  extern vu32 gwTimeDisplay;
+  u8 bFlags;
+
+  bFlags = RTC_GetFlagStatus();
+  if((bFlags & 0x2) != 0x0) /* Match flag */
+  {
+    /* Reset RTC init time when Time is 23:59:59 */
+    RTC_SetCompare(86400);
+    PWRCU_WriteBackupRegister(PWRCU_BAKREG_1, 0);
+  }
+
+  /* Enable time update */
+  gwTimeDisplay = 1;
+}
+
 /**
   * @}
   */

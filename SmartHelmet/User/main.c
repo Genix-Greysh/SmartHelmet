@@ -8,6 +8,8 @@
 #include "ff.h"
 #include "delay.h"
 #include "sdfs_app.h"
+#include "rtc.h"
+
 
 /** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
   * @{
@@ -80,6 +82,8 @@ int Data_Check(u8 data, u8 standard)
  */
 int main(void)
 {
+	extern vu32 gwTimeDisplay;
+	
 	/* Initialize devices */
 	SYSTICK_Config();
 	Init_USART(HT_USART0,115200);		
@@ -88,6 +92,7 @@ int main(void)
 	TryInitSD();
 	
 	sdfs_app_test();
+	RTC_ConfigOnline();
 	
 	/* main loop */           	
 	while (1)
@@ -104,6 +109,16 @@ int main(void)
 					USART_SendData(HT_USART1,0x55);
 				}
 			}
+		}
+		
+		if (gwTimeDisplay == 1)
+		{
+			/* Display current time.
+				Current time is sum of the RTC counter value and the init time(stored in PWRCU_BAKREG_1 register).
+				The init time (PWRCU_BAKREG_1 register) will be clear if the RTC Match flag(CMFLAG) is set.
+				Refer to RTC_IRQHandler. */
+			Time_Display(RTC_GetCounter() + PWRCU_ReadBackupRegister(PWRCU_BAKREG_1));
+			gwTimeDisplay = 0;
 		}
 	}
 }

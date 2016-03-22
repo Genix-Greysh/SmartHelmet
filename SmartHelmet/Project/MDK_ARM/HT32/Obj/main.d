@@ -52,3 +52,4 @@
 .\ht32\obj\main.o: ..\..\ff11a\src\integer.h
 .\ht32\obj\main.o: ..\..\ff11a\src\ffconf.h
 .\ht32\obj\main.o: ..\..\User\sdfs_app\sdfs_app.h
+.\ht32\obj\main.o: ..\..\Driver\RTC\rtc.h

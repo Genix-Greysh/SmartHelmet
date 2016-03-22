@@ -6,6 +6,7 @@
 ".\ht32\obj\spi.o"
 ".\ht32\obj\sd.o"
 ".\ht32\obj\delay.o"
+".\ht32\obj\rtc.o"
 ".\ht32\obj\diskio.o"
 ".\ht32\obj\ff.o"
 ".\ht32\obj\ht32_op.o"
