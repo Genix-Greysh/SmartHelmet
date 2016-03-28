@@ -39,9 +39,3 @@
 .\ht32\obj\ov7725.o: ..\..\library\HT32F1655_56_Driver\inc\ht32_cm3_misc.h
 .\ht32\obj\ov7725.o: ..\..\library\HT32F1655_56_Driver\inc\ht32.h
 .\ht32\obj\ov7725.o: ..\..\library\HT32F1655_56_Driver\inc\ht32_serial.h
-.\ht32\obj\ov7725.o: ..\..\utilities\ht32_board.h
-.\ht32\obj\ov7725.o: ..\..\utilities\HT32_board/ht32f1656_dvb.h
-.\ht32\obj\ov7725.o: ..\..\utilities\common/i2c_eeprom.h
-.\ht32\obj\ov7725.o: ..\..\utilities\ht32_board.h
-.\ht32\obj\ov7725.o: ..\..\utilities\common/spi_flash.h
-.\ht32\obj\ov7725.o: ..\..\utilities\common/ebi_lcd.h
