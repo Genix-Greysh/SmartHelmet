@@ -92,7 +92,6 @@ int main(void)
 	TryInitSD();
 	
 	sdfs_app_test();
-	RTC_ConfigOnline();
 	
 	/* main loop */           	
 	while (1)
