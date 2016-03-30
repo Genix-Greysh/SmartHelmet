@@ -55,7 +55,7 @@ void Axis_DataTransfrom()
 		{
 			X_Axis = ((short)(MPU_Data[3]<<8 | MPU_Data[2]))/32768.0*16; 
 			Y_Axis = ((short)(MPU_Data[5]<<8 | MPU_Data[4]))/32768.0*16;      //Y轴加速度
-      Z_Axis = ((short)(MPU_Data[7]<<8 | MPU_Data[6]))/32768.0*16;      //Z轴加速度		
+			Z_Axis = ((short)(MPU_Data[7]<<8 | MPU_Data[6]))/32768.0*16;      //Z轴加速度		
 		}
 	}
 	return;

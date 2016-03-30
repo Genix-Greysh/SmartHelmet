@@ -362,7 +362,15 @@
               <MiscControls></MiscControls>
               <Define>USE_HT32_DRIVER, USE_HT32F1656_DVB</Define>
               <Undefine></Undefine>
+<<<<<<< HEAD
               <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI;..\..\Driver\SD;..\..\ff11a\src;..\..\Driver\DELAY;..\..\User\sdfs_app;..\..\Driver\RTC;..\..\Driver\MPU6050</IncludePath>
+=======
+<<<<<<< HEAD
+              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI;..\..\Driver\SD;..\..\ff11a\src;..\..\Driver\DELAY;..\..\User\sdfs_app;..\..\Driver\RTC</IncludePath>
+=======
+              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI;..\..\Driver\SD;..\..\ff11a\src;..\..\Driver\DELAY;..\..\User\sdfs_app;..\..\Driver\RTC;..\..\Driver\MPU6050;..\..\Driver\OV7725;..\..\Driver\SCCB</IncludePath>
+>>>>>>> ae74179df19587d4b704249c53599c146489e11b
+>>>>>>> ff37b79040d625bdd43c4d1c67f2925221fee8bf
             </VariousControls>
           </Cads>
           <Aads>
@@ -450,11 +458,29 @@
               <FileType>1</FileType>
               <FilePath>..\..\Driver\RTC\rtc.c</FilePath>
             </File>
+<<<<<<< HEAD
             <File>
+=======
+<<<<<<< HEAD
+=======
+            <File>
+              <FileName>ov7725.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Driver\OV7725\ov7725.c</FilePath>
+            </File>
+            <File>
+              <FileName>sccb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Driver\SCCB\sccb.c</FilePath>
+>>>>>>> ff37b79040d625bdd43c4d1c67f2925221fee8bf
               <FileName>MPU6050.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Driver\MPU6050\MPU6050.c</FilePath>
             </File>
+<<<<<<< HEAD
+=======
+>>>>>>> ae74179df19587d4b704249c53599c146489e11b
+>>>>>>> ff37b79040d625bdd43c4d1c67f2925221fee8bf
           </Files>
         </Group>
         <Group>

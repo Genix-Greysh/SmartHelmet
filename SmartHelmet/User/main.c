@@ -58,12 +58,15 @@ int main(void)
 	TryInitSD();
 	
 	sdfs_app_test();
+<<<<<<< HEAD
 	pwrcu_init();
 	
 	/* main loop */ 
 	while(1)
 	{	
 	  Enter_DeepSleepMode();
+=======
+>>>>>>> ff37b79040d625bdd43c4d1c67f2925221fee8bf
 	
 		while (flag == TRUE)
 		{
@@ -83,8 +86,6 @@ int main(void)
 	delay_ms(500);
 	flag = TRUE;
 }
-
-
 
 #if (HT32_LIB_DEBUG == 1)
 /*********************************************************************************************************//**
