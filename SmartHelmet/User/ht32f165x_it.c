@@ -27,6 +27,7 @@
 
 /* Includes ------------------------------------------------------------------------------------------------*/
 #include "ht32.h"
+#include "ov7725.h"
 
 /** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
   * @{
@@ -149,6 +150,37 @@ void RTC_IRQHandler(void)
   gwTimeDisplay = 1;
 }
 
+
+
+/*********************************************************************************************************//**
+ * @brief   This function handles EXTI7 interrupt.
+ * @retval  None
+ ************************************************************************************************************/
+void EXTI7_IRQHandler(void)
+{
+	extern volatile uint8_t Ov7725_vsync;
+	
+	/* 检查EXTI_Line7线路上的中断请求是否发送到了NVIC */
+	if(EXTI_GetSWCmdStatus(EXTI_CHANNEL_7) != RESET)
+	{
+        if( Ov7725_vsync == 0 )
+        {
+            FIFO_WRST_L(); 	                      //拉低使FIFO写(数据from摄像头)指针复位
+            FIFO_WE_H();	                        //拉高使FIFO写允许
+            
+            Ov7725_vsync = 1;	   	
+            FIFO_WE_H();                          //使FIFO写允许
+            FIFO_WRST_H();                        //允许使FIFO写(数据from摄像头)指针运动
+        }
+        else if( Ov7725_vsync == 1 )
+        {
+            FIFO_WE_L();                          //拉低使FIFO写暂停
+            Ov7725_vsync = 2;
+        }        
+        EXTI_ClearWakeupFlag (EXTI_CHANNEL_7);		    //清除EXTI_Line0线路挂起标志位        		
+	}
+	
+}
 /**
   * @}
   */

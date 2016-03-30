@@ -9,74 +9,57 @@
 #include "delay.h"
 #include "sdfs_app.h"
 #include "rtc.h"
-
-
-/** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
-  * @{
-  */
-
-/** @addtogroup GPIO_Examples GPIO
-  * @{
-  */
-
-/** @addtogroup InputOutput
-  * @{
-  */
-
-
-/* Global functions ----------------------------------------------------------------------------------------*/
-
-
-
-/*********************************************************************************************************//**
-* @brief  Configures GPTM0 for time estimate.
-* @retval None
-***********************************************************************************************************/
-
-
-
-
+#include "ov7725.h"
 
 /**
  * @brief 主函数
  */
 int main(void)
-{
-	extern vu32 gwTimeDisplay;
-	
+{	
+	/* ov7725 场中断变量 */
+	extern volatile uint8_t Ov7725_vsync ;
+
 	/* Initialize devices */
 	SYSTICK_Config();
 	Init_USART(HT_USART0,115200);		
 	Init_USART(HT_USART1,115200);		
-
 	PDMA_Configuration();
 	SD_SPI_Init();
 	TryInitSD();
+	Ov7725_GPIO_Config();
+
+	/* ov7725 寄存器配置初始化 */
+	while(Ov7725_Init() != SUCCESS)
+	{
+		printf("Init ov7725 error.\r\n");
+		delay_ms(500);
+	}
+	printf("Init ov7725 success.\r\n");
 	
-	sdfs_app_test();
+	/* ov7725 场信号线初始化 */
+	VSYNC_Init();	
+	Ov7725_vsync = 0;
 	
 	/* main loop */           	
 	while (1)
 	{
-		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
-		{
-			Axis_DataTransfrom();
-			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
-			if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
-			{
-				USART_SendData(HT_USART1,0x55);
-			}
-		}
+//		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
+//		{
+//			Axis_DataTransfrom();
+//			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
+//			if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
+//			{
+//				USART_SendData(HT_USART1,0x55);
+//			}
+//		}
 		
-		if (gwTimeDisplay == 1)
-		{
-			/* Display current time.
-				Current time is sum of the RTC counter value and the init time(stored in PWRCU_BAKREG_1 register).
-				The init time (PWRCU_BAKREG_1 register) will be clear if the RTC Match flag(CMFLAG) is set.
-				Refer to RTC_IRQHandler. */
-			Time_Display(RTC_GetCounter() + PWRCU_ReadBackupRegister(PWRCU_BAKREG_1));
-			gwTimeDisplay = 0;
-		}
+//		SCL_OUT_MOTE;
+//		SCL_IN_MOTE;
+//		SCL_H;
+//		
+//		delay_ms(500);
+//		printf("SCL input value : %d\r\n", SCL_read);
+//		printf("SCL output value : %d\r\n", GPIO_ReadOutBit(HT_GPIOD, GPIO_PIN_4));		
 	}
 }
 

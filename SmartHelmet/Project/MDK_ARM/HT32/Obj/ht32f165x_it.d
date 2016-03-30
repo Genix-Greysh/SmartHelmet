@@ -38,3 +38,11 @@
 .\ht32\obj\ht32f165x_it.o: ..\..\library\HT32F1655_56_Driver\inc\ht32_cm3_misc.h
 .\ht32\obj\ht32f165x_it.o: ..\..\library\HT32F1655_56_Driver\inc\ht32.h
 .\ht32\obj\ht32f165x_it.o: ..\..\library\HT32F1655_56_Driver\inc\ht32_serial.h
+.\ht32\obj\ht32f165x_it.o: ..\..\Driver\OV7725\ov7725.h
+.\ht32\obj\ht32f165x_it.o: ..\..\Driver\SCCB\sccb.h
+.\ht32\obj\ht32f165x_it.o: ..\..\utilities\ht32_board.h
+.\ht32\obj\ht32f165x_it.o: ..\..\utilities\HT32_board/ht32f1656_dvb.h
+.\ht32\obj\ht32f165x_it.o: ..\..\utilities\common/i2c_eeprom.h
+.\ht32\obj\ht32f165x_it.o: ..\..\utilities\ht32_board.h
+.\ht32\obj\ht32f165x_it.o: ..\..\utilities\common/spi_flash.h
+.\ht32\obj\ht32f165x_it.o: ..\..\utilities\common/ebi_lcd.h

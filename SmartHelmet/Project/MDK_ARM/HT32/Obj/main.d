@@ -54,3 +54,5 @@
 .\ht32\obj\main.o: ..\..\ff11a\src\ffconf.h
 .\ht32\obj\main.o: ..\..\User\sdfs_app\sdfs_app.h
 .\ht32\obj\main.o: ..\..\Driver\RTC\rtc.h
+.\ht32\obj\main.o: ..\..\Driver\OV7725\ov7725.h
+.\ht32\obj\main.o: ..\..\Driver\SCCB\sccb.h

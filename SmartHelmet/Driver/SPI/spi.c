@@ -15,7 +15,7 @@ void SPI0_Init(void)
 {
 	CKCU_PeripClockConfig_TypeDef CKCUClock = {{0}};
 
-	/* Enable PA & SPI0 */
+	/* Enable PD & SPI0 */
 	CKCUClock.Bit.PD         = 1;
 	CKCUClock.Bit.SPI0       = 1;
 	CKCU_PeripClockConfig(CKCUClock, ENABLE);
