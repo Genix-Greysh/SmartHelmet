@@ -80,11 +80,11 @@ int main(void)
 				}
 			}
 	
-			}
 			flag = FALSE;
+		}
+		flag = TRUE;
+		delay_ms(500);
 	}
-	delay_ms(500);
-	flag = TRUE;
 }
 
 #if (HT32_LIB_DEBUG == 1)
