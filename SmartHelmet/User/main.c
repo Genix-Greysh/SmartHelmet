@@ -123,8 +123,6 @@ int main(void)
 	}
 }
 
-
-
 #if (HT32_LIB_DEBUG == 1)
 /*********************************************************************************************************//**
   * @brief  Report both the error name of the source file and the source line number.
