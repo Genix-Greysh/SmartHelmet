@@ -11,8 +11,7 @@ const char *root = "";
  * @brief 	测试文件系统是否正常工作
  * @param  
  * @retval 	None
- */
-void sdfs_app_test(void)
+ */void sdfs_app_test(void)
 {
 	/* 文件对象 */
     FIL fil;

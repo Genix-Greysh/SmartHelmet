@@ -8,6 +8,7 @@
 ".\ht32\obj\delay.o"
 ".\ht32\obj\rtc.o"
 ".\ht32\obj\mpu6050.o"
+".\ht32\obj\pwcru.o"
 ".\ht32\obj\diskio.o"
 ".\ht32\obj\ff.o"
 ".\ht32\obj\ht32_op.o"

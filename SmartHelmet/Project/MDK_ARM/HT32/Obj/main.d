@@ -2,12 +2,12 @@
 .\ht32\obj\main.o: ..\..\library\HT32F1655_56_Driver\inc\ht32.h
 .\ht32\obj\main.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h
 .\ht32\obj\main.o: ..\..\library\CMSIS\Include\core_cm3.h
-.\ht32\obj\main.o: E:\Program Files\KeilMDK\ARM\ARMCC\bin\..\include\stdint.h
+.\ht32\obj\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\ht32\obj\main.o: ..\..\library\CMSIS\Include\core_cmInstr.h
 .\ht32\obj\main.o: ..\..\library\CMSIS\Include\core_cmFunc.h
 .\ht32\obj\main.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\system_ht32f1655_56.h
 .\ht32\obj\main.o: ..\..\library\HT32F1655_56_Driver\inc\ht32f1655_56_lib.h
-.\ht32\obj\main.o: E:\Program Files\KeilMDK\ARM\ARMCC\bin\..\include\stdio.h
+.\ht32\obj\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\ht32\obj\main.o: ..\..\User\ht32f1655_56_conf.h
 .\ht32\obj\main.o: ..\..\library\HT32F1655_56_Driver\inc\ht32f1655_56_usart.h
 .\ht32\obj\main.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h
@@ -54,3 +54,4 @@
 .\ht32\obj\main.o: ..\..\ff11a\src\ffconf.h
 .\ht32\obj\main.o: ..\..\User\sdfs_app\sdfs_app.h
 .\ht32\obj\main.o: ..\..\Driver\RTC\rtc.h
+.\ht32\obj\main.o: ..\..\Driver\PWCRU\pwcru.h

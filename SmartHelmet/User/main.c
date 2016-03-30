@@ -9,6 +9,10 @@
 #include "delay.h"
 #include "sdfs_app.h"
 #include "rtc.h"
+#include "pwcru.h"
+
+//全局变量 
+extern bool flag;  			//用于检测是否跳出第二级while循环
 
 
 /** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
@@ -35,14 +39,14 @@
 
 
 
-
-
 /**
  * @brief 主函数
  */
+
 int main(void)
 {
 	extern vu32 gwTimeDisplay;
+	flag = FALSE;
 	
 	/* Initialize devices */
 	SYSTICK_Config();
@@ -54,30 +58,30 @@ int main(void)
 	TryInitSD();
 	
 	sdfs_app_test();
-	RTC_ConfigOnline();
+	pwrcu_init();
 	
-	/* main loop */           	
-	while (1)
-	{
-		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
+	/* main loop */ 
+	while(1)
+	{	
+	  Enter_DeepSleepMode();
+	
+		while (flag == TRUE)
 		{
-			Axis_DataTransfrom();
-			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
-			if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
+			if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
 			{
-				USART_SendData(HT_USART1,0x55);
+				Axis_DataTransfrom();
+				PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
+				if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
+				{
+					USART_SendData(HT_USART1,0x55);
+				}
 			}
-		}
-		
-		if (gwTimeDisplay == 1)
-		{
-			/* Display current time.
-				Current time is sum of the RTC counter value and the init time(stored in PWRCU_BAKREG_1 register).
-				The init time (PWRCU_BAKREG_1 register) will be clear if the RTC Match flag(CMFLAG) is set.
-				Refer to RTC_IRQHandler. */
-			Time_Display(RTC_GetCounter() + PWRCU_ReadBackupRegister(PWRCU_BAKREG_1));
-			gwTimeDisplay = 0;
-		}
+	
+			}
+			flag = FALSE;
+	
+			delay_ms(500);
+			flag = TRUE;
 	}
 }
 
