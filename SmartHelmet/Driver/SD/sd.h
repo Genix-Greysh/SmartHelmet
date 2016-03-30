@@ -27,7 +27,7 @@
 **************************************************************/
 
 /**
-  * @brief 	调试开关
+  * @brief 	SD调试开关
   */
 #define SD_DEBUG_ON 1
 
@@ -123,8 +123,8 @@
 
 
 /**
-  * @brief	调试信息输出宏定义
-  */
+ * @brief	调试信息输出宏定义
+ */
 #if SD_DEBUG_ON
 	#define SD_DEBUG(fmt,args...) printf (fmt ,##args)
 #else

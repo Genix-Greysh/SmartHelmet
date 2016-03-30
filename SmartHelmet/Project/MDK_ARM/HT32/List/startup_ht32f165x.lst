@@ -484,8 +484,14 @@ ARM Macro Assembler    Page 8
               00000000 
               00000000 
 Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\ht32\o
+<<<<<<< HEAD
 bj\startup_ht32f165x.d -o.\ht32\obj\startup_ht32f165x.o -IG:\mdk474\ARM\RV31\IN
 C -IG:\mdk474\ARM\CMSIS\Include -IG:\mdk474\ARM\Inc\Holtek\HT32F1655_56 --prede
+=======
+bj\startup_ht32f165x.d -o.\ht32\obj\startup_ht32f165x.o -I"E:\Program Files\Kei
+lMDK\ARM\RV31\INC" -I"E:\Program Files\KeilMDK\ARM\CMSIS\Include" -I"E:\Program
+ Files\KeilMDK\ARM\Inc\Holtek\HT32F1655_56" --predefine="__EVAL SETA 1" --prede
+>>>>>>> ae74179df19587d4b704249c53599c146489e11b
 fine="__MICROLIB SETA 1" --list=.\ht32\list\startup_ht32f165x.lst startup_ht32f
 165x.s
 
@@ -1308,4 +1314,4 @@ Symbol: __main
       At line 136 in file startup_ht32f165x.s
 Comment: __main used once
 2 symbols
-415 symbols in table
+416 symbols in table
