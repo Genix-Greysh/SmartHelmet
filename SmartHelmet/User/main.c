@@ -79,10 +79,9 @@ int main(void)
 	
 			}
 			flag = FALSE;
-	
-			delay_ms(500);
-			flag = TRUE;
 	}
+	delay_ms(500);
+	flag = TRUE;
 }
 
 

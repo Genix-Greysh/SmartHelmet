@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\HT32\Obj\HT32.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\HT32\Obj\HT32.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Mon Mar 28 23:40:16 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed Mar 30 14:02:15 2016
 <BR><P>
 <H3>Maximum Stack Usage =        440 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -472,10 +472,10 @@ Global Symbols
 <P><STRONG><a name="[10]"></a>EVWUP_IRQHandler</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, ht32f165x_it.o(i.EVWUP_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = EVWUP_IRQHandler &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_WakeupEventConfig
+<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_WakeupEventConfig
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_GetWakeupFlagStatus
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearWakeupFlag
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_ht32f165x.o(RESET)
@@ -520,8 +520,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Enter_DeepSleepMode &rArr; PWRCU_DeepSleep1
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWRCU_DeepSleep1
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_WakeupEventConfig
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_WakeupEventConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -940,7 +940,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EVWUP_IRQHandler
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TryInitSD
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Enter_DeepSleepMode
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[a9]"></a>disk_initialize</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, diskio.o(i.disk_initialize))
@@ -1070,12 +1069,11 @@ Global Symbols
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 </UL>
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 166 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 154 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 440<LI>Call Chain = main &rArr; sdfs_app_test &rArr; f_printf &rArr; putc_bfd &rArr;  putc_bfd (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sdfs_app_test
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwrcu_init
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
