@@ -61,7 +61,7 @@
 	                                  FIFO_RCLK_L();\
 	                                  RGB565 = (GPIOB->IDR) & 0xff00;\
 	                                  FIFO_RCLK_H();\
-                                    FIFO_RCLK_L();\
+									  FIFO_RCLK_L();\
 	                                  RGB565 |= (GPIOB->IDR >>8) & 0x00ff;\
 	                                  FIFO_RCLK_H();\
                                     }while(0)

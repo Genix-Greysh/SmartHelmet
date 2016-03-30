@@ -10,15 +10,45 @@
 #include "sdfs_app.h"
 #include "rtc.h"
 #include "ov7725.h"
+#include "pwcru.h"
+
+//全局变量 
+extern bool flag;  			//用于检测是否跳出第二级while循环
+
+
+/** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
+  * @{
+  */
+
+/** @addtogroup GPIO_Examples GPIO
+  * @{
+  */
+
+/** @addtogroup InputOutput
+  * @{
+  */
+
+
+/* Global functions ----------------------------------------------------------------------------------------*/
+
+
+
+/*********************************************************************************************************//**
+* @brief  Configures GPTM0 for time estimate.
+* @retval None
+***********************************************************************************************************/
 
 /**
  * @brief 主函数
  */
+
 int main(void)
 {	
 	/* ov7725 场中断变量 */
 	extern volatile uint8_t Ov7725_vsync ;
-
+	extern vu32 gwTimeDisplay;
+	flag = FALSE;
+	
 	/* Initialize devices */
 	SYSTICK_Config();
 	Init_USART(HT_USART0,115200);		
@@ -60,10 +90,32 @@ int main(void)
 //		delay_ms(500);
 //		printf("SCL input value : %d\r\n", SCL_read);
 //		printf("SCL output value : %d\r\n", GPIO_ReadOutBit(HT_GPIOD, GPIO_PIN_4));		
+		pwrcu_init();
+	
+		/* main loop */ 
+		while(1)
+		{	
+		  Enter_DeepSleepMode();
+		
+			while (flag == TRUE)
+			{
+				if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
+				{
+					Axis_DataTransfrom();
+					PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
+					if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
+					{
+						USART_SendData(HT_USART1,0x55);
+					}
+				}
+		
+				flag = FALSE;
+			}
+			flag = TRUE;
+			delay_ms(500);
+		}
 	}
 }
-
-
 
 #if (HT32_LIB_DEBUG == 1)
 /*********************************************************************************************************//**

@@ -56,3 +56,4 @@
 .\ht32\obj\main.o: ..\..\Driver\RTC\rtc.h
 .\ht32\obj\main.o: ..\..\Driver\OV7725\ov7725.h
 .\ht32\obj\main.o: ..\..\Driver\SCCB\sccb.h
+.\ht32\obj\main.o: ..\..\Driver\PWCRU\pwcru.h

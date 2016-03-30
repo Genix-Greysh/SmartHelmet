@@ -28,6 +28,11 @@
 /* Includes ------------------------------------------------------------------------------------------------*/
 #include "ht32.h"
 #include "ov7725.h"
+#include "ht32_board.h"
+#include "delay.h"
+
+//全局函数
+bool flag = FALSE;			//用于检测是否跳出第二级while循环
 
 /** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
   * @{
@@ -133,21 +138,43 @@ void SysTick_Handler(void)
  *  - Set gwTimeDisplay to 1 to enable time update.
  *
  ************************************************************************************************************/
-void RTC_IRQHandler(void)
+//void RTC_IRQHandler(void)
+//{
+//  extern vu32 gwTimeDisplay;
+//  u8 bFlags;
+
+//  bFlags = RTC_GetFlagStatus();
+//  if((bFlags & 0x2) != 0x0) /* Match flag */
+//  {
+//    /* Reset RTC init time when Time is 23:59:59 */
+//    RTC_SetCompare(86400);
+//    PWRCU_WriteBackupRegister(PWRCU_BAKREG_1, 0);
+//  }
+
+//  /* Enable time update */
+//  gwTimeDisplay = 1;
+//}
+
+void EXTI1_IRQHandler(void)
 {
-  extern vu32 gwTimeDisplay;
-  u8 bFlags;
+	EXTI_ClearEdgeFlag(EXTI_CHANNEL_1);
+}
 
-  bFlags = RTC_GetFlagStatus();
-  if((bFlags & 0x2) != 0x0) /* Match flag */
+
+void EVWUP_IRQHandler(void)
+{
+  if (EXTI_GetWakeupFlagStatus(KEY1_BUTTON_EXTI_CHANNEL) )
   {
-    /* Reset RTC init time when Time is 23:59:59 */
-    RTC_SetCompare(86400);
-    PWRCU_WriteBackupRegister(PWRCU_BAKREG_1, 0);
-  }
+    /* Disable button EXTI Channel wakeup event to avoid re-entry                                           */
+    EXTI_WakeupEventConfig(KEY1_BUTTON_EXTI_CHANNEL, EXTI_WAKEUP_LOW_LEVEL, DISABLE);
+		/* Clear the Key Button EXTI channel event wakeup flag                                                  */
+		EXTI_ClearWakeupFlag(KEY1_BUTTON_EXTI_CHANNEL);
 
-  /* Enable time update */
-  gwTimeDisplay = 1;
+    /* Toggle LED2                                                                                          */
+//		GPIO_ClearOutBits(HT_GPIOC,GPIO_PIN_11);
+		delay_ms(500);
+		printf("WAKEUPBOTTON...\n");
+  }
 }
 
 

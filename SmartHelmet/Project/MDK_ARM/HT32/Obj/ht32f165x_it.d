@@ -46,3 +46,4 @@
 .\ht32\obj\ht32f165x_it.o: ..\..\utilities\ht32_board.h
 .\ht32\obj\ht32f165x_it.o: ..\..\utilities\common/spi_flash.h
 .\ht32\obj\ht32f165x_it.o: ..\..\utilities\common/ebi_lcd.h
+.\ht32\obj\ht32f165x_it.o: ..\..\Driver\DELAY\delay.h
