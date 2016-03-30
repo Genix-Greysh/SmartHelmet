@@ -5,12 +5,20 @@
 .\ht32\obj\diskio.o: ..\..\library\HT32F1655_56_Driver\inc\ht32.h
 .\ht32\obj\diskio.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h
 .\ht32\obj\diskio.o: ..\..\library\CMSIS\Include\core_cm3.h
+<<<<<<< HEAD
 .\ht32\obj\diskio.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+=======
+.\ht32\obj\diskio.o: G:\mdk474\ARM\ARMCC\bin\..\include\stdint.h
+>>>>>>> ff37b79040d625bdd43c4d1c67f2925221fee8bf
 .\ht32\obj\diskio.o: ..\..\library\CMSIS\Include\core_cmInstr.h
 .\ht32\obj\diskio.o: ..\..\library\CMSIS\Include\core_cmFunc.h
 .\ht32\obj\diskio.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\system_ht32f1655_56.h
 .\ht32\obj\diskio.o: ..\..\library\HT32F1655_56_Driver\inc\ht32f1655_56_lib.h
+<<<<<<< HEAD
 .\ht32\obj\diskio.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+=======
+.\ht32\obj\diskio.o: G:\mdk474\ARM\ARMCC\bin\..\include\stdio.h
+>>>>>>> ff37b79040d625bdd43c4d1c67f2925221fee8bf
 .\ht32\obj\diskio.o: ..\..\User\ht32f1655_56_conf.h
 .\ht32\obj\diskio.o: ..\..\library\HT32F1655_56_Driver\inc\ht32f1655_56_usart.h
 .\ht32\obj\diskio.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h
