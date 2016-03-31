@@ -16,7 +16,7 @@ void SCCB_GPIO_Config(void)
 
 	/* 配置PD4、PD5为输出引脚 */
 	GPIO_DirectionConfig(HT_GPIOD, GPIO_PIN_4 | GPIO_PIN_5, GPIO_DIR_OUT);
- 
+	
 	/* 使能PD4、PD5输入控制 */
 	GPIO_InputConfig(HT_GPIOD, GPIO_PIN_4 | GPIO_PIN_5, ENABLE);	
 }
@@ -42,7 +42,7 @@ static void SCCB_delay(void)
  * @param 	 
  * @retval 	None
  */
-static int SCCB_Start(void)
+ int SCCB_Start(void)
 {
 	SDA_H;
 	SCCB_delay();
@@ -128,7 +128,7 @@ static void SCCB_NoAck(void)
  */
 static int SCCB_WaitAck(void) 	
 {
-	int status = DISABLE;
+	int status;
 	
 	SCL_L;
 	SCCB_delay();
@@ -136,12 +136,10 @@ static int SCCB_WaitAck(void)
 	SCCB_delay();
 	SCL_H;
 	SCCB_delay();
-	SDA_IN_MODE;
 	if(SDA_read)
 		status = DISABLE;
 	else
 		status = ENABLE;
-	SDA_OUT_MODE;
 	SCL_L;
 	return status;
 }

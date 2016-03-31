@@ -112,6 +112,13 @@ int SCCB_WriteByte( uint16_t WriteAddress , uint8_t SendByte );
 int SCCB_ReadByte(uint8_t* pBuffer, uint16_t length, uint8_t ReadAddress);
 
 
+/**
+ * @brief	SCCBÆðÊ¼ÐÅºÅ
+ * @param 	 
+ * @retval 	None
+ */
+int SCCB_Start(void);
+
 /**************************************************************
 *        End-Multi-Include-Prevent Section
 **************************************************************/

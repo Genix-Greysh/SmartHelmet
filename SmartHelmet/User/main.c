@@ -41,7 +41,6 @@ extern bool flag;  			//用于检测是否跳出第二级while循环
 /**
  * @brief 主函数
  */
-
 int main(void)
 {	
 	/* ov7725 场中断变量 */
@@ -58,17 +57,17 @@ int main(void)
 	TryInitSD();
 	Ov7725_GPIO_Config();
 
-	/* ov7725 寄存器配置初始化 */
-	while(Ov7725_Init() != SUCCESS)
-	{
-		printf("Init ov7725 error.\r\n");
-		delay_ms(500);
-	}
-	printf("Init ov7725 success.\r\n");
-	
-	/* ov7725 场信号线初始化 */
-	VSYNC_Init();	
-	Ov7725_vsync = 0;
+//	/* ov7725 寄存器配置初始化 */
+//	while(Ov7725_Init() != SUCCESS)
+//	{
+//		printf("Init ov7725 error.\r\n");
+//		delay_ms(500);
+//	}
+//	printf("Init ov7725 success.\r\n");
+//	
+//	/* ov7725 场信号线初始化 */
+//	VSYNC_Init();	
+//	Ov7725_vsync = 0;
 	
 	/* main loop */           	
 	while (1)
@@ -83,37 +82,30 @@ int main(void)
 //			}
 //		}
 		
-//		SCL_OUT_MOTE;
-//		SCL_IN_MOTE;
-//		SCL_H;
-//		
-//		delay_ms(500);
-//		printf("SCL input value : %d\r\n", SCL_read);
-//		printf("SCL output value : %d\r\n", GPIO_ReadOutBit(HT_GPIOD, GPIO_PIN_4));		
-		pwrcu_init();
-	
+//		pwrcu_init();
+//	
 		/* main loop */ 
-		while(1)
-		{	
-		  Enter_DeepSleepMode();
-		
-			while (flag == TRUE)
-			{
-				if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
-				{
-					Axis_DataTransfrom();
-					PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
-					if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
-					{
-						USART_SendData(HT_USART1,0x55);
-					}
-				}
-		
-				flag = FALSE;
-			}
-			flag = TRUE;
-			delay_ms(500);
-		}
+//		while(1)
+//		{	
+//		  Enter_DeepSleepMode();
+//		
+//			while (flag == TRUE)
+//			{
+//				if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
+//				{
+//					Axis_DataTransfrom();
+//					PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
+//					if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
+//					{
+//						USART_SendData(HT_USART1,0x55);
+//					}
+//				}
+//		
+//				flag = FALSE;
+//			}
+//			flag = TRUE;
+//			delay_ms(500);
+//		}
 	}
 }
 
