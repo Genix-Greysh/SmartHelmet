@@ -42,10 +42,6 @@
 /**************************************************************
 *        Struct Define Section
 **************************************************************/
-typedef enum{
-	X_AXIS, Y_AXIS, Z_AXIS
-}AXIS;
-
 extern u8 MPU_Data [33];
 
 extern float Axis[3];

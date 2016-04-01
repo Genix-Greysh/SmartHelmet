@@ -434,9 +434,16 @@ ARM Macro Assembler    Page 7
   235 00000000         
   236 00000000                 END
 Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\ht32\o
+<<<<<<< HEAD
 bj\ht32_op.d -o.\ht32\obj\ht32_op.o -IG:\mdk474\ARM\RV31\INC -IG:\mdk474\ARM\CM
 SIS\Include -IG:\mdk474\ARM\Inc\Holtek\HT32F1655_56 --predefine="__MICROLIB SET
 A 1" --list=.\ht32\list\ht32_op.lst ..\MDK_ARM\ht32_op.s
+=======
+bj\ht32_op.d -o.\ht32\obj\ht32_op.o -I"D:\Program Files\Keil\ARM\RV31\INC" -I"D
+:\Program Files\Keil\ARM\CMSIS\Include" -I"D:\Program Files\Keil\ARM\Inc\Holtek
+\HT32F1655_56" --predefine="__MICROLIB SETA 1" --list=.\ht32\list\ht32_op.lst .
+.\MDK_ARM\ht32_op.s
+>>>>>>> 8a719a63ef021afe8cfdc9fcaa6393497c579b67
 
 
 
