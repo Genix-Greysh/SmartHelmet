@@ -459,6 +459,8 @@
               <FileName>sccb.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Driver\SCCB\sccb.c</FilePath>
+            </File>
+            <File>
               <FileName>MPU6050.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Driver\MPU6050\MPU6050.c</FilePath>

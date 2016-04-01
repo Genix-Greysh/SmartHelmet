@@ -32,32 +32,58 @@
 **************************************************************/
 #include "ht32.h"
 #include "ht32_board.h"
+#include "math.h"
 
 /**************************************************************
 *        Macro Define Section
 **************************************************************/
-
+#define PI 3.1415926
 
 /**************************************************************
 *        Struct Define Section
 **************************************************************/
+typedef enum{
+	X_AXIS, Y_AXIS, Z_AXIS
+}AXIS;
 
-extern u8 MPU_Data [33] ;
+extern u8 MPU_Data [33];
 
-extern float X_Axis ;
-extern float Y_Axis ;
-extern float Z_Axis ;
+extern float Axis[3];
+extern float Angle[3];
+extern float Angular[3];
+extern float FinalAxis[3];
 
 /**************************************************************
 *        Prototype Declare Section
 **************************************************************/
 
 /**
+ * @brief  获得三个方向轴的角度
+ * @param  
+ * @retval None
+ */
+void Angle_DataTransfrom(void);
+
+/**
+ * @brief  得出三个方向轴的角速度
+ * @param  
+ * @retval None
+ */
+void Angular_DataTransFrom(void);
+
+/**
  * @brief  得出三个方向轴的加速度
  * @param  
  * @retval None
  */
-void Axis_DataTransfrom(void );
+void Axis_DataTransfrom(void);
+
+/**
+ * @brief  处理获得的加速度，去除基准值
+ * @param  
+ * @retval None
+ */
+void Axis_GetFinalData(void);
 
 /**
  * @brief  PDMA的初始化。
@@ -66,6 +92,11 @@ void Axis_DataTransfrom(void );
  */
 void PDMA_Configuration(void);
 
+/**
+ * @brief  		处理旋转后加速度的消除平衡问题
+ * @param  		void
+ */
+void DealWithRotation(void);
 /**************************************************************
 *        End-Multi-Include-Prevent Section
 **************************************************************/

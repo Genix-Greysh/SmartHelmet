@@ -35,7 +35,7 @@
 
 
 
-
+#define Square(x) ((x) * (x))
 
 /**
  * @brief 主函数
@@ -58,14 +58,19 @@ int main(void)
 	/* main loop */           	
 	while (1)
 	{
+		//delay_ms(1000);
 		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
 		{
-			Axis_DataTransfrom();
-			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
-			if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
+			if(MPU_Data[0] == 0x55)
 			{
-				USART_SendData(HT_USART1,0x55);
+				Axis_GetFinalData();	//获得最终的加速度
+				if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2])> 1.0)
+				{
+					USART_SendData(HT_USART1, 0x55);
+				}
 			}
+			
+			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
 		}
 		
 		if (gwTimeDisplay == 1)
