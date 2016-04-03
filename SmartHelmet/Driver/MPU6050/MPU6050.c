@@ -49,14 +49,19 @@ void PDMA_Configuration(void)
  */
 void Axis_DataTransfrom(void)
 {
-	int i;
+	int i, j;
 	for(i = 0 ; i < 3; i++)
 	{			
 		if(MPU_Data[i * 11 + 1] == 0x51)
 		{
-			Axis[0] = ((short)(MPU_Data[3 + i * 11] << 8 | MPU_Data[2 + i * 11])) / 32768.0 * 16;		//X轴加速度	 
-			Axis[1] = ((short)(MPU_Data[5 + i * 11] << 8 | MPU_Data[4 + i * 11])) / 32768.0 * 16;    	//Y轴加速度
-			Axis[2] = ((short)(MPU_Data[7 + i * 11] << 8 | MPU_Data[6 + i * 11])) / 32768.0 * 16;    	//Z轴加速度		
+			for(j = 0; j < 3; ++j)
+				Axis[j] = ((short)(MPU_Data[3 + 2 * j + i * 11] << 8 | MPU_Data[2 + j * 2 + i * 11])) / 32768.0 * 16;
+				
+			return;
+				
+//			Axis[0] = ((short)(MPU_Data[3 + i * 11] << 8 | MPU_Data[2 + i * 11])) / 32768.0 * 16;		//X轴加速度	 
+//			Axis[1] = ((short)(MPU_Data[5 + i * 11] << 8 | MPU_Data[4 + i * 11])) / 32768.0 * 16;    	//Y轴加速度
+//			Axis[2] = ((short)(MPU_Data[7 + i * 11] << 8 | MPU_Data[6 + i * 11])) / 32768.0 * 16;    	//Z轴加速度		
 		}
 	}
 }
@@ -68,14 +73,19 @@ void Axis_DataTransfrom(void)
  */
 void Angular_DataTransFrom(void)
 {
-	int i;
+	int i, j;
 	for(i = 0 ; i < 3; i++)
 	{			
 		if(MPU_Data[i * 11 + 1] == 0x52)
 		{
-			Angular[0] = ((short)(MPU_Data[3 + i * 11] << 8 | MPU_Data[2 + i * 11])) / 32768.0 * 2000;	//X轴角速度	 
-			Angular[1] = ((short)(MPU_Data[5 + i * 11] << 8 | MPU_Data[4 + i * 11])) / 32768.0 * 2000;    //Y轴角速度
-			Angular[2] = ((short)(MPU_Data[7 + i * 11] << 8 | MPU_Data[6 + i * 11])) / 32768.0 * 2000;    //Z轴角速度		
+			for(j = 0; j < 3; ++j)
+				Angular[j] = ((short)(MPU_Data[3 + 2 * j + i * 11] << 8 | MPU_Data[2 + j * 2 + i * 11])) / 32768.0 * 2000;
+					
+		return;
+					
+//			Angular[0] = ((short)(MPU_Data[3 + i * 11] << 8 | MPU_Data[2 + i * 11])) / 32768.0 * 2000;		//X轴角速度	 
+//			Angular[1] = ((short)(MPU_Data[5 + i * 11] << 8 | MPU_Data[4 + i * 11])) / 32768.0 * 2000;		//Y轴角速度
+//			Angular[2] = ((short)(MPU_Data[7 + i * 11] << 8 | MPU_Data[6 + i * 11])) / 32768.0 * 2000;		//Z轴角速度		
 		}
 	}
 }
@@ -87,14 +97,18 @@ void Angular_DataTransFrom(void)
  */
 void Angle_DataTransfrom(void)
 {
-	int i;
+	int i, j;
 	for(i = 0; i < 3; i++)
 	{
 		if(MPU_Data[i * 11 + 1] == 0x53)
 		{
-			Angle[0] = ((short)(MPU_Data[3 + i * 11] << 8) | MPU_Data[2 + i * 11]) / 32768.0 * 180;	//X轴角度
-			Angle[1] = ((short)(MPU_Data[5 + i * 11] << 8) | MPU_Data[4 + i * 11]) / 32768.0 * 180;	//Y轴角度
-			Angle[2] = ((short)(MPU_Data[7 + i * 11] << 8) | MPU_Data[6 + i * 11]) / 32768.0 * 180;	//Z轴角度
+			for(j = 0; j < 3; ++j)
+				Angle[j] = ((short)(MPU_Data[3 + 2 * j + i * 11] << 8 | MPU_Data[2 + j * 2 + i * 11])) / 32768.0 * 180;
+					
+			return;
+//			Angle[0] = ((short)(MPU_Data[3 + i * 11] << 8) | MPU_Data[2 + i * 11]) / 32768.0 * 180;	//X轴角度
+//			Angle[1] = ((short)(MPU_Data[5 + i * 11] << 8) | MPU_Data[4 + i * 11]) / 32768.0 * 180;	//Y轴角度
+//			Angle[2] = ((short)(MPU_Data[7 + i * 11] << 8) | MPU_Data[6 + i * 11]) / 32768.0 * 180;	//Z轴角度
 		}
 	}
 }
@@ -122,12 +136,13 @@ void Axis_GetFinalData(void)
  */
 bool IsAccident(void)
 {
-	Axis_GetFinalData();
+	Axis_GetFinalData();	//收集数据
 	
-	if(Axis[2] > 0.520)
-		return TRUE;
-	else
-		return FALSE;
+	if(fabs(Axis[0]) > 5.0 || fabs(Axis[1]) > 5.0 || fabs(Angular[2]) > 800.0)
+		if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]) > 10.0)
+			return TRUE;
+	
+	return FALSE;
 }
 
 /**
@@ -166,7 +181,7 @@ static void GetAcceleration(float matrix[9], float originCoord[3], float finalCo
 	for(i = 0; i < 3; ++i)
 	{
 		finalCoord[i] = 0.0;
-		for(j = 0; j < 3; ++j)
+		for(j = 0; j < 3; ++j)//矩阵右乘
 		{
 			finalCoord[i] += originCoord[j] * MATRIX(j, i);
 		}
