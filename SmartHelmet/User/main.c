@@ -15,9 +15,12 @@
 /**
  * @brief 主函数
  */
+/**Tested Fine**/
+ 
 int main(void)
 {	
-	int sysWorking = TRUE;
+	
+	bool sysWorking = TRUE;
 	
 	/* Initialize devices */
 	SYSTICK_Config();
@@ -42,11 +45,14 @@ int main(void)
 	/* main loop */           	
 	while (1)
 	{	
+		printf("Enter Sleep Mode...\n");
+		Enter_DeepSleepMode();
+		sysWorking = TRUE;
+		
+		printf("Enter Main_loop...\n");
 		/* main loop */ 
 		while(sysWorking)	/* 系统开始工作 */
 		{	
-//			Enter_DeepSleepMode();
-		
 			if(PDMA_GetFlagStatus(PDMA_CH7, PDMA_FLAG_TC) == SET)
 			{
 				if(MPU_Data[0] == 0x55)
@@ -62,8 +68,10 @@ int main(void)
 	
 			sdfs_app_savePhoto();
 			delay_ms(100);
+		
+			if ( GPIO_ReadInBit(HT_GPIOE, GPIO_PIN_1) == 1)   
+					sysWorking = FALSE;
 		}
-//		sysWorking = FALSE;
 	}
 }
 
