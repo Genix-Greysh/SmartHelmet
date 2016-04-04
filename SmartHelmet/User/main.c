@@ -25,7 +25,7 @@ int main(void)
 	Init_USART(HT_USART1,115200);		
 	PDMA_Configuration();
 
-	pwrcu_init();
+	
 	
 	/* Init SD and mount it */
 	SD_SPI_Init();
@@ -37,13 +37,15 @@ int main(void)
 	Ov7725_TryInit();
 	Ov7725_VSYNC_Init();		
 	
+	pwrcu_init();
+	
 	/* main loop */           	
 	while (1)
 	{	
 		/* main loop */ 
 		while(sysWorking)	/* 系统开始工作 */
 		{	
-			Enter_DeepSleepMode();
+//			Enter_DeepSleepMode();
 		
 			if(PDMA_GetFlagStatus(PDMA_CH7, PDMA_FLAG_TC) == SET)
 			{
@@ -52,7 +54,7 @@ int main(void)
 					Axis_GetFinalData();	//获得最终的加速度
 					if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2])> 1.0)
 					{
-						putchar(0x55);
+						printf("MPU6050 Test OK!\r\n");
 					}
 				}			
 				PDMA_ClearFlag(PDMA_CH7, PDMA_INT_TC);
@@ -61,7 +63,7 @@ int main(void)
 			sdfs_app_savePhoto();
 			delay_ms(100);
 		}
-		sysWorking = FALSE;
+//		sysWorking = FALSE;
 	}
 }
 
