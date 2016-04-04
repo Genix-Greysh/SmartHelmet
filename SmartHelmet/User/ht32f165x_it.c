@@ -31,21 +31,15 @@
 #include "ht32_board.h"
 #include "delay.h"
 
-//全局函数
-bool flag = FALSE;			//用于检测是否跳出第二级while循环
 
-/** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
-  * @{
-  */
+/* Macro define -------------------------------------------*/
+#define DEBUFG_ON 1
 
-/** @addtogroup GPIO_Examples GPIO
-  * @{
-  */
-
-/** @addtogroup InputOutput
-  * @{
-  */
-
+#if DEBUFG_ON
+	#define DEBUG(fmt,args...) printf(fmt ,##args)
+#else
+	#define DEBUG(fmt,args...) 
+#endif
 
 /* Global functions ----------------------------------------------------------------------------------------*/
 /*********************************************************************************************************//**
@@ -166,11 +160,10 @@ void EVWUP_IRQHandler(void)
   if (EXTI_GetWakeupFlagStatus(KEY1_BUTTON_EXTI_CHANNEL) )
   {
     /* Disable button EXTI Channel wakeup event to avoid re-entry                                           */
-    EXTI_WakeupEventConfig(KEY1_BUTTON_EXTI_CHANNEL, EXTI_WAKEUP_LOW_LEVEL, DISABLE);
+		EXTI_WakeupEventConfig(KEY1_BUTTON_EXTI_CHANNEL, EXTI_WAKEUP_LOW_LEVEL, DISABLE);
 		/* Clear the Key Button EXTI channel event wakeup flag                                                  */
 		EXTI_ClearWakeupFlag(KEY1_BUTTON_EXTI_CHANNEL);
 
-    /* Toggle LED2                                                                                          */
 //		GPIO_ClearOutBits(HT_GPIOC,GPIO_PIN_11);
 		delay_ms(500);
 		printf("WAKEUPBOTTON...\n");
@@ -179,7 +172,7 @@ void EVWUP_IRQHandler(void)
 
 
 
-/*********************************************************************************************************//**
+/*********************************************************************************************************//** 
  * @brief   This function handles EXTI7 interrupt.
  * @retval  None
  ************************************************************************************************************/
@@ -187,35 +180,26 @@ void EXTI7_IRQHandler(void)
 {
 	extern volatile uint8_t Ov7725_vsync;
 	
-	/* 检查EXTI_Line7线路上的中断请求是否发送到了NVIC */
-	if(EXTI_GetSWCmdStatus(EXTI_CHANNEL_7) != RESET)
+	/* 检查 EXTI_Line7线路上的中断请求是否发送到了NVIC */
+	if(EXTI_GetEdgeStatus(EXTI_CHANNEL_7, EXTI_NEGATIVE_EDGE) != RESET)
 	{
         if( Ov7725_vsync == 0 )
         {
             FIFO_WRST_L(); 	                      //拉低使FIFO写(数据from摄像头)指针复位
-            FIFO_WE_H();	                        //拉高使FIFO写允许
+            FIFO_WE_H();	                      //拉高使FIFO写允许
             
             Ov7725_vsync = 1;	   	
             FIFO_WE_H();                          //使FIFO写允许
             FIFO_WRST_H();                        //允许使FIFO写(数据from摄像头)指针运动
-        }
+		}
         else if( Ov7725_vsync == 1 )
         {
             FIFO_WE_L();                          //拉低使FIFO写暂停
             Ov7725_vsync = 2;
-        }        
-        EXTI_ClearWakeupFlag (EXTI_CHANNEL_7);		    //清除EXTI_Line0线路挂起标志位        		
+			DEBUG("Picture detected.\r\n");
+        }
 	}
 	
+	/* Clear the specified EXTI channel edge flag */
+	EXTI_ClearEdgeFlag(EXTI_CHANNEL_7);
 }
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */

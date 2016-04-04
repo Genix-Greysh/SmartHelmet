@@ -362,7 +362,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HT32_DRIVER, USE_HT32F1656_DVB</Define>
               <Undefine></Undefine>
-              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI;..\..\Driver\SD;..\..\ff11a\src;..\..\Driver\DELAY;..\..\User\sdfs_app;..\..\Driver\RTC;..\..\Driver\MPU6050;..\..\Driver\OV7725;..\..\Driver\SCCB;..\..\Driver\PWCRU</IncludePath>
+              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI;..\..\Driver\SD;..\..\ff11a\src;..\..\Driver\DELAY;..\..\User\sdfs_app;..\..\Driver\RTC;..\..\Driver\MPU6050;..\..\Driver\OV7725;..\..\Driver\OV7670;..\..\Driver\SCCB;..\..\Driver\PWCRU;..\..\User\sdfs_app;..\..\User\bmp</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

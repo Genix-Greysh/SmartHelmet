@@ -12,7 +12,7 @@
 *        Abstract Description   :	offer API of SD card
 *
 *--------------------------------Revision History--------------------------------------
-*      	No      version     Data        	Revised By      Item        Description
+*      	No      version     Date        	Revised By      Item        Description
 *       1       v1.0        2016/3/16       Gaunthan                    Create this file
 *		2		v2.0		2016/3/20		Gaunthan		fix			成功移植到HT开发板
 ***************************************************************************************/
@@ -199,7 +199,7 @@ u8 SD_RecvData(u8 *buf,u16 len);
  * @return 	1 初始化成功
 			0 初始化失败
  */
-u8 TryInitSD(void);
+u8 SD_TryInit(void);
 
 
 /**
@@ -207,7 +207,7 @@ u8 TryInitSD(void);
  * @param 	sector 扇区号
  * @return 	None
  */
-void ViewSector(u8 sector);
+void SD_ViewSector(u8 sector);
 
 
 /**************************************************************

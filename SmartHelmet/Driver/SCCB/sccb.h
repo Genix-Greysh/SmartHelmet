@@ -38,8 +38,9 @@
 **************************************************************/
 
 /*设备地址定义*/
-#define DEV_ADR  ADDR_OV7725 			 
-#define ADDR_OV7725   0x42
+#define DEV_ADR  OV_CAMERA_WRITE 			 
+#define OV_CAMERA_WRITE 0x42
+#define OV_CAMERA_READ 0x43
 
 
 /* 总线时序操作宏。其中，SCL为PD4、SDA为PD5 */

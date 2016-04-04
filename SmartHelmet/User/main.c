@@ -12,84 +12,41 @@
 #include "ov7725.h"
 #include "pwcru.h"
 
-//全局变量 
-extern bool flag;  			//用于检测是否跳出第二级while循环
-
-
-/** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
-  * @{
-  */
-
-/** @addtogroup GPIO_Examples GPIO
-  * @{
-  */
-
-/** @addtogroup InputOutput
-  * @{
-  */
-
-
-/* Global functions ----------------------------------------------------------------------------------------*/
-
-
-
-/*********************************************************************************************************//**
-* @brief  Configures GPTM0 for time estimate.
-* @retval None
-***********************************************************************************************************/
-
 /**
  * @brief 主函数
  */
 int main(void)
 {	
-	/* ov7725 场中断变量 */
-	extern volatile uint8_t Ov7725_vsync ;
-	extern vu32 gwTimeDisplay;
-	flag = FALSE;
+	int sysWorking = FALSE;
 	
 	/* Initialize devices */
 	SYSTICK_Config();
 	Init_USART(HT_USART0,115200);		
 	Init_USART(HT_USART1,115200);		
 	PDMA_Configuration();
+	pwrcu_init();
+	
+	/* Init SD and mount it */
 	SD_SPI_Init();
-	TryInitSD();
+	SD_TryInit();
+	sdfs_app_mnt();
+	
+	/* Init Camera */
 	Ov7725_GPIO_Config();
-
-//	/* ov7725 寄存器配置初始化 */
-//	while(Ov7725_Init() != SUCCESS)
-//	{
-//		printf("Init ov7725 error.\r\n");
-//		delay_ms(500);
-//	}
-//	printf("Init ov7725 success.\r\n");
-//	
-//	/* ov7725 场信号线初始化 */
-//	VSYNC_Init();	
-//	Ov7725_vsync = 0;
+	Ov7725_TryInit();
+	Ov7725_VSYNC_Init();		
 	
 	/* main loop */           	
 	while (1)
-	{
-//		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
-//		{
-//			Axis_DataTransfrom();
-//			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
-//			if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
-//			{
-//				USART_SendData(HT_USART1,0x55);
-//			}
-//		}
-		
-//		pwrcu_init();
-//	
-		/* main loop */ 
+	{	
+		sdfs_app_savePhoto();
+		delay_ms(100);
+//		/* main loop */ 
 //		while(1)
 //		{	
-//		  Enter_DeepSleepMode();
+//			Enter_DeepSleepMode();
 //		
-//			while (flag == TRUE)
+//			while (sysWorking)
 //			{
 //				if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
 //				{
@@ -101,7 +58,7 @@ int main(void)
 //					}
 //				}
 //		
-//				flag = FALSE;
+//				sysWorking = FALSE;
 //			}
 //			flag = TRUE;
 //			delay_ms(500);
