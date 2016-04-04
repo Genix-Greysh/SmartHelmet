@@ -17,13 +17,14 @@
  */
 int main(void)
 {	
-	int sysWorking = FALSE;
+	int sysWorking = TRUE;
 	
 	/* Initialize devices */
 	SYSTICK_Config();
 	Init_USART(HT_USART0,115200);		
 	Init_USART(HT_USART1,115200);		
 	PDMA_Configuration();
+
 	pwrcu_init();
 	
 	/* Init SD and mount it */
@@ -39,30 +40,28 @@ int main(void)
 	/* main loop */           	
 	while (1)
 	{	
-		sdfs_app_savePhoto();
-		delay_ms(100);
-//		/* main loop */ 
-//		while(1)
-//		{	
-//			Enter_DeepSleepMode();
-//		
-//			while (sysWorking)
-//			{
-//				if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
-//				{
-//					Axis_DataTransfrom();
-//					PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
-//					if( X_Axis*X_Axis+Y_Axis*Y_Axis+Z_Axis*Z_Axis >150)
-//					{
-//						USART_SendData(HT_USART1,0x55);
-//					}
-//				}
-//		
-//				sysWorking = FALSE;
-//			}
-//			flag = TRUE;
-//			delay_ms(500);
-//		}
+		/* main loop */ 
+		while(sysWorking)	/* 系统开始工作 */
+		{	
+			Enter_DeepSleepMode();
+		
+			if(PDMA_GetFlagStatus(PDMA_CH7, PDMA_FLAG_TC) == SET)
+			{
+				if(MPU_Data[0] == 0x55)
+				{
+					Axis_GetFinalData();	//获得最终的加速度
+					if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2])> 1.0)
+					{
+						putchar(0x55);
+					}
+				}			
+				PDMA_ClearFlag(PDMA_CH7, PDMA_INT_TC);
+			}
+	
+			sdfs_app_savePhoto();
+			delay_ms(100);
+		}
+		sysWorking = FALSE;
 	}
 }
 
@@ -85,19 +84,3 @@ void assert_error(u8* filename, u32 uline)
   }
 }
 #endif
-
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-
-

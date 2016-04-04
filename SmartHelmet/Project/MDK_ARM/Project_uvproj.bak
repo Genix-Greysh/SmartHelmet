@@ -168,7 +168,7 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4104</DriverSelection>
+            <DriverSelection>4106</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\holtek-elink32.dll</Flash2>
@@ -451,11 +451,6 @@
               <FilePath>..\..\Driver\RTC\rtc.c</FilePath>
             </File>
             <File>
-              <FileName>ov7725.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\Driver\OV7725\ov7725.c</FilePath>
-            </File>
-            <File>
               <FileName>sccb.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Driver\SCCB\sccb.c</FilePath>
@@ -469,6 +464,11 @@
               <FileName>pwcru.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Driver\PWCRU\pwcru.c</FilePath>
+            </File>
+            <File>
+              <FileName>ov7725.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Driver\OV7725\ov7725.c</FilePath>
             </File>
           </Files>
         </Group>

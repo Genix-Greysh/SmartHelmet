@@ -168,7 +168,7 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4104</DriverSelection>
+            <DriverSelection>4106</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\holtek-elink32.dll</Flash2>
@@ -362,7 +362,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HT32_DRIVER, USE_HT32F1656_DVB</Define>
               <Undefine></Undefine>
-              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI;..\..\Driver\SD;..\..\ff11a\src;..\..\Driver\DELAY;..\..\User\sdfs_app;..\..\Driver\RTC;..\..\Driver\MPU6050;..\..\Driver\OV7725;..\..\Driver\OV7670;..\..\Driver\SCCB;..\..\Driver\PWCRU;..\..\User\sdfs_app;..\..\User\bmp</IncludePath>
+              <IncludePath>..\;..\..\library\HT32F1655_56_Driver\inc;..\..\library\CMSIS\Include;..\..\library\Device\Holtek\HT32F1655_56\Include;..\..\library\HT32_USBD_Library\inc;..\..\utilities;..\MDK_ARM;..\..\User;..\..\Driver\USART;..\..\Driver\SPI;..\..\Driver\SD;..\..\ff11a\src;..\..\Driver\DELAY;..\..\User\sdfs_app;..\..\Driver\RTC;..\..\Driver\MPU6050;..\..\Driver\OV7725;..\..\Driver\OV7670;..\..\Driver\SCCB;..\..\Driver\PWCRU;..\..\User\sdfs_app;..\..\User\Bluetooth</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -419,6 +419,11 @@
               <FileName>sdfs_app.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\sdfs_app\sdfs_app.c</FilePath>
+            </File>
+            <File>
+              <FileName>Bluetooth.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\Bluetooth\Bluetooth.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -45,6 +45,7 @@
 .\ht32\obj\main.o: ..\..\utilities\common/spi_flash.h
 .\ht32\obj\main.o: ..\..\utilities\common/ebi_lcd.h
 .\ht32\obj\main.o: ..\..\Driver\MPU6050\MPU6050.h
+.\ht32\obj\main.o: D:\Program Files\Keil\ARM\ARMCC\bin\..\include\math.h
 .\ht32\obj\main.o: ..\..\Driver\USART\usart.h
 .\ht32\obj\main.o: ..\..\Driver\SPI\spi.h
 .\ht32\obj\main.o: ..\..\Driver\SD\sd.h

@@ -45,3 +45,4 @@
 .\ht32\obj\mpu6050.o: ..\..\utilities\ht32_board.h
 .\ht32\obj\mpu6050.o: ..\..\utilities\common/spi_flash.h
 .\ht32\obj\mpu6050.o: ..\..\utilities\common/ebi_lcd.h
+.\ht32\obj\mpu6050.o: D:\Program Files\Keil\ARM\ARMCC\bin\..\include\math.h

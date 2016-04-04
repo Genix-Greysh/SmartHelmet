@@ -1,7 +1,7 @@
 #include "usart.h"
 
 /**
- * @brief  初始化串口0	
+ * @brief  初始化串口	
  * @param  
  * @retval None
  */
@@ -48,5 +48,4 @@ void Init_USART(HT_USART_TypeDef * usart , u32 baudRate)
 	USART_Init(usart, &USART_InitStructure);
 	USART_TxCmd(usart, ENABLE);
 	USART_RxCmd(usart, ENABLE);
-
 }
