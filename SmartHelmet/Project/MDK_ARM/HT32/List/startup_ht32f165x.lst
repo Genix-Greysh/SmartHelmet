@@ -484,10 +484,16 @@ ARM Macro Assembler    Page 8
               00000000 
               00000000 
 Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\ht32\o
+<<<<<<< HEAD
 bj\startup_ht32f165x.d -o.\ht32\obj\startup_ht32f165x.o -IG:\mdk474\ARM\RV31\IN
 C -IG:\mdk474\ARM\CMSIS\Include -IG:\mdk474\ARM\Inc\Holtek\HT32F1655_56 --prede
 fine="__MICROLIB SETA 1" --list=.\ht32\list\startup_ht32f165x.lst startup_ht32f
 165x.s
+=======
+bj\startup_ht32f165x.d -o.\ht32\obj\startup_ht32f165x.o -IC:\Keil\ARM\RV31\INC 
+-IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\Holtek\HT32F1655_56 --predefine="
+__MICROLIB SETA 1" --list=.\ht32\list\startup_ht32f165x.lst startup_ht32f165x.s
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
 
 
 

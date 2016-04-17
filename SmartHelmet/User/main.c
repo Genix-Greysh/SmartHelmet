@@ -26,6 +26,7 @@ int main(void)
 	SYSTICK_Config();
 	Init_USART(HT_USART0,115200);		
 	Init_USART(HT_USART1,115200);		
+<<<<<<< HEAD
 	PDMA_Configuration();	//配置PDMA
 	
 	/* Init SD and mount it */
@@ -43,13 +44,36 @@ int main(void)
 	
 	pwrcu_init();
 	
+=======
+	PDMA_Configuration();
+
+	
+	
+	/* Init SD and mount it */
+	SD_SPI_Init();
+	SD_TryInit();
+	sdfs_app_mnt();
+	
+	/* Init Camera */
+	Ov7725_GPIO_Config();
+	Ov7725_TryInit();
+	Ov7725_VSYNC_Init();		
+	
+	pwrcu_init();
+	
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
 	/* main loop */           	
 	while (1)
 	{	
 		printf("Enter Sleep Mode...\n");
+<<<<<<< HEAD
 		Enter_DeepSleepMode();	//进入睡眠模式
 		PDMA_Configuration();	//配置PDMA
 		sysWorking = TRUE; 
+=======
+		Enter_DeepSleepMode();
+		sysWorking = TRUE;
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
 		
 		printf("Enter Main_loop...\n");
 		/* main loop */ 
@@ -57,6 +81,7 @@ int main(void)
 		{	
 			if(PDMA_GetFlagStatus(PDMA_CH7, PDMA_FLAG_TC) == SET)
 			{
+<<<<<<< HEAD
 				if(IS_MPU_RUNNING)
 				{
 					if(TRUE == IsAccident())
@@ -75,6 +100,20 @@ int main(void)
 			}
 	
 			//sdfs_app_savePhoto();
+=======
+				if(MPU_Data[0] == 0x55)
+				{
+					Axis_GetFinalData();	//获得最终的加速度
+					if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2])> 1.0)
+					{
+						printf("MPU6050 Test OK!\r\n");
+					}
+				}			
+				PDMA_ClearFlag(PDMA_CH7, PDMA_INT_TC);
+			}
+	
+			sdfs_app_savePhoto();
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
 			delay_ms(100);
 		
 			if ( GPIO_ReadInBit(HT_GPIOE, GPIO_PIN_1) == 1)   

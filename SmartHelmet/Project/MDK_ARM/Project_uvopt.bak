@@ -134,7 +134,28 @@
           <Name>UL2CM3(-O142 -S0 -C0 -FO7 -FD20000000 -FC800 -FN2 -FF0HT32F -FS00 -FL040000 -FF1HT32F_OPT -FS11FF00000 -FL1400)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
+<<<<<<< HEAD
       <Breakpoint/>
+=======
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>26</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>9930</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>F:\50\QG\卤脠脠眉\碌脷脣脛陆矛潞脧脤漏卤颅\code\EmbeddedDevelopment\SmartHelmet\User\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+      </Breakpoint>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -181,10 +202,17 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+<<<<<<< HEAD
       <ColumnNumber>18</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
       <CurrentLine>13</CurrentLine>
+=======
+      <ColumnNumber>14</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>28</TopLine>
+      <CurrentLine>65</CurrentLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\User\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -197,10 +225,17 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+<<<<<<< HEAD
       <ColumnNumber>22</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>56</TopLine>
       <CurrentLine>57</CurrentLine>
+=======
+      <ColumnNumber>25</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>146</TopLine>
+      <CurrentLine>158</CurrentLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\User\ht32f165x_it.c</PathWithFileName>
       <FilenameWithoutPath>ht32f165x_it.c</FilenameWithoutPath>
@@ -215,7 +250,11 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>6</TopLine>
+=======
+      <TopLine>3</TopLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <CurrentLine>15</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\User\sdfs_app\sdfs_app.c</PathWithFileName>
@@ -255,7 +294,11 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>2</TopLine>
+=======
+      <TopLine>4</TopLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <CurrentLine>8</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\Driver\USART\usart.c</PathWithFileName>
@@ -287,7 +330,11 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>393</TopLine>
+=======
+      <TopLine>399</TopLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <CurrentLine>409</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\Driver\SD\sd.c</PathWithFileName>
@@ -303,8 +350,13 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>21</TopLine>
       <CurrentLine>47</CurrentLine>
+=======
+      <TopLine>8</TopLine>
+      <CurrentLine>33</CurrentLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\Driver\DELAY\delay.c</PathWithFileName>
       <FilenameWithoutPath>delay.c</FilenameWithoutPath>
@@ -317,10 +369,17 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+<<<<<<< HEAD
       <ColumnNumber>4</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>128</TopLine>
       <CurrentLine>134</CurrentLine>
+=======
+      <ColumnNumber>3</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>125</TopLine>
+      <CurrentLine>133</CurrentLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\Driver\RTC\rtc.c</PathWithFileName>
       <FilenameWithoutPath>rtc.c</FilenameWithoutPath>
@@ -349,10 +408,15 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>1</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>130</TopLine>
       <CurrentLine>138</CurrentLine>
+=======
+      <TopLine>11</TopLine>
+      <CurrentLine>12</CurrentLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\Driver\MPU6050\MPU6050.c</PathWithFileName>
       <FilenameWithoutPath>MPU6050.c</FilenameWithoutPath>
@@ -367,8 +431,13 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>3</TopLine>
       <CurrentLine>4</CurrentLine>
+=======
+      <TopLine>8</TopLine>
+      <CurrentLine>46</CurrentLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\Driver\PWCRU\pwcru.c</PathWithFileName>
       <FilenameWithoutPath>pwcru.c</FilenameWithoutPath>
@@ -381,10 +450,17 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+<<<<<<< HEAD
       <ColumnNumber>27</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>355</TopLine>
       <CurrentLine>364</CurrentLine>
+=======
+      <ColumnNumber>22</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>8</TopLine>
+      <CurrentLine>55</CurrentLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\Driver\OV7725\ov7725.c</PathWithFileName>
       <FilenameWithoutPath>ov7725.c</FilenameWithoutPath>
@@ -543,7 +619,11 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>127</TopLine>
+=======
+      <TopLine>124</TopLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <CurrentLine>134</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\startup_ht32f165x.s</PathWithFileName>
@@ -591,7 +671,11 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>165</TopLine>
+=======
+      <TopLine>162</TopLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <CurrentLine>174</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\library\HT32F1655_56_Driver\src\ht32_cm3_misc.c</PathWithFileName>
@@ -703,8 +787,13 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>296</TopLine>
       <CurrentLine>297</CurrentLine>
+=======
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\library\HT32F1655_56_Driver\src\ht32f1655_56_exti.c</PathWithFileName>
       <FilenameWithoutPath>ht32f1655_56_exti.c</FilenameWithoutPath>
@@ -815,8 +904,13 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>171</TopLine>
       <CurrentLine>176</CurrentLine>
+=======
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\library\HT32F1655_56_Driver\src\ht32f1655_56_pdma.c</PathWithFileName>
       <FilenameWithoutPath>ht32f1655_56_pdma.c</FilenameWithoutPath>
@@ -831,7 +925,11 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
+<<<<<<< HEAD
       <TopLine>224</TopLine>
+=======
+      <TopLine>221</TopLine>
+>>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
       <CurrentLine>233</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\library\HT32F1655_56_Driver\src\ht32f1655_56_pwrcu.c</PathWithFileName>
