@@ -12,105 +12,74 @@
 #include "ov7725.h"
 #include "pwcru.h"
 
-//全局变量 
-extern bool flag;  			//用于检测是否跳出第二级while循环
-
-
-/** @addtogroup HT32_Series_Peripheral_Examples HT32 Peripheral Examples
-  * @{
-  */
-
-/** @addtogroup GPIO_Examples GPIO
-  * @{
-  */
-
-/** @addtogroup InputOutput
-  * @{
-  */
-
-
-/* Global functions ----------------------------------------------------------------------------------------*/
-
-
-
-/*********************************************************************************************************//**
-* @brief  Configures GPTM0 for time estimate.
-* @retval None
-***********************************************************************************************************/
-
 /**
  * @brief 主函数
  */
-
+/**Tested Fine**/
+ 
 int main(void)
 {	
-	/* ov7725 场中断变量 */
-	extern volatile uint8_t Ov7725_vsync ;
-	extern vu32 gwTimeDisplay;
-	flag = FALSE;
+	
+	bool sysWorking = TRUE;
 	
 	/* Initialize devices */
 	SYSTICK_Config();
 	Init_USART(HT_USART0,115200);		
 	Init_USART(HT_USART1,115200);		
-	PDMA_Configuration();
-//	SD_SPI_Init();
-//	TryInitSD();
-//	Ov7725_GPIO_Config();
-
-	/* ov7725 寄存器配置初始化 */
-//	while(Ov7725_Init() != SUCCESS)
-//	{
-//		printf("Init ov7725 error.\r\n");
-//		delay_ms(500);
-//	}
-	printf("Init ov7725 success.\r\n");
+	PDMA_Configuration();	//配置PDMA
 	
-	/* ov7725 场信号线初始化 */
-//	VSYNC_Init();	
-//	Ov7725_vsync = 0;
-//	
+	/* Init SD and mount it */
+	SD_SPI_Init();
+	SD_TryInit();
+	sdfs_app_mnt();
+	
+	/* Init Camera */
+	Ov7725_GPIO_Config();
+	Ov7725_TryInit();
+	Ov7725_VSYNC_Init();
+	
+	GPIO_DirectionConfig(HT_GPIOC , GPIO_PIN_9, GPIO_DIR_OUT);
+	GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);
+	
+	pwrcu_init();
+	
 	/* main loop */           	
 	while (1)
-	{
-
-//		//delay_ms(1000);
-		if(PDMA_GetFlagStatus(PDMA_CH2, PDMA_FLAG_TC) == SET)
-		{
-			if(MPU_Data[0] == 0x55)
-			{
-				Axis_GetFinalData();	//获得最终的加速度
-				if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2])> 1.0)
-				{
-					USART_SendData(HT_USART1, 0x55);
-				}
-			}
-			
-			PDMA_ClearFlag(PDMA_CH2, PDMA_INT_TC);
-		}
-
+	{	
+		printf("Enter Sleep Mode...\n");
+		Enter_DeepSleepMode();	//进入睡眠模式
+		PDMA_Configuration();	//配置PDMA
+		sysWorking = TRUE; 
 		
-//		SCL_OUT_MOTE;
-//		SCL_IN_MOTE;
-//		SCL_H;
-//		
-//		delay_ms(500);
-//		printf("SCL input value : %d\r\n", SCL_read);
-//		printf("SCL output value : %d\r\n", GPIO_ReadOutBit(HT_GPIOD, GPIO_PIN_4));		
-//		pwrcu_init();
-//	
-//		/* main loop */ 
-//		while(1)
-//		{	
-//		  Enter_DeepSleepMode();
-//		
-//			while (flag == TRUE)
-//			{
-//				flag = FALSE;
-//			}
-//			flag = TRUE;
-//			delay_ms(500);
-//		}
+		printf("Enter Main_loop...\n");
+		/* main loop */ 
+		while(sysWorking)	/* 系统开始工作 */
+		{	
+			if(PDMA_GetFlagStatus(PDMA_CH7, PDMA_FLAG_TC) == SET)
+			{
+				if(IS_MPU_RUNNING)
+				{
+					if(TRUE == IsAccident())
+					{
+						printf("Accident!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
+						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, SET);
+						delay_ms(1000);
+						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);
+					}
+					else
+						printf("Not!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
+				}
+				else 
+					printf("%d", MPU_Data[0]);
+				PDMA_ClearFlag(PDMA_CH7, PDMA_INT_TC);
+			}
+	
+			//sdfs_app_savePhoto();
+			delay_ms(100);
+		
+			if ( GPIO_ReadInBit(HT_GPIOE, GPIO_PIN_1) == 1)   
+					sysWorking = FALSE;
+		}
 	}
 }
 
@@ -133,19 +102,3 @@ void assert_error(u8* filename, u32 uline)
   }
 }
 #endif
-
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-
-

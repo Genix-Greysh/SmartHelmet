@@ -16,9 +16,9 @@ void SCCB_GPIO_Config(void)
 
 	/* 配置PD4、PD5为输出引脚 */
 	GPIO_DirectionConfig(HT_GPIOD, GPIO_PIN_4 | GPIO_PIN_5, GPIO_DIR_OUT);
- 
+	
 	/* 使能PD4、PD5输入控制 */
-	GPIO_InputConfig(HT_GPIOD, GPIO_PIN_4 | GPIO_PIN_5, ENABLE);	
+	GPIO_InputConfig(HT_GPIOD, GPIO_PIN_4 | GPIO_PIN_5, ENABLE);
 }
 
 
@@ -42,7 +42,7 @@ static void SCCB_delay(void)
  * @param 	 
  * @retval 	None
  */
-static int SCCB_Start(void)
+ int SCCB_Start(void)
 {
 	SDA_H;
 	SCCB_delay();
@@ -75,10 +75,13 @@ static void SCCB_Stop(void)
 {
 	SCL_L;
 	SCCB_delay();
+	
 	SDA_L;
 	SCCB_delay();
+	
 	SCL_H;
 	SCCB_delay();
+	
 	SDA_H;
 	SCCB_delay();
 }
@@ -128,21 +131,28 @@ static void SCCB_NoAck(void)
  */
 static int SCCB_WaitAck(void) 	
 {
-	int status = DISABLE;
-	
+	int status;
+
 	SCL_L;
 	SCCB_delay();
+	
 	SDA_H;			
 	SCCB_delay();
+	
+	SDA_IN_MODE;	
+	SCCB_delay();
+	
 	SCL_H;
 	SCCB_delay();
-	SDA_IN_MODE;
+	
 	if(SDA_read)
 		status = DISABLE;
 	else
 		status = ENABLE;
-	SDA_OUT_MODE;
 	SCL_L;
+	SCCB_delay();
+	SDA_OUT_MODE;
+	
 	return status;
 }
 
@@ -169,6 +179,7 @@ static void SCCB_SendByte(uint8_t SendByte)
         SCCB_delay();
     }
     SCL_L;
+	SCCB_delay();
 }
 
 
@@ -182,7 +193,9 @@ static int SCCB_ReceiveByte(void)
     uint8_t i=8;
     uint8_t ReceiveByte=0;
 
-    SDA_H;				
+    SDA_H;
+	SDA_IN_MODE;
+	SCCB_delay();
     while(i--)
     {
       ReceiveByte<<=1;      
@@ -196,13 +209,16 @@ static int SCCB_ReceiveByte(void)
       }
     }
     SCL_L;
+	SDA_OUT_MODE;
+	
     return ReceiveByte;
 }
 
 
 
 /**
- * @brief	向设备写一字节数据 * @param 	WriteAddress 待写入地址 	
+ * @brief	向设备写一字节数据 
+ * @param 	WriteAddress 待写入地址 	
 			SendByte 待写入数据
 			DeviceAddress: 器件类型
  * @retval 	1 成功写入

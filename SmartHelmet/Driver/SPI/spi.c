@@ -7,7 +7,11 @@ SPI_InitTypeDef SPI_InitStructure;
 
 
 /**
- * @brief  初始化SPI0
+ * @brief  初始化SPI0。
+				PD9		SPI0_SEL
+				PD10 	SPI0_SCK
+				PD11	SPI0_MOSI
+				PD12	SPI0_MISO
  * @param  
  * @retval None
  */

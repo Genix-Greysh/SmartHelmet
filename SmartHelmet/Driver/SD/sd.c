@@ -1,6 +1,6 @@
 #include "sd.h"
 
-u8 SD_Type = 0;			/* 存放SD卡的类型 */
+u8 SD_Type = SD_TYPE_ERR;			/* 存放SD卡的类型 */
 
 u8 buf[SECTOR_SIZE];	/* SD数据缓冲区 */
 
@@ -83,7 +83,7 @@ u8 SD_Select(void)
 
 
 /**
- * @brief  	初始化SD相关的引脚和设备。SD的片选接到PE12
+ * @brief  	初始化SD相关的引脚和设备
  * @param  
  * @retval 	None
  */
@@ -165,8 +165,6 @@ u8 SD_GetResponse(u8 response)
  */
 u8 SD_RecvData(u8 *buf,u16 len)
 {	
-	u8 tmp;
-	
 	//等待SD卡发回数据起始令牌
 	if(SD_GetResponse(SD_BEGIN_END_FLAG) != SD_RESPONSE_NO_ERROR)
 		return 0;
@@ -174,13 +172,7 @@ u8 SD_RecvData(u8 *buf,u16 len)
 	//开始接收数据
     while(len--)
     {
-        tmp = SD_SPI_ReadWriteByte(SD_DUMMY_BYTE);
-      
-		/* 由于合泰的板只支持256B大小的数组，故只能读取256B字节的数据到buf */
-//		if(256 < len)
-			*buf++ = tmp;
-//		else
-//			return 1;
+		*buf++ = SD_SPI_ReadWriteByte(SD_DUMMY_BYTE);
     }
 	
     //下面是2个伪CRC（dummy CRC）
@@ -406,7 +398,7 @@ u8 SD_WriteDisk(const u8 *buf, u32 sector, u8 cnt)
  * @return 	1 初始化成功
 			0 初始化失败
  */
-u8 TryInitSD(void)
+u8 SD_TryInit(void)
 {
 	int retry = 5;
 	
@@ -435,7 +427,7 @@ u8 TryInitSD(void)
  * @param 	sector 扇区号
  * @return 	None
  */
-void ViewSector(u8 sector)
+void SD_ViewSector(u8 sector)
 {
 	int i;
 

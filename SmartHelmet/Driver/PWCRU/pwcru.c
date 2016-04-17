@@ -47,7 +47,7 @@ void Enter_DeepSleepMode(void)
 {
 	delay_ms(500);
 	/* Configure button EXTI Channel on low level                                                           */
-  EXTI_WakeupEventConfig(KEY1_BUTTON_EXTI_CHANNEL, EXTI_WAKEUP_LOW_LEVEL, ENABLE);  //PE - 1  EXTI -1(channel)
+	EXTI_WakeupEventConfig(KEY1_BUTTON_EXTI_CHANNEL, EXTI_WAKEUP_LOW_LEVEL, ENABLE);  //PE - 1  EXTI -1(channel)
 	/* Request to enter Deep Sleep mode 1 (The LDO in low power mode)                                       */
 	PWRCU_DeepSleep1(PWRCU_SLEEP_ENTRY_WFI);
 }

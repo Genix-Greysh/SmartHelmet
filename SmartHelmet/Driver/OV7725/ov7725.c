@@ -13,8 +13,8 @@
  *
  *--------------------------------Revision History--------------------------------------
  *  No      version     Data        Revised By      Item        Description
- *  1       v1.0        2016/3/28 	Gaunthan                    Create this file
- *
+ *  1       v1.0        2016/03/28 	Gaunthan                    Create this file
+ *	2		v2.0		2016/04/04	Gaunthan					Complete camera module
  ***************************************************************************************/
 
 
@@ -32,15 +32,6 @@
 /**************************************************************
 *   Macro Define Section
 **************************************************************/
-
-
-/* debug调试宏定义，根据表达式a的真假执行has_bug或no_bug */
-#define BUG_DETECT_PRINT(a,has_bug,no_bug) {\
-	if(a) 						\
-		printf("%s",has_bug); 	\
-	else 						\
-		printf("%s",no_bug);}
-
 
 /**
  * @brief	调试信息输出宏定义
@@ -202,6 +193,7 @@
 #define SIGN      0xAB
 #define DSPAuto   0xAC
 
+
 /**************************************************************
 *   Struct Define Section
 **************************************************************/
@@ -224,11 +216,17 @@ typedef struct tagReg
 *   Global Variable Declare Section
 **************************************************************/
 
+/* 由于内存大小限制，缓冲区不能过大。因此采用行缓冲 */
+volatile u16 LineBuf[FRAME_WIDTH];
+
 /* 寄存器参数配置 */
 Reg_Info Sensor_Config[] =
 {
-	{CLKRC,     0x00}, 		/*clock config*/
-	{COM7,      0x46}, 		/*QVGA RGB565 */
+	/*clock config*/
+	{CLKRC,     0x00}, 		
+	
+	/*QVGA   RGB565 */
+	{COM7,      0x46}, 		
 	{HSTART,    0x3f},
 	{HSIZE,     0x50},
 	{VSTRT,     0x03},
@@ -237,7 +235,18 @@ Reg_Info Sensor_Config[] =
 	{HOutSize,  0x50},
 	{VOutSize,  0x78},
 	{EXHCH,     0x00},
-
+	
+//	/*VGA   RGB565 */
+//	{COM7,      0x06}, 		
+//	{HSTART,    0x23},
+//	{HSIZE,     0xA0},
+//	{VSTRT,     0x07},
+//	{VSIZE,     0xF0},
+//	{HREF,      0x00},
+//	{HOutSize,  0xA0},
+//	{VOutSize,  0xF0},
+//	{EXHCH,     0x00},
+	
 	/*DSP control*/
 	{TGT_B,     0x7f},
 	{FixGain,   0x09},
@@ -313,18 +322,17 @@ Reg_Info Sensor_Config[] =
 	{LC_COEFR,    0x17},
 	{LC_CTR,	  0x05},
 	
-	{COM3,		  0xd0},	/*Horizontal mirror image*/
-
-	/* night mode auto frame rate control */
-	{COM5,		  0xf5},	/*在夜视环境下，自动降低帧率，保证低照度画面质量*/
-	//{COM5,	  0x31},	/*夜视环境帧率不变*/
+	{COM3,		  0x50},	/* 水平镜像 */
+//	{COM10, 	  0x02},	/* 为与VGA时序保持一致，将VSYNC的时序取反 */
+	{COM12,		  0x03},	/* 处理DC偏置 */
+	{COM5,		  0xf5},	/* 在夜视环境下，自动降低帧率，保证低照度画面质量*/
 };
 
 
 /*结构体数组成员数目*/
 uint8_t OV7725_REG_NUM = sizeof(Sensor_Config)/sizeof(Sensor_Config[0]);
 
-/* 帧同步信号标志，在中断函数和main函数里面使用 */
+/* 帧同步信号标志，在中断函数和main函数里面使用。当该值为2时，表面一帧数据已经在缓冲区就绪 */
 volatile uint8_t Ov7725_vsync;	 
 
 
@@ -347,8 +355,9 @@ static void FIFO_GPIO_Config(void)
 {
 	CKCU_PeripClockConfig_TypeDef CKCUClock = {{0}};
 
-	/* Enable PB */
+	/* Enable PB & PC*/
 	CKCUClock.Bit.PB         = 1;
+	CKCUClock.Bit.PC         = 1;	
 	CKCU_PeripClockConfig(CKCUClock, ENABLE);
 	
 	/* 配置为输出引脚 */
@@ -361,11 +370,23 @@ static void FIFO_GPIO_Config(void)
 							GPIO_PIN_6		/* PB6，FIFO_WE，FIFO写使能 	*/
 		, GPIO_DIR_OUT);
 	
-	/* 配置PB8~PB15为输入引脚，用于FIFO数据采集输入 */
-	GPIO_DirectionConfig(HT_GPIOB,       
-							GPIO_PIN_8	| GPIO_PIN_9 | GPIO_PIN_10 | GPIO_PIN_11	|
-							GPIO_PIN_12	| GPIO_PIN_13| GPIO_PIN_14 | GPIO_PIN_15
+	
+	/* 配置PC0~PC7为输入引脚，用于FIFO数据采集输入 */
+	
+	GPIO_DirectionConfig(HT_GPIOC,       
+							GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4	|
+							GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7 
 			, GPIO_DIR_IN);
+	
+	GPIO_PullResistorConfig(HT_GPIOC,       
+							GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4	|
+							GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7 
+			,GPIO_PR_DOWN);
+			
+	GPIO_InputConfig(HT_GPIOC,       
+							GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4	|
+							GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7 
+			, ENABLE);
 	
 	FIFO_CS_L();	  					/*拉低使FIFO输出使能*/
     FIFO_WE_H();   						/*拉高使FIFO写允许*/
@@ -402,6 +423,12 @@ static void VSYNC_GPIO_Configuration(void)
 
 	/* 配置PB7作为VSYNC引脚 */
 	GPIO_DirectionConfig(HT_GPIOB, GPIO_PIN_7, GPIO_DIR_IN);
+	
+	/* Enable GPIO Input Function  */
+	GPIO_InputConfig(HT_GPIOB, GPIO_PIN_7, ENABLE);
+
+	/* 由于要配置为下降沿触发的中断模式，因此上拉该引脚 */
+	GPIO_PullResistorConfig(HT_GPIOB, GPIO_PIN_7, GPIO_PR_UP);
 }
 
 
@@ -433,39 +460,41 @@ static void VSYNC_NVIC_Configuration(void)
 static void VSYNC_EXTI_Configuration(void)
 {
 	CKCU_PeripClockConfig_TypeDef CKCUClock = {{0}};
+	EXTI_InitTypeDef EXTI_InitStruct;
 	
 	/* Enable PB & AFIO & EXTI */
 	CKCUClock.Bit.PB         = 1;
 	CKCUClock.Bit.AFIO 		 = 1;
 	CKCUClock.Bit.EXTI 		 = 1;
 	CKCU_PeripClockConfig(CKCUClock, ENABLE);
-	
-	/* Select Port as EXTI Trigger Source                                                                     */
-	AFIO_EXTISourceConfig(AFIO_EXTI_CH_7, AFIO_ESS_PB);
 
-	/* Config EXTI line 7 Interrupt */
-	EXTI_WakeupEventConfig(EXTI_CHANNEL_7, EXTI_WAKEUP_HIGH_LEVEL, ENABLE);
+	/* Config EXTI channel 7 */
+	EXTI_InitStruct.EXTI_Channel = EXTI_CHANNEL_7;
+	EXTI_InitStruct.EXTI_Debounce = EXTI_DEBOUNCE_DISABLE;
+	EXTI_InitStruct.EXTI_DebounceCnt = 0;
+	EXTI_InitStruct.EXTI_IntType = EXTI_NEGATIVE_EDGE;
+	EXTI_Init(&EXTI_InitStruct);
+	
+	/* Select Port as EXTI Trigger Source */
+	AFIO_EXTISourceConfig(AFIO_EXTI_CH_7, AFIO_ESS_PB);
 	
 	/* Enable EXTI line 7 Interrupt                                                                          */
 	EXTI_IntConfig(EXTI_CHANNEL_7, ENABLE);
-
-	/* Activate the corresponding EXTI interrupt                                                              */
-	EXTI_SWIntCmd(EXTI_CHANNEL_7, ENABLE);
 }
 
 
 /**
- *  @name	VSYNC_Init
+ *  @name	Ov7725_VSYNC_Init
  *  @brief	初始化OV7725 VSYNC引脚
  *  @param  None        
  *  @return None
  *  @notice
  */
-void VSYNC_Init(void)
+void Ov7725_VSYNC_Init(void)
 {
     VSYNC_GPIO_Configuration();
+	VSYNC_NVIC_Configuration();
     VSYNC_EXTI_Configuration();
-    VSYNC_NVIC_Configuration();
 }
 
 
@@ -481,20 +510,20 @@ ErrStatus Ov7725_Init(void)
 	uint16_t i = 0;
 	uint8_t Sensor_IDCode = 0;	
 	
-	//DEBUG("ov7725 Register Config Start......");
+	OV7725_DEBUG("ov7725 Register Config Start......\r\n");
 	
 	if( 0 == SCCB_WriteByte ( 0x12, 0x80 ) ) /*复位sensor */
 	{
-		//DEBUG("sccb write data error");		
+		OV7725_DEBUG("sccb write data error\r\n");		
 		return ERROR ;
 	}	
 
 	if( 0 == SCCB_ReadByte( &Sensor_IDCode, 1, 0x0b ) )	 /* 读取sensor ID号*/
 	{
-		//DEBUG("read id faild");		
+		OV7725_DEBUG("read id faild\r\n");		
 		return ERROR;
 	}
-	//DEBUG("Sensor ID is 0x%x", Sensor_IDCode);	
+	OV7725_DEBUG("Sensor ID is 0x%x\r\n", Sensor_IDCode);	
 	
 	if(Sensor_IDCode == OV7725_ID)
 	{
@@ -502,7 +531,7 @@ ErrStatus Ov7725_Init(void)
 		{
 			if( 0 == SCCB_WriteByte(Sensor_Config[i].Address, Sensor_Config[i].Value) )
 			{                
-				//DEBUG("write reg faild", Sensor_Config[i].Address);
+				OV7725_DEBUG("write reg %x faild\r\n", Sensor_Config[i].Address);
 				return ERROR;
 			}
 		}
@@ -511,11 +540,63 @@ ErrStatus Ov7725_Init(void)
 	{
 		return ERROR;
 	}
-	//DEBUG("ov7725 Register Config Success");
+	OV7725_DEBUG("ov7725 Register Config Success\r\n");
 	
 	return SUCCESS;
 }
 
+
+
+/**
+ *  @name	Ov7725_TryInit
+ *  @brief	带超时计数地初始化OV7725
+ *  @param  None        
+ *  @return None
+ *  @notice
+ */
+ErrStatus Ov7725_TryInit(void)
+{
+	int retry = 3;
+	
+	while(retry--)	
+	{
+		if(Ov7725_Init() == SUCCESS)
+		{
+			OV7725_DEBUG("Init ov7725 success.\r\n");	
+			return SUCCESS;
+		}
+		else
+			OV7725_DEBUG("Init ov7725 error.\r\n");
+	}
+	return ERROR;	//超时返回错误
+}
+
+
+/**
+ * @name	Ov7725_IfPhotoCaptured
+ * @brief	判断FIFO是否已经采集完一帧图像
+ * @param	NOne
+ * @return	1 FIFO已经采集到一帧图形
+			0 未采集完
+ * @notes	当Ov7725_vsync为2时，FIFO采集完一帧图像 
+ */
+int Ov7725_IfPhotoCaptured(void)
+{
+	return(Ov7725_vsync == 2);
+}
+
+
+/**
+ * @name	Ov7725_ClearCaptureFlag
+ * @brief	清除已采集标志，使FIFO重新开始获取图像帧
+ * @param	None
+ * @return	None
+ * @notes	当Ov7725_vsync为0时，FIFO重新开始读取图像帧
+ */
+void Ov7725_ClearCaptureFlag(void)
+{
+	Ov7725_vsync = 0;
+}
 
 
  #ifdef  DEBUG

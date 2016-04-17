@@ -39,6 +39,8 @@
 **************************************************************/
 #define PI 3.1415926
 #define Square(x) ((x) * (x))
+#define IS_MPU_RUNNING (MPU_Data[0] == 0x55)
+
 /**************************************************************
 *        Struct Define Section
 **************************************************************/
@@ -93,6 +95,13 @@ void PDMA_Configuration(void);
  * @param  		void
  */
 void DealWithRotation(void);
+
+/**
+ * @brief  		通过检测加速度的剧烈变化来判断是否发生车祸
+ * @param  		void
+ * @retval 		TRUE：表示发生车祸了；FALSE：表示并没有发生车祸
+ */
+bool IsAccident(void);
 /**************************************************************
 *        End-Multi-Include-Prevent Section
 **************************************************************/

@@ -3,7 +3,7 @@
 /**************************************************************
 *        Global Value Define Section
 **************************************************************/
-u8 MPU_Data [33];
+u8 MPU_Data [33] = {0};
 float Axis[3];
 float Angle[3];
 float Angular[3];
@@ -24,10 +24,10 @@ void PDMA_Configuration(void)
 	CKCU_PeripClockConfig(CKCUClock, ENABLE);
 
 	//Config USART
-	USART_RxPDMACmd(HT_USART0, ENABLE);
+	USART_RxPDMACmd(HT_USART1, ENABLE);
 
 	//PDMA
-	PDMACH_InitStructure.PDMACH_SrcAddr   = (u32) HT_USART0_BASE;
+	PDMACH_InitStructure.PDMACH_SrcAddr   = (u32) HT_USART1_BASE;
 	PDMACH_InitStructure.PDMACH_DstAddr   = (u32) &MPU_Data;
 
 	PDMACH_InitStructure.PDMACH_AdrMod    = SRC_ADR_FIX | DST_ADR_LIN_INC | AUTO_RELOAD;
@@ -36,10 +36,10 @@ void PDMA_Configuration(void)
 	PDMACH_InitStructure.PDMACH_BlkLen    = 1;
 	PDMACH_InitStructure.PDMACH_DataSize  = WIDTH_8BIT;
 
-	PDMA_Config(PDMA_CH2, &PDMACH_InitStructure);  
-	PDMA_IntConig(PDMA_CH2, (PDMA_INT_GE | PDMA_INT_TC), ENABLE);
-	PDMA_EnaCmd(PDMA_CH2, ENABLE);
-	PDMA_SwTrigCmd(PDMA_CH2, ENABLE);
+	PDMA_Config(PDMA_CH7, &PDMACH_InitStructure);  
+	PDMA_IntConig(PDMA_CH7, (PDMA_INT_GE | PDMA_INT_TC), ENABLE);
+	PDMA_EnaCmd(PDMA_CH7, ENABLE);
+	PDMA_SwTrigCmd(PDMA_CH7, ENABLE);
 }
 
 /**
@@ -138,8 +138,8 @@ bool IsAccident(void)
 {
 	Axis_GetFinalData();	//收集数据
 	
-	if(fabs(Axis[0]) > 5.0 || fabs(Axis[1]) > 5.0 || fabs(Angular[2]) > 800.0)
-		if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]) > 10.0)
+	if(fabs(Axis[0]) > 1.5 || fabs(Axis[1]) > 1.5 || fabs(Angular[2]) > 800.0)
+		if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]) > 4.0)
 			return TRUE;
 	
 	return FALSE;

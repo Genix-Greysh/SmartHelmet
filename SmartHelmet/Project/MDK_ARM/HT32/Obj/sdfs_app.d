@@ -51,3 +51,5 @@
 .\ht32\obj\sdfs_app.o: ..\..\ff11a\src\ff.h
 .\ht32\obj\sdfs_app.o: ..\..\ff11a\src\integer.h
 .\ht32\obj\sdfs_app.o: ..\..\ff11a\src\ffconf.h
+.\ht32\obj\sdfs_app.o: ..\..\Driver\OV7725\ov7725.h
+.\ht32\obj\sdfs_app.o: ..\..\Driver\SCCB\sccb.h
