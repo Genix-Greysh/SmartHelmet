@@ -21,12 +21,13 @@ int main(void)
 {	
 	
 	bool sysWorking = TRUE;
+	int count;
 	
 	/* Initialize devices */
 	SYSTICK_Config();
 	Init_USART(HT_USART0,115200);		
 	Init_USART(HT_USART1,115200);		
-<<<<<<< HEAD
+
 	PDMA_Configuration();	//配置PDMA
 	
 	/* Init SD and mount it */
@@ -44,36 +45,15 @@ int main(void)
 	
 	pwrcu_init();
 	
-=======
-	PDMA_Configuration();
 
-	
-	
-	/* Init SD and mount it */
-	SD_SPI_Init();
-	SD_TryInit();
-	sdfs_app_mnt();
-	
-	/* Init Camera */
-	Ov7725_GPIO_Config();
-	Ov7725_TryInit();
-	Ov7725_VSYNC_Init();		
-	
-	pwrcu_init();
-	
->>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
 	/* main loop */           	
 	while (1)
 	{	
 		printf("Enter Sleep Mode...\n");
-<<<<<<< HEAD
 		Enter_DeepSleepMode();	//进入睡眠模式
 		PDMA_Configuration();	//配置PDMA
 		sysWorking = TRUE; 
-=======
-		Enter_DeepSleepMode();
-		sysWorking = TRUE;
->>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
+
 		
 		printf("Enter Main_loop...\n");
 		/* main loop */ 
@@ -81,14 +61,19 @@ int main(void)
 		{	
 			if(PDMA_GetFlagStatus(PDMA_CH7, PDMA_FLAG_TC) == SET)
 			{
-<<<<<<< HEAD
 				if(IS_MPU_RUNNING)
 				{
 					if(TRUE == IsAccident())
 					{
 						printf("Accident!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
-						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, SET);
-						delay_ms(1000);
+						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, SET);	
+						
+						for(count = 0; count < 10; count++)
+						{
+							sdfs_app_savePhoto();
+							delay_ms(50);
+						}
+						
 						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);
 					}
 					else
@@ -98,24 +83,8 @@ int main(void)
 					printf("%d", MPU_Data[0]);
 				PDMA_ClearFlag(PDMA_CH7, PDMA_INT_TC);
 			}
-	
-			//sdfs_app_savePhoto();
-=======
-				if(MPU_Data[0] == 0x55)
-				{
-					Axis_GetFinalData();	//获得最终的加速度
-					if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2])> 1.0)
-					{
-						printf("MPU6050 Test OK!\r\n");
-					}
-				}			
-				PDMA_ClearFlag(PDMA_CH7, PDMA_INT_TC);
-			}
-	
-			sdfs_app_savePhoto();
->>>>>>> ae162a8109fce85f3d620dfea9f5e6fe9731e32d
+			
 			delay_ms(100);
-		
 			if ( GPIO_ReadInBit(HT_GPIOE, GPIO_PIN_1) == 1)   
 					sysWorking = FALSE;
 		}
