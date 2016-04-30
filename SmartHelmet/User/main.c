@@ -11,6 +11,7 @@
 #include "rtc.h"
 #include "ov7725.h"
 #include "pwcru.h"
+#include "Bluetooth.h"
 
 /**
  * @brief Ö÷º¯Êý
@@ -66,20 +67,20 @@ int main(void)
 					if(TRUE == IsAccident())
 					{
 						printf("Accident!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
-						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, SET);	
+						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, SET);
 						
-						for(count = 0; count < 10; count++)
+						for(count = 0; count < 2; count++)
 						{
 							sdfs_app_savePhoto();
 							delay_ms(50);
 						}
-						
+						CrashFunction();
 						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);
 					}
 					else
 						printf("Not!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
 				}
-				else 
+				else
 					printf("%d", MPU_Data[0]);
 				PDMA_ClearFlag(PDMA_CH7, PDMA_INT_TC);
 			}
