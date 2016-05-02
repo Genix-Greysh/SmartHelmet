@@ -166,7 +166,7 @@ void EVWUP_IRQHandler(void)
 
 //		GPIO_ClearOutBits(HT_GPIOC,GPIO_PIN_11);
 		delay_ms(500);
-//		printf("WAKEUPBOTTON...\n");
+		//printf("WAKEUPBOTTON...\n");
   }
 }
 

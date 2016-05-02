@@ -20,13 +20,14 @@
  
 int main(void)
 {	
+	
 	bool sysWorking = TRUE;
 	int count;
 	
 	/* Initialize devices */
 	SYSTICK_Config();
-	Init_USART(HT_USART0, 9600);		
-	Init_USART(HT_USART1, 115200);		
+	Init_USART(HT_USART0,9600);		
+	Init_USART(HT_USART1,115200);		
 
 	PDMA_Configuration();	//配置PDMA
 	
@@ -45,17 +46,15 @@ int main(void)
 	
 	pwrcu_init();
 	
-
 	/* main loop */           	
 	while (1)
 	{	
-//		printf("Enter Sleep Mode...\n");
 		Enter_DeepSleepMode();	//进入睡眠模式
 		PDMA_Configuration();	//配置PDMA
 		sysWorking = TRUE; 
 
 		
-//		printf("Enter Main_loop...\n");
+		//printf("Enter Main_loop...\n");
 		/* main loop */ 
 		while(sysWorking)	/* 系统开始工作 */
 		{	
@@ -65,24 +64,22 @@ int main(void)
 				{
 					if(TRUE == IsAccident())
 					{
-//						printf("Accident!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
+						//printf("Accident!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
 						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, SET);
-						CrashFunction();
+						
 						for(count = 0; count < 2; count++)
 						{
 							sdfs_app_savePhoto();
 							delay_ms(50);
 						}
+						CrashFunction();
 						
-						GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);
 					}
-					else
-//						printf("Not!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
-						;
+					//else
+						//printf("Not!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
 				}
-				else
-//					printf("%d", MPU_Data[0]);
-					;
+				//else
+					//printf("%d", MPU_Data[0]);
 				PDMA_ClearFlag(PDMA_CH7, PDMA_INT_TC);
 			}
 			

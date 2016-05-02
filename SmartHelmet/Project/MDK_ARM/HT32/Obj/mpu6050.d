@@ -3,12 +3,12 @@
 .\ht32\obj\mpu6050.o: ..\..\library\HT32F1655_56_Driver\inc\ht32.h
 .\ht32\obj\mpu6050.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h
 .\ht32\obj\mpu6050.o: ..\..\library\CMSIS\Include\core_cm3.h
-.\ht32\obj\mpu6050.o: E:\Program Files\KeilMDK\ARM\ARMCC\bin\..\include\stdint.h
+.\ht32\obj\mpu6050.o: G:\mdk474\ARM\ARMCC\bin\..\include\stdint.h
 .\ht32\obj\mpu6050.o: ..\..\library\CMSIS\Include\core_cmInstr.h
 .\ht32\obj\mpu6050.o: ..\..\library\CMSIS\Include\core_cmFunc.h
 .\ht32\obj\mpu6050.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\system_ht32f1655_56.h
 .\ht32\obj\mpu6050.o: ..\..\library\HT32F1655_56_Driver\inc\ht32f1655_56_lib.h
-.\ht32\obj\mpu6050.o: E:\Program Files\KeilMDK\ARM\ARMCC\bin\..\include\stdio.h
+.\ht32\obj\mpu6050.o: G:\mdk474\ARM\ARMCC\bin\..\include\stdio.h
 .\ht32\obj\mpu6050.o: ..\..\User\ht32f1655_56_conf.h
 .\ht32\obj\mpu6050.o: ..\..\library\HT32F1655_56_Driver\inc\ht32f1655_56_usart.h
 .\ht32\obj\mpu6050.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h
@@ -45,4 +45,4 @@
 .\ht32\obj\mpu6050.o: ..\..\utilities\ht32_board.h
 .\ht32\obj\mpu6050.o: ..\..\utilities\common/spi_flash.h
 .\ht32\obj\mpu6050.o: ..\..\utilities\common/ebi_lcd.h
-.\ht32\obj\mpu6050.o: E:\Program Files\KeilMDK\ARM\ARMCC\bin\..\include\math.h
+.\ht32\obj\mpu6050.o: G:\mdk474\ARM\ARMCC\bin\..\include\math.h

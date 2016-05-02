@@ -45,6 +45,7 @@ void pwrcu_init(void)
 
 void Enter_DeepSleepMode(void)
 {
+	//printf("Enter Sleep Mode...\n");
 	delay_ms(500);
 	/* Configure button EXTI Channel on low level                                                           */
 	EXTI_WakeupEventConfig(KEY1_BUTTON_EXTI_CHANNEL, EXTI_WAKEUP_LOW_LEVEL, ENABLE);  //PE - 1  EXTI -1(channel)

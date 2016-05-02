@@ -434,9 +434,8 @@ ARM Macro Assembler    Page 7
   235 00000000         
   236 00000000                 END
 Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\ht32\o
-bj\ht32_op.d -o.\ht32\obj\ht32_op.o -I"E:\Program Files\KeilMDK\ARM\RV31\INC" -
-I"E:\Program Files\KeilMDK\ARM\CMSIS\Include" -I"E:\Program Files\KeilMDK\ARM\I
-nc\Holtek\HT32F1655_56" --predefine="__EVAL SETA 1" --predefine="__MICROLIB SET
+bj\ht32_op.d -o.\ht32\obj\ht32_op.o -IG:\mdk474\ARM\RV31\INC -IG:\mdk474\ARM\CM
+SIS\Include -IG:\mdk474\ARM\Inc\Holtek\HT32F1655_56 --predefine="__MICROLIB SET
 A 1" --list=.\ht32\list\ht32_op.lst ..\MDK_ARM\ht32_op.s
 
 
@@ -594,4 +593,4 @@ Symbol: nPP3
       At line 185 in file ..\MDK_ARM\ht32_op.s
 Comment: nPP3 used once
 17 symbols
-349 symbols in table
+348 symbols in table
