@@ -33,7 +33,7 @@
 
 
 /* Macro define -------------------------------------------*/
-#define DEBUFG_ON 1
+#define DEBUFG_ON 0
 
 #if DEBUFG_ON
 	#define DEBUG(fmt,args...) printf(fmt ,##args)
@@ -166,7 +166,7 @@ void EVWUP_IRQHandler(void)
 
 //		GPIO_ClearOutBits(HT_GPIOC,GPIO_PIN_11);
 		delay_ms(500);
-		printf("WAKEUPBOTTON...\n");
+//		printf("WAKEUPBOTTON...\n");
   }
 }
 

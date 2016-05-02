@@ -1,11 +1,11 @@
 .\ht32\obj\bluetooth.o: ..\..\User\Bluetooth\Bluetooth.c
 .\ht32\obj\bluetooth.o: ..\..\User\Bluetooth\Bluetooth.h
-.\ht32\obj\bluetooth.o: G:\mdk474\ARM\ARMCC\bin\..\include\stdio.h
+.\ht32\obj\bluetooth.o: E:\Program Files\KeilMDK\ARM\ARMCC\bin\..\include\stdio.h
 .\ht32\obj\bluetooth.o: ..\..\Driver\USART\usart.h
 .\ht32\obj\bluetooth.o: ..\..\library\HT32F1655_56_Driver\inc\ht32.h
 .\ht32\obj\bluetooth.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h
 .\ht32\obj\bluetooth.o: ..\..\library\CMSIS\Include\core_cm3.h
-.\ht32\obj\bluetooth.o: G:\mdk474\ARM\ARMCC\bin\..\include\stdint.h
+.\ht32\obj\bluetooth.o: E:\Program Files\KeilMDK\ARM\ARMCC\bin\..\include\stdint.h
 .\ht32\obj\bluetooth.o: ..\..\library\CMSIS\Include\core_cmInstr.h
 .\ht32\obj\bluetooth.o: ..\..\library\CMSIS\Include\core_cmFunc.h
 .\ht32\obj\bluetooth.o: ..\..\library\Device\Holtek\HT32F1655_56\Include\system_ht32f1655_56.h

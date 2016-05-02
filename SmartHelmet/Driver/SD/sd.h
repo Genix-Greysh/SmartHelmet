@@ -29,7 +29,7 @@
 /**
   * @brief 	SDµ÷ÊÔ¿ª¹Ø
   */
-#define SD_DEBUG_ON 1
+#define SD_DEBUG_ON 0
 
 /**************************************************************
 *        Include File Section

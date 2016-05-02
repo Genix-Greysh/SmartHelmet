@@ -30,7 +30,7 @@
 /**
  * @brief 	OV7725µ÷ÊÔ¿ª¹Ø
  */
-#define OV7725_DEBUG_ON 1
+#define OV7725_DEBUG_ON 0
 
 /**************************************************************
 *        Include File Section

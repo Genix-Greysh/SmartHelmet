@@ -28,7 +28,7 @@
 *        Debug switch Section
 **************************************************************/
 
-#define SDFS_APP_DEBUG_ON 1
+#define SDFS_APP_DEBUG_ON 0
 
 /**************************************************************
 *        Include File Section
