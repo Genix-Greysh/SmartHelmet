@@ -1,2 +1,7 @@
-# EmbeddedDevelopment
-Projects of embedded development.
+#智能头盔项目
+[TOC]
+
+##1 概述
+基于Holtek最小系统板的智能头盔项目。
+
+
