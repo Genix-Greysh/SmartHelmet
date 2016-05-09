@@ -75,25 +75,25 @@ u32 Time_Regulate(void)
 {
   u32 Tmp_HH = 0xFF, Tmp_MM = 0xFF, Tmp_SS = 0xFF;
 
-  printf("\r\n==============Time Settings=====================================");
-  printf("\r\n  Please Set Hours");
-  printf("\r\n");
+  //printf("\r\n==============Time Settings=====================================");
+  //printf("\r\n  Please Set Hours");
+  //printf("\r\n");
   do
   {
     Tmp_HH = ScanUnsignedDecimal();
   } while (Tmp_HH > 23);
-  printf(":  %u", (unsigned int)Tmp_HH);
+  //printf(":  %u", (unsigned int)Tmp_HH);
 
-  printf("\r\n  Please Set Minutes");
-  printf("\r\n");
+  //printf("\r\n  Please Set Minutes");
+  //printf("\r\n");
   do
   {
     Tmp_MM = ScanUnsignedDecimal();
   } while (Tmp_MM > 59);
-  printf(":  %u", (unsigned int)Tmp_MM);
+  //printf(":  %u", (unsigned int)Tmp_MM);
 
-  printf("\r\n  Please Set Seconds");
-  printf("\r\n");
+  //printf("\r\n  Please Set Seconds");
+  //printf("\r\n");
   do
   {
     Tmp_SS = ScanUnsignedDecimal();
@@ -187,5 +187,5 @@ void Time_Display(u32 wTimeVar)
   /* Compute seconds                                                                                        */
   TSS = (wTimeVar % 3600)% 60;
 
-  printf("Time: %02u:%02u:%02u\r", (unsigned int)THH, (unsigned int)TMM, (unsigned int)TSS);
+  //printf("Time: %02u:%02u:%02u\r", (unsigned int)THH, (unsigned int)TMM, (unsigned int)TSS);
 }

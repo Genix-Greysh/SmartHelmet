@@ -19,6 +19,7 @@ void CrashFunction(void)
 	 
 		if(recSignal[0] == 'o' && recSignal[1] == 'k')
 		{
+			//GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);//关闭蜂鸣器
 			//如果接收到ac，则代表车祸真的发生；接收到wt则代表是错误触发车祸
 			recSignal[0] = getchar();
 			recSignal[1] = getchar();
@@ -30,6 +31,7 @@ void CrashFunction(void)
 				if(flag != '0')//确认车祸时，app发送字符'0'
 					continue;
 				
+				//GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);//关闭蜂鸣器
 				break;
 			}
 			else if(recSignal[0] == 'w' && recSignal[1] == 't')

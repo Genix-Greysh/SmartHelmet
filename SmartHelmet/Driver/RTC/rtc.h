@@ -26,7 +26,7 @@
 *        Debug switch Section
 **************************************************************/
 
-#define RTC_DEBUG_ON 1
+#define RTC_DEBUG_ON 0
 
 /**************************************************************
 *        Include File Section
