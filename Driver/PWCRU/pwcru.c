@@ -46,9 +46,18 @@ void pwrcu_init(void)
 void Enter_DeepSleepMode(void)
 {
 	//printf("Enter Sleep Mode...\n");
-	delay_ms(500);
+	//delay_ms(500);
 	/* Configure button EXTI Channel on low level                                                           */
 	EXTI_WakeupEventConfig(KEY1_BUTTON_EXTI_CHANNEL, EXTI_WAKEUP_LOW_LEVEL, ENABLE);  //PE - 1  EXTI -1(channel)
+	
+	//Before entering the DeepSleep-Mode, do some configuration
+	//Code
+	
 	/* Request to enter Deep Sleep mode 1 (The LDO in low power mode)                                       */
 	PWRCU_DeepSleep1(PWRCU_SLEEP_ENTRY_WFI);
+	
+	//the MCU Wakes up, and recovers the configuration
+	//Code
 }
+
+
