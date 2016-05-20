@@ -52,12 +52,12 @@ void Enter_DeepSleepMode(void)
 	
 	//Before entering the DeepSleep-Mode, do some configuration
 	//Code
+	GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_12, RESET);
+	GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_8, RESET);
 	
 	/* Request to enter Deep Sleep mode 1 (The LDO in low power mode)                                       */
 	PWRCU_DeepSleep1(PWRCU_SLEEP_ENTRY_WFI);
 	
 	//the MCU Wakes up, and recovers the configuration
-	//Code
+	
 }
-
-

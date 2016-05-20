@@ -1,5 +1,5 @@
 Dependencies for Project 'Project', Target 'HT32': (DO NOT MODIFY !)
-F (..\..\User\main.c)(0x573C8D81)(-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src -I..\..\Driver\DELAY -I..\..\User\sdfs_app -I..\..\Driver\RTC -I..\..\Driver\MPU6050 -I..\..\Driver\OV7725 -I..\..\Driver\OV7670 -I..\..\Driver\SCCB -I..\..\Driver\PWCRU -I..\..\User\sdfs_app -I..\..\User\Bluetooth-I G:\mdk474\ARM\RV31\INC-I G:\mdk474\ARM\CMSIS\Include-I G:\mdk474\ARM\Inc\Holtek\HT32F1655_56-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB-o .\ht32\obj\main.o --omf_browse .\ht32\obj\main.crf --depend .\ht32\obj\main.d)
+F (..\..\User\main.c)(0x573F07C1)(-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src -I..\..\Driver\DELAY -I..\..\User\sdfs_app -I..\..\Driver\RTC -I..\..\Driver\MPU6050 -I..\..\Driver\OV7725 -I..\..\Driver\OV7670 -I..\..\Driver\SCCB -I..\..\Driver\PWCRU -I..\..\User\sdfs_app -I..\..\User\Bluetooth-I G:\mdk474\ARM\RV31\INC-I G:\mdk474\ARM\CMSIS\Include-I G:\mdk474\ARM\Inc\Holtek\HT32F1655_56-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB-o .\ht32\obj\main.o --omf_browse .\ht32\obj\main.crf --depend .\ht32\obj\main.d)
 I (..\..\library\HT32F1655_56_Driver\inc\ht32.h)(0x5730A097)
 I (..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h)(0x5730A097)
 I (..\..\library\CMSIS\Include\core_cm3.h)(0x5730A097)
@@ -55,8 +55,8 @@ I (..\..\User\sdfs_app\sdfs_app.h)(0x5730A098)
 I (..\..\Driver\OV7725\ov7725.h)(0x5730A099)
 I (..\..\Driver\SCCB\sccb.h)(0x5730A099)
 I (..\..\Driver\RTC\rtc.h)(0x5730A099)
-I (..\..\Driver\PWCRU\pwcru.h)(0x5730A099)
-I (..\..\User\Bluetooth\Bluetooth.h)(0x5730A098)
+I (..\..\Driver\PWCRU\pwcru.h)(0x573DDF06)
+I (..\..\User\Bluetooth\Bluetooth.h)(0x573EFF24)
 F (..\..\User\ht32f165x_it.c)(0x5730A098)(-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src -I..\..\Driver\DELAY -I..\..\User\sdfs_app -I..\..\Driver\RTC -I..\..\Driver\MPU6050 -I..\..\Driver\OV7725 -I..\..\Driver\OV7670 -I..\..\Driver\SCCB -I..\..\Driver\PWCRU -I..\..\User\sdfs_app -I..\..\User\Bluetooth-I G:\mdk474\ARM\RV31\INC-I G:\mdk474\ARM\CMSIS\Include-I G:\mdk474\ARM\Inc\Holtek\HT32F1655_56-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB-o .\ht32\obj\ht32f165x_it.o --omf_browse .\ht32\obj\ht32f165x_it.crf --depend .\ht32\obj\ht32f165x_it.d)
 I (..\..\library\HT32F1655_56_Driver\inc\ht32.h)(0x5730A097)
 I (..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h)(0x5730A097)
@@ -155,8 +155,8 @@ I (..\..\ff11a\src\integer.h)(0x5730A097)
 I (..\..\ff11a\src\ffconf.h)(0x5730A097)
 I (..\..\Driver\OV7725\ov7725.h)(0x5730A099)
 I (..\..\Driver\SCCB\sccb.h)(0x5730A099)
-F (..\..\User\Bluetooth\Bluetooth.c)(0x5730A098)(-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src -I..\..\Driver\DELAY -I..\..\User\sdfs_app -I..\..\Driver\RTC -I..\..\Driver\MPU6050 -I..\..\Driver\OV7725 -I..\..\Driver\OV7670 -I..\..\Driver\SCCB -I..\..\Driver\PWCRU -I..\..\User\sdfs_app -I..\..\User\Bluetooth-I G:\mdk474\ARM\RV31\INC-I G:\mdk474\ARM\CMSIS\Include-I G:\mdk474\ARM\Inc\Holtek\HT32F1655_56-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB-o .\ht32\obj\bluetooth.o --omf_browse .\ht32\obj\bluetooth.crf --depend .\ht32\obj\bluetooth.d)
-I (..\..\User\Bluetooth\Bluetooth.h)(0x5730A098)
+F (..\..\User\Bluetooth\Bluetooth.c)(0x573EFF53)(-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src -I..\..\Driver\DELAY -I..\..\User\sdfs_app -I..\..\Driver\RTC -I..\..\Driver\MPU6050 -I..\..\Driver\OV7725 -I..\..\Driver\OV7670 -I..\..\Driver\SCCB -I..\..\Driver\PWCRU -I..\..\User\sdfs_app -I..\..\User\Bluetooth-I G:\mdk474\ARM\RV31\INC-I G:\mdk474\ARM\CMSIS\Include-I G:\mdk474\ARM\Inc\Holtek\HT32F1655_56-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB-o .\ht32\obj\bluetooth.o --omf_browse .\ht32\obj\bluetooth.crf --depend .\ht32\obj\bluetooth.d)
+I (..\..\User\Bluetooth\Bluetooth.h)(0x573EFF24)
 I (G:\mdk474\ARM\ARMCC\include\stdio.h)(0x51C7C554)
 I (..\..\Driver\USART\usart.h)(0x5730A099)
 I (..\..\library\HT32F1655_56_Driver\inc\ht32.h)(0x5730A097)
@@ -289,7 +289,7 @@ I (..\..\utilities\HT32_board/ht32f1656_dvb.h)(0x5730A098)
 I (..\..\utilities\common/i2c_eeprom.h)(0x5730A098)
 I (..\..\utilities\common/spi_flash.h)(0x5730A098)
 I (..\..\utilities\common/ebi_lcd.h)(0x5730A098)
-F (..\..\Driver\SD\sd.c)(0x5730A099)(-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src -I..\..\Driver\DELAY -I..\..\User\sdfs_app -I..\..\Driver\RTC -I..\..\Driver\MPU6050 -I..\..\Driver\OV7725 -I..\..\Driver\OV7670 -I..\..\Driver\SCCB -I..\..\Driver\PWCRU -I..\..\User\sdfs_app -I..\..\User\Bluetooth-I G:\mdk474\ARM\RV31\INC-I G:\mdk474\ARM\CMSIS\Include-I G:\mdk474\ARM\Inc\Holtek\HT32F1655_56-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB-o .\ht32\obj\sd.o --omf_browse .\ht32\obj\sd.crf --depend .\ht32\obj\sd.d)
+F (..\..\Driver\SD\sd.c)(0x573D5374)(-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src -I..\..\Driver\DELAY -I..\..\User\sdfs_app -I..\..\Driver\RTC -I..\..\Driver\MPU6050 -I..\..\Driver\OV7725 -I..\..\Driver\OV7670 -I..\..\Driver\SCCB -I..\..\Driver\PWCRU -I..\..\User\sdfs_app -I..\..\User\Bluetooth-I G:\mdk474\ARM\RV31\INC-I G:\mdk474\ARM\CMSIS\Include-I G:\mdk474\ARM\Inc\Holtek\HT32F1655_56-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB-o .\ht32\obj\sd.o --omf_browse .\ht32\obj\sd.crf --depend .\ht32\obj\sd.d)
 I (..\..\Driver\SD\sd.h)(0x5730A099)
 I (..\..\library\HT32F1655_56_Driver\inc\ht32.h)(0x5730A097)
 I (..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h)(0x5730A097)
@@ -512,8 +512,8 @@ I (..\..\utilities\common/i2c_eeprom.h)(0x5730A098)
 I (..\..\utilities\common/spi_flash.h)(0x5730A098)
 I (..\..\utilities\common/ebi_lcd.h)(0x5730A098)
 I (G:\mdk474\ARM\ARMCC\include\math.h)(0x51C7C554)
-F (..\..\Driver\PWCRU\pwcru.c)(0x5730A099)(-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src -I..\..\Driver\DELAY -I..\..\User\sdfs_app -I..\..\Driver\RTC -I..\..\Driver\MPU6050 -I..\..\Driver\OV7725 -I..\..\Driver\OV7670 -I..\..\Driver\SCCB -I..\..\Driver\PWCRU -I..\..\User\sdfs_app -I..\..\User\Bluetooth-I G:\mdk474\ARM\RV31\INC-I G:\mdk474\ARM\CMSIS\Include-I G:\mdk474\ARM\Inc\Holtek\HT32F1655_56-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB-o .\ht32\obj\pwcru.o --omf_browse .\ht32\obj\pwcru.crf --depend .\ht32\obj\pwcru.d)
-I (..\..\Driver\PWCRU\pwcru.h)(0x5730A099)
+F (..\..\Driver\PWCRU\pwcru.c)(0x573DDF06)(-c --cpu Cortex-M3 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\ -I..\..\library\HT32F1655_56_Driver\inc -I..\..\library\CMSIS\Include -I..\..\library\Device\Holtek\HT32F1655_56\Include -I..\..\library\HT32_USBD_Library\inc -I..\..\utilities -I..\MDK_ARM -I..\..\User -I..\..\Driver\USART -I..\..\Driver\SPI -I..\..\Driver\SD -I..\..\ff11a\src -I..\..\Driver\DELAY -I..\..\User\sdfs_app -I..\..\Driver\RTC -I..\..\Driver\MPU6050 -I..\..\Driver\OV7725 -I..\..\Driver\OV7670 -I..\..\Driver\SCCB -I..\..\Driver\PWCRU -I..\..\User\sdfs_app -I..\..\User\Bluetooth-I G:\mdk474\ARM\RV31\INC-I G:\mdk474\ARM\CMSIS\Include-I G:\mdk474\ARM\Inc\Holtek\HT32F1655_56-DUSE_HT32_DRIVER -DUSE_HT32F1656_DVB-o .\ht32\obj\pwcru.o --omf_browse .\ht32\obj\pwcru.crf --depend .\ht32\obj\pwcru.d)
+I (..\..\Driver\PWCRU\pwcru.h)(0x573DDF06)
 I (..\..\Driver\DELAY\delay.h)(0x5730A099)
 I (..\..\library\HT32F1655_56_Driver\inc\ht32.h)(0x5730A097)
 I (..\..\library\Device\Holtek\HT32F1655_56\Include\ht32f1655_56.h)(0x5730A097)

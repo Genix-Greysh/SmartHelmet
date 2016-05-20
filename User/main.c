@@ -66,19 +66,20 @@ int main(void)
 
 	PDMA_Configuration();	//配置PDMA
 	
-	/* Init SD and mount it */
-	SD_SPI_Init();
-	SD_TryInit();
-	sdfs_app_mnt();
-	
 	/* Init Camera */
 	Ov7725_GPIO_Config();
-	Ov7725_TryInit();
-	Ov7725_VSYNC_Init();
 	
 	/*配置蜂鸣器引脚C9*/
 	GPIO_DirectionConfig(HT_GPIOC, GPIO_PIN_9, GPIO_DIR_OUT);
 	GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);
+	
+	/*配置共阳引脚C12*/
+	GPIO_DirectionConfig(HT_GPIOC, GPIO_PIN_12, GPIO_DIR_OUT);
+	GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_12, RESET);
+	
+	/*配置共地引脚C8*/
+	GPIO_DirectionConfig(HT_GPIOC, GPIO_PIN_8, GPIO_DIR_OUT);
+	GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_8, RESET);
 	
 	/*配置debug引脚为C10*/
 	GPIO_DirectionConfig(HT_GPIOC, GPIO_PIN_10, GPIO_DIR_IN);
@@ -92,6 +93,19 @@ int main(void)
 	{	
 		Enter_DeepSleepMode();	//进入睡眠模式
 		PDMA_Configuration();	//配置PDMA
+		GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_12, SET);
+		GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_8, SET);
+		delay_ms(50);
+		
+		/* Init SD and mount it */
+		SD_SPI_Init();
+		SD_TryInit();
+		sdfs_app_mnt();
+		
+		/* Init Camera */
+		Ov7725_GPIO_Config();
+		Ov7725_TryInit();
+		Ov7725_VSYNC_Init();
 		sysWorking = TRUE; 
 		
 		//printf("Enter Main_loop...\n");

@@ -1,4 +1,5 @@
-
+#ifndef _PWCRU_H
+#define _PWCRU_H
 /**
 * @brief 初始化电源管理模块,并有开启睡眠模式的接口
  */
@@ -17,3 +18,5 @@ void pwrcu_init(void);
  * @retval None
  */
 void Enter_DeepSleepMode(void);
+
+#endif 
