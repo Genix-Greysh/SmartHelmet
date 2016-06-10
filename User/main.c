@@ -14,7 +14,7 @@
 #include "Bluetooth.h"
 
 #define NUM_PHOTO 10
-char num[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};//数字以字符显示
+static char num[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};//数字以字符显示
 
 /**
  * @brief  		打包加速度数据以发送给手机端显示
@@ -136,13 +136,16 @@ int main(void)
 						PackDatasForBlueTooth(data);//打包加速度数据给蓝牙
 						printf("%s\n", data);
 						
+						sdfs_app_savePhoto();	//拍摄一张照片
+						delay_ms(50);
+						CrashFunction();
+						
+						/*继续拍摄照片*/
 						for(count = 0; count < NUM_PHOTO; count++)
 						{
 							sdfs_app_savePhoto();
 							delay_ms(50);
-						}
-						CrashFunction();
-						
+						}						
 					}
 					//else
 						//printf("Not!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));
