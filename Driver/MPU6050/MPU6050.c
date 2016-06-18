@@ -138,9 +138,15 @@ bool IsAccident(void)
 {
 	Axis_GetFinalData();	//收集数据
 	
-	if(fabs(Axis[0]) > 1.0 || fabs(Axis[1]) > 1.0 || fabs(Angular[2]) > 800.0)
-		if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]) > 3.3)
-			return TRUE; 
+	if(fabs(Axis[0]) > 1.0 || fabs(Axis[1]) > 1.0 || fabs(Axis[2]) > 1.0)
+	{
+		if(Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]) > 2.0)
+			return TRUE;
+	}
+	else if(fabs(Angular[2]) > 800.0)
+	{
+		return TRUE;
+	}
 	
 	return FALSE;
 }

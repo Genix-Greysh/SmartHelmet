@@ -92,6 +92,11 @@ int main(void)
 	while (1)
 	{	
 		Enter_DeepSleepMode();	//进入睡眠模式
+		
+		/* Initialize devices */
+		SYSTICK_Config();
+		Init_USART(HT_USART0,9600);		
+		Init_USART(HT_USART1,115200);	
 		PDMA_Configuration();	//配置PDMA
 		GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_12, SET);
 		GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_8, SET);
@@ -138,14 +143,16 @@ int main(void)
 						
 						sdfs_app_savePhoto();	//拍摄一张照片
 						delay_ms(50);
-						CrashFunction();
 						
-						/*继续拍摄照片*/
-						for(count = 0; count < NUM_PHOTO; count++)
+						if(1 == CrashFunction())
 						{
-							sdfs_app_savePhoto();
-							delay_ms(50);
-						}						
+							/*继续拍摄照片*/
+							for(count = 0; count < NUM_PHOTO; count++)
+							{
+								sdfs_app_savePhoto();
+								delay_ms(50);
+							}			
+						}							
 					}
 					//else
 						//printf("Not!%f %f %f %f\n", Axis[0], Axis[1], Axis[2], Square(Axis[0]) + Square(Axis[1]) + Square(Axis[2]));

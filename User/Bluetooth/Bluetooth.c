@@ -3,9 +3,9 @@
 /**
  * @brief  车祸信号处理函数
  * @param  
- * @retval None
+ * @retval 1表示车祸发生，0表示误触发
  */
-void CrashFunction(void)
+int CrashFunction(void)
 {
 	u8 recSignal[3] = {0};
 	u8 ch;
@@ -38,23 +38,22 @@ void CrashFunction(void)
 					continue;
 				BLUETOOTH_DEBUG("ac success!\n");
 				//GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);//关闭蜂鸣器
-				break;
+				return 1;
 			}
 			else if(recSignal[0] == 'w' && recSignal[1] == 't')
 			{
 				GPIO_WriteOutBits(HT_GPIOC, GPIO_PIN_9, RESET);//关闭蜂鸣器
 				BLUETOOTH_DEBUG("wt success! %s\n", recSignal);
-				break;
+				return 0;
 			}
 			else{
-				BLUETOOTH_DEBUG("ac wt error!\n");
+				BLUETOOTH_DEBUG("ac wt error! %s\n", recSignal);
 				continue;//移动端出故障
 			}
 		}
 		else{
 			BLUETOOTH_DEBUG("ok error %s\n", recSignal);
 		}
-		
 	}
 }
 
